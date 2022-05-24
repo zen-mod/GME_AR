@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{F849BB1343DB2CA5}Configs/Editor/ActionLists/Context/Shared.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}
