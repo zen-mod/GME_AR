@@ -1,7 +1,7 @@
 GameProject {
- ID "CrowsZeusAdditions"
+ ID "OdinsGameMasterAdditions"
  GUID "5964E0B3BB7410CE"
- TITLE "Crows Zeus Additions"
+ TITLE "Odin's Game Master Additions"
  Dependencies {
   "58D0FB3206B6F859"
  }

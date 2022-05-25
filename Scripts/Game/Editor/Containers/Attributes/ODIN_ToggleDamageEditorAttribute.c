@@ -2,7 +2,7 @@
 Entity Attribute for toggle damage on unit
 */
 [BaseContainerProps(), SCR_BaseEditorAttributeCustomTitle()]
-class CROW_ToggleDamageEditorAttribute : SCR_BaseEditorAttribute
+class ODIN_ToggleDamageEditorAttribute : SCR_BaseEditorAttribute
 {
 	override SCR_BaseEditorAttributeVar ReadVariable(Managed item, SCR_AttributesManagerEditorComponent manager)
 	{

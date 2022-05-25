@@ -1,5 +1,5 @@
 [BaseContainerProps(), SCR_BaseContainerCustomTitleUIInfo("m_info")]
-class CROW_DeleteAllDeadContextAction : SCR_BaseContextAction
+class ODIN_DeleteAllDeadContextAction : SCR_BaseContextAction
 {
 	override bool CanBeShown(SCR_EditableEntityComponent hoveredEntity, notnull set<SCR_EditableEntityComponent> selectedEntities, vector cursorWorldPosition, int flags)
 	{
