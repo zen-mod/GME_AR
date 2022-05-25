@@ -36,7 +36,7 @@ class CROW_DeleteAllDeadContextAction : SCR_BaseContextAction
 			// delete them
 			foreach (SCR_EditableEntityComponent entity : deadEntities)
 			{
-				entity.SetTransformOwner();
+				entity.Delete();
 			}
 		}
 	}
