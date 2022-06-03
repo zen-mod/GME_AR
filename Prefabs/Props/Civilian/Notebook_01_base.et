@@ -1,0 +1,29 @@
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
+ ID "5256876839A05289"
+ components {
+  ODIN_IntelManagerComponent "{5986055E14A21E87}" {
+   m_sActionName "Pick up intel"
+   m_ActionSoundProject "{13F8D0DE67678118}Sounds/Items/_SharedData/PickUp/Items_PickUp_Map.acp"
+   m_ActionSoundEventName "SOUND_PICK_UP"
+  }
+  ActionsManagerComponent "{5985563B1A2B06F7}" {
+   ActionContexts {
+    UserActionContext "{59855D24BFFD42F5}" {
+     ContextName "default"
+     Position PointInfo "{59855D24B97A9E93}" {
+      Offset 0 0 0
+     }
+    }
+   }
+   additionalActions {
+    ODIN_IntelUserAction "{59855D24072943F1}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{598728676F5FBE95}" {
+     }
+    }
+   }
+  }
+ }
+}
