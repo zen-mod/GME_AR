@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{599E6ED593B7A2F5}UI/layouts/Editor/Attributes/AttributePrefabs/AttributePrefab_Edit.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}

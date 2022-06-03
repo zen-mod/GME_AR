@@ -1,0 +1,63 @@
+FrameWidgetClass {
+ Name "AttributeEditBox"
+ components {
+  ODIN_EditboxEditorAttributeUIComponent "{59868A9CA59AE223}" {
+   m_sUiComponentName "EditBoxRoot0"
+   m_ConflictingAttributeUIInfo SCR_EditorAttributeUIInfo "{59868A9CB77B084D}" {
+    Description "#AR-Editor_AttributeConflicting_Description"
+    Icon "{564794579B2DB679}UI/Textures/Editor/Attributes/Attribute_Locked.edds"
+   }
+  }
+ }
+ {
+  FrameWidgetClass "{59863CBDB09E6710}" : "{D0CFC9245F8ADE64}UI/layouts/Editor/Attributes/Attributes.layout" {
+   Name "AttributeBase0"
+   Slot FrameWidgetSlot "{5490D0669B48A312}" {
+    OffsetLeft 0
+    OffsetTop 0
+    SizeX 800
+    OffsetRight -800
+    SizeY 40
+    OffsetBottom -40
+    SizeToContent 1
+   }
+   {
+    SizeLayoutWidgetClass "{55A2D6D3563F2862}" {
+     Prefab "{55A2D6D3563F2862}"
+     {
+      HorizontalLayoutWidgetClass "{55A272E10C6C6415}" {
+       Prefab "{55A272E10C6C6415}"
+       {
+        FrameWidgetClass "{55ACAB41AC4B7EFA}" {
+         Prefab "{55ACAB41AC4B7EFA}"
+         {
+          SizeLayoutWidgetClass "{55A272E1277CE21D}" {
+           Prefab "{55A272E1277CE21D}"
+           Slot FrameWidgetSlot "{55ACAB41AC7DA108}" {
+           }
+           {
+            ButtonWidgetClass "{59863CBDB09E671D}" : "{0022F0B45ADBC5AC}UI/layouts/WidgetLibrary/EditBox/WLib_EditBox.layout" {
+             Name "EditBoxRoot0"
+             {
+              SizeLayoutWidgetClass "{5538C205B27B0F5D}" {
+               Prefab "{5538C205B27B0F5D}"
+               AllowWidthOverride 1
+               WidthOverride 896
+               HeightOverride 55
+               {
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

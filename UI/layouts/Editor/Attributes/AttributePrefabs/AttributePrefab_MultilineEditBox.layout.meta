@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{9CFE6B0F98097C35}UI/layouts/Editor/Attributes/AttributePrefabs/AttributePrefab_MultilineEditBox.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+ }
+}
