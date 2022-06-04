@@ -1,0 +1,193 @@
+SCR_GameModeEditor GameMode_GameMaster : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Editor/GameMode_Editor_Full.et" {
+ components {
+  SCR_EditorCameraDefaultsComponent "{531111508B1D17BA}" {
+  }
+ }
+ coords 0 0 3
+ m_GameMasterTarget EVERYBODY
+ {
+  SCR_AIWorld AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+   components {
+    NavmeshWorldComponent "{5584F30E67F617AD}" {
+     NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+      NavmeshFile "{B8FCAF35EBCDD3B2}worlds/GM_AchilliteIsland/GM_AchilliteIsland/GM_AchilliteIsland.nmn"
+     }
+    }
+   }
+   coords 3 0 3
+   "Max budget of AI characters" 2000
+  }
+  RadioManagerEntity RadioManager {
+   ID "56E685E9ECAABCFD"
+   coords 33 0 3
+  }
+  ScriptedChatEntity ChatEntity {
+   ID "56E685E9EF952A67"
+   coords 6 0 3
+  }
+  SCR_FactionManager FactionManager {
+   ID "56E685E92F1B7E7A"
+   coords 9 0 3
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_bIsPlayable 1
+    }
+   }
+  }
+  PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+   coords 27 0 3
+  }
+  TagManager TagManager : "{2FA9E172CAB1857A}Prefabs/MP/Managers/TagManager.et" {
+   coords 39 0 3
+  }
+  ProjectileSoundsManager ProjectileSoundManager : "{B4DA8B0024536625}Prefabs/World/Game/ProjectileSoundsManager.et" {
+   coords 30 0 3
+  }
+  GarbageManager GarbageManager {
+   ID "59169520F06B8436"
+   coords 12 0 3
+  }
+  SCR_BaseTaskManager TaskManager {
+   ID "56E685E92F1B7FAB"
+   coords 42 0 3
+  }
+  SCR_LoadoutManager LoadoutManager {
+   ID "56E685E92F1B7E2A"
+   coords 18 0 3
+  }
+  SCR_SpawnArea SpawnArea {
+   coords 36 0 3
+  }
+  HitRegistrationManager HitRegManager : "{0EDA3D48791120DD}Prefabs/MP/HitRegManager.et" {
+   coords 15 0 3
+  }
+  SCR_MusicManager MusicManager : "{22BC5D2DAB7D5E0C}Prefabs/Sounds/Music/MusicManager_Everon_Editor.et" {
+   components {
+    EventHandlerManagerComponent "{589CEDA953FB63CE}" {
+     EventHandlers {
+     }
+    }
+   }
+   coords 24 0 3
+  }
+  SCR_MPDestructionManager MPDestructionManager : "{9BB369F2803C6F71}Prefabs/MP/MPDestructionManager.et" {
+   coords 21 0 3
+  }
+ }
+}
+GenericEntity : "{08C3C0CBFDBFE35A}PrefabsEditable/Auto/Props/Civilian/E_Notebook_01_Single_Blue.et" {
+ components {
+  ODIN_IntelManagerComponent "{5986055E14A21E87}" {
+   m_sIntelTitle "Test Book Closed"
+   m_sIntelContent "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+  }
+ }
+ coords 110.644 1.897 118.863
+ angleY -175.104
+}
+AIWaypointCycle : "{0FBDE34BE96FB7BA}PrefabsEditable/Auto/AI/Waypoints/E_AIWaypointCycle.et" {
+ coords 72.177 -1.061 93.817
+}
+GenericEntity : "{1B99870437838BB5}PrefabsEditable/Auto/Props/Civilian/E_Notebook_01_Open.et" {
+ components {
+  ODIN_IntelManagerComponent "{5986055E14A21E87}" {
+   m_sIntelTitle "Test Book Open"
+   m_sIntelContent "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+  }
+  ActionsManagerComponent "{5985563B1A2B06F7}" {
+   additionalActions {
+    ODIN_IntelUserAction "{59855D24072943F1}" {
+     UIInfo UIInfo "{598728676F5FBE95}" {
+      Name ""
+      Description ""
+     }
+    }
+   }
+  }
+ }
+ coords 110.297 1.901 118.777
+}
+GenericEntity : "{6A93FC5A0302BF49}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_Bunker_S_US_01.et" {
+ coords 106.518 1.012 110.083
+ angleY 23.184
+}
+SCR_AIGroup : "{84E5BBAB25EA23E5}Prefabs/Groups/BLUFOR/Group_US_FireTeam.et" {
+ coords 80.841 2.145 112.4
+}
+GenericEntity : "{BC54A982515C5453}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_SandbagCover_US_05.et" {
+ coords 115.777 0.756 127.006
+ angleY 20.797
+ {
+  StaticModelEntity {
+   ID "5528E9C9FE75D911"
+   coords 2.44 0.162 -2.12
+   angleY 85.226
+  }
+ }
+}
+Vehicle BTR : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ components {
+  SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 22624.699
+  }
+ }
+ coords 94.543 1.142 117.083
+ angleY 117
+}
+SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
+ coords 101.443 4.518 119.391
+ angleY -146
+}
+GenericEntity : "{DF2380D0F520305F}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_MG_US_01.et" {
+ coords 115.173 1.001 116.572
+ angleY 108.494
+}
+GenericEntity : "{F4EB98A746D96060}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_Headquarters_S_US_01.et" {
+ coords 107.685 1.001 123.441
+ angleY 109.658
+ {
+  StaticModelEntity {
+   ID "5704A24E3BC1D061"
+   {
+    GameEntity {
+     ID "5704A24D39D49E86"
+     coords -0.022 0.9 1.125
+     angleY -69.31
+    }
+    GenericEntity {
+     ID "5704A24D39D499D6"
+     components {
+      ODIN_IntelManagerComponent "{5986055E14A21E87}" {
+       m_sIntelTitle "Test intel 2"
+       m_sIntelContent "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      }
+      ActionsManagerComponent "{5985563B1A2B06F7}" {
+       additionalActions {
+        ODIN_IntelUserAction "{59855D24072943F1}" {
+         UIInfo UIInfo "{59855D2405AB6CDE}" {
+          Name " "
+          Description " "
+         }
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5704A24D39D49E9D"
+     components {
+      ODIN_IntelManagerComponent "{5986055E14A21E87}" {
+       m_sIntelTitle "Test Intel"
+       m_sIntelContent "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      }
+     }
+     coords 0.56 0.9 0.617
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{F5ED2B78A67A2D46}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_S_US_01_M60.et" {
+ coords 98.201 1.001 124.854
+ angleY -74.042
+}

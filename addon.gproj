@@ -7,6 +7,69 @@ GameProject {
  }
  Configurations {
   GameProjectConfig PC {
+   WidgetManagerSettings WidgetManagerSettings "{AC4BE58770485E02}" {
+    StringTables {
+     StringTableDefinition "{596B7D458D29A423}" {
+      StringTableSource "{91E0F6253032266E}Language/localization.st"
+      Languages {
+       LanguageDefinition "{596B7D458B6107B0}" {
+        Code "en_us"
+        StringTableRuntime "{FFABF1A438694BFD}Language/localization.en_us.conf"
+       }
+       LanguageDefinition "{596C10427FCF7337}" {
+        Code "cs_cz"
+        StringTableRuntime "{742561DC41395FDB}Language/localization.cs_cz.conf"
+       }
+       LanguageDefinition "{596C10427C5BF485}" {
+        Code "de_de"
+        StringTableRuntime "{A15B7BEF529A4EFB}Language/localization.de_de.conf"
+       }
+       LanguageDefinition "{596C10427CA91D4D}" {
+        Code "es_es"
+        StringTableRuntime "{3AE7BC2DD66B20E5}Language/localization.es_es.conf"
+       }
+       LanguageDefinition "{596C10427D12F2F8}" {
+        Code "fr_fr"
+        StringTableRuntime "{814F491A30E8C3E7}Language/localization.fr_fr.conf"
+       }
+       LanguageDefinition "{596C10427D635B18}" {
+        Code "it_it"
+        StringTableRuntime "{0153C62E9DCA4020}Language/localization.it_it.conf"
+       }
+       LanguageDefinition "{596C10427A34426E}" {
+        Code "ja_jp"
+        FontOverride "{54A29B2BD9DE5841}UI/Fonts/NotoSans/NotoSansCJK-Light-jp.fnt"
+        LanguageGroup EastAsian
+        StringTableRuntime "{11487BBCA3BB70B5}Language/localization.ja_jp.conf"
+       }
+       LanguageDefinition "{596C10427A61EE5F}" {
+        Code "ko_kr"
+        FontOverride "{3D9620A3F9FD2DB0}UI/Fonts/NotoSans/NotoSansCJK-Light-kor.fnt"
+        LanguageGroup EastAsian
+        StringTableRuntime "{B1F653103096738C}Language/localization.ko_kr.conf"
+       }
+       LanguageDefinition "{596C10427AD420C9}" {
+        Code "pl_pl"
+        StringTableRuntime "{ED87F5EA8E79EFF8}Language/localization.pl_pl.conf"
+       }
+       LanguageDefinition "{596C10427B4BBB2B}" {
+        Code "pt_br"
+        StringTableRuntime "{38F06F26B587254E}Language/localization.pt_br.conf"
+       }
+       LanguageDefinition "{596C10427BAD2B07}" {
+        Code "ru_ru"
+        StringTableRuntime "{6DB17B8E28FE403C}Language/localization.ru_ru.conf"
+       }
+       LanguageDefinition "{596C1042780E19A9}" {
+        Code "zh_cn"
+        FontOverride "{B5902016D80E5C91}UI/Fonts/NotoSans/NotoSansCJK-Light-sc.fnt"
+        LanguageGroup EastAsian
+        StringTableRuntime "{3D5940457D702E74}Language/localization.zh_cn.conf"
+       }
+      }
+     }
+    }
+   }
   }
   GameProjectConfig XBOX_ONE {
   }
