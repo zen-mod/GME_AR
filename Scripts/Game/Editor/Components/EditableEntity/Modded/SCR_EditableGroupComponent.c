@@ -7,18 +7,21 @@ modded class SCR_EditableGroupComponent : SCR_EditableEntityComponent
 	{
 		//--- Delete waypoints which were not assigned to another group
 		SCR_EditableWaypointComponent waypointCompToRemove = SCR_EditableWaypointComponent.Cast(SCR_EditableEntityComponent.GetEditableEntity(wp));
-		
+			
 		if (waypointCompToRemove && waypointCompToRemove.GetParentEntity() == this)
 		{
 			// Only delete if there is no waypoint cycle present
 			bool has_cycle = false;
 			array<AIWaypoint> waypoints = {};
 			m_Group.GetWaypoints(waypoints);
+			
 			foreach (AIWaypoint waypoint: waypoints)
 			{
+				
 				if (AIWaypointCycle.Cast(waypoint))
 				{
 					has_cycle = true;
+					waypointCompToRemove.setCompleted();
 					break;
 				};
 			};
@@ -26,6 +29,17 @@ modded class SCR_EditableGroupComponent : SCR_EditableEntityComponent
 			{
 				waypointCompToRemove.Delete();
 			}
+		}
+		ReindexWaypoints();
+	}
+	
+	override protected void OnWaypointAdded(AIWaypoint wp)
+	{
+		SCR_EditableWaypointComponent waypoint = SCR_EditableWaypointComponent.Cast(SCR_EditableEntityComponent.GetEditableEntity(wp));
+		if (waypoint)
+		{
+			waypoint.setCompleted(false);
+			waypoint.SetParentEntity(this);
 		}
 		ReindexWaypoints();
 	}
