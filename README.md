@@ -18,6 +18,7 @@ A mod that enhances the gamemaster mode with several tools and QoL improvements:
 
 
 ## Contributors
-Kex  
 Crowdedlight  
+Kex  
+
 
