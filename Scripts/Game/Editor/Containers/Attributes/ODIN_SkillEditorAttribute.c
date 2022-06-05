@@ -37,5 +37,24 @@ class ODIN_SkillEditorAttribute : SCR_BaseValueListEditorAttribute
 			return;
 
 		AIConfigComp.m_Skill = var.GetFloat() / 100;
+		
+		SCR_AIGroup group = SCR_AIGroup.Cast(owner);
+		if (!group)
+			return;
+		
+		array<AIAgent> agents = {};
+		group.GetAgents(agents);
+		foreach (AIAgent agent : agents)
+		{
+			IEntity entity = agent.GetControlledEntity();
+			if (!entity)
+				continue;
+			
+			SCR_AICombatComponent combatComponent = SCR_AICombatComponent.Cast(entity.FindComponent(SCR_AICombatComponent));
+			if (!combatComponent)
+				continue;
+			
+			combatComponent.SetAISkill(var.GetInt());
+		};
 	}
 };
