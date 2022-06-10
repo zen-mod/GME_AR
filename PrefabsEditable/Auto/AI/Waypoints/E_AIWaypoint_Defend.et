@@ -1,0 +1,4 @@
+SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+ ID "50EECB8790B5A515"
+ CompletionRadius 10
+}
