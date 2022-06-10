@@ -15,20 +15,11 @@ class ODIN_StanceEditorAttribute : SCR_BasePresetsEditorAttribute
 		if (!owner)
 			return null;
 		
-		SCR_AIGroup group = SCR_AIGroup.Cast(owner);
-		if (!group)
-			return null;
-		
-		
-		AIAgent leader = group.GetLeaderAgent();
-		if (!leader)
-			return null;
-		
-		CharacterControllerComponent charCtrlComp = CharacterControllerComponent.Cast(leader.GetControlledEntity().FindComponent(CharacterControllerComponent));
-		if (!charCtrlComp)
+		CharacterControllerComponent charCtrlComponent = CharacterControllerComponent.Cast(owner.FindComponent(CharacterControllerComponent));
+		if (!charCtrlComponent)
 			return null;
 				
-		return SCR_BaseEditorAttributeVar.CreateInt(charCtrlComp.GetStance());
+		return SCR_BaseEditorAttributeVar.CreateInt(charCtrlComponent.GetStance());
 	}
 	
 	override void WriteVariable(Managed item, SCR_BaseEditorAttributeVar var, SCR_AttributesManagerEditorComponent manager, int playerID)
@@ -47,24 +38,23 @@ class ODIN_StanceEditorAttribute : SCR_BasePresetsEditorAttribute
 		if (!owner)
 			return;
 		
-		SCR_AIGroup group = SCR_AIGroup.Cast(owner);
-		if (!group)
+		AIControlComponent aiCtrlComponent = AIControlComponent.Cast(owner.FindComponent(AIControlComponent));
+		if (!aiCtrlComponent)
 			return;
 		
-		array<AIAgent> agents = {};
-		group.GetAgents(agents);
-		foreach (AIAgent agent : agents)
-		{
-			SCR_AIInfoComponent infoComp = SCR_AIInfoComponent.Cast(agent.FindComponent(SCR_AIInfoComponent));
-			if (!infoComp)
-				continue;
+		AIAgent agent = aiCtrlComponent.GetControlAIAgent();
+		if (!agent)
+			return;
+		
+		SCR_AIInfoComponent infoComponent = SCR_AIInfoComponent.Cast(agent.FindComponent(SCR_AIInfoComponent));
+		if (!infoComponent)
+			return;
 			
-			CharacterControllerComponent charCtrlComp = CharacterControllerComponent.Cast(agent.GetControlledEntity().FindComponent(CharacterControllerComponent));
-			if (!charCtrlComp)
-				continue;
-			
-			infoComp.SetStance(stance);
-			charCtrlComp.SetStanceChange(stanceChange);
-		};
+		CharacterControllerComponent charCtrlComponent = CharacterControllerComponent.Cast(owner.FindComponent(CharacterControllerComponent));
+		if (!charCtrlComponent)
+			return;
+		
+		infoComponent.SetStance(stance);
+		charCtrlComponent.SetStanceChange(stanceChange);
 	}
 };
