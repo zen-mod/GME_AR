@@ -21,6 +21,105 @@ StringTable {
    Author "Kex"
    LastChanged "Kex"
   }
+  CustomStringTableItem "{5991778E6BF8C0BE}" {
+   Id "ODIN-Editor_Attribute_CompletionRadius_Name"
+   Target_en_us "Completion radius"
+   Target_fr_fr "Radio de consecución"
+   Target_it_it "Raggio di completamento"
+   Target_de_de "Abschlussradius"
+   Target_es_es "Radio de consecución"
+   Target_cs_cz "Poloměr dokončení"
+   Target_pl_pl "Promień zaliczenia"
+   Target_ru_ru "Радиус завершения"
+   Target_ja_jp "完了範囲"
+   Target_ko_kr "완료 반경"
+   Target_pt_br "Raio de posicionamento"
+   Target_zh_cn "完成半徑"
+   Modified 1502834004
+   Author "Kex"
+   LastChanged "Kex"
+  }
+  CustomStringTableItem "{59936CDEFF838694}" {
+   Id "ODIN-Editor_Attribute_CompletionRadius_ValueFormating"
+   Target_en_us "%1 m"
+   Target_fr_fr "%1 m"
+   Target_it_it "%1 m"
+   Target_de_de "%1 m"
+   Target_es_es "%1 m"
+   Target_cs_cz "%1 m"
+   Target_pl_pl "%1 m"
+   Target_ru_ru "%1 m"
+   Target_ja_jp "%1 m"
+   Target_ko_kr "%1 m"
+   Target_pt_br "%1 m"
+   Target_zh_cn "%1 米"
+   Modified 1502835031
+   Author "Kex"
+   LastChanged "Kex"
+  }
+  CustomStringTableItem "{59936CDE072D6074}" {
+   Id "ODIN-Editor_Attribute_CompletionType_All_Name"
+   Target_en_us "All"
+   Target_fr_fr "Tous"
+   Target_it_it "Tutti"
+   Target_de_de "Alle"
+   Target_es_es "Todo"
+   Target_cs_cz "Všichni"
+   Target_pl_pl "Wszyscy"
+   Target_ru_ru "Все"
+   Target_ja_jp "すべて"
+   Target_ko_kr "전원"
+   Target_pt_br "Todos"
+   Target_zh_cn "全部"
+   Modified 1502834964
+   Author "Kex"
+   LastChanged "Kex"
+  }
+  CustomStringTableItem "{59936CDE0F44AFB0}" {
+   Id "ODIN-Editor_Attribute_CompletionType_Any_Name"
+   Target_en_us "Any"
+   Target_fr_fr "Quelconque"
+   Target_it_it "Qualsiasi"
+   Target_de_de "Irgendeiner"
+   Target_es_es "Cualquiera"
+   Target_cs_cz "Jakýkoliv"
+   Target_pl_pl "Dowolne"
+   Target_ru_ru "Любой"
+   Target_ja_jp "任意"
+   Target_ko_kr "누구나"
+   Target_pt_br "Qualquer"
+   Target_zh_cn "任意"
+   Modified 1502834869
+   Author "Kex"
+   LastChanged "Kex"
+  }
+  CustomStringTableItem "{59936CDE02EBC2FC}" {
+   Id "ODIN-Editor_Attribute_CompletionType_Leader_Name"
+   Target_en_us "Leader"
+   Target_fr_fr "Chef"
+   Target_it_it "Capo"
+   Target_de_de "Anführer"
+   Target_es_es "Líder"
+   Target_cs_cz "Velitel"
+   Target_pl_pl "Dowódca"
+   Target_ru_ru "Лидер"
+   Target_ja_jp "リーダー"
+   Target_ko_kr "지휘관"
+   Target_pt_br "Líder"
+   Target_zh_cn "隊長"
+   Modified 1502834716
+   Author "Kex"
+   LastChanged "Kex"
+  }
+  CustomStringTableItem "{59936CDEEA14EA7D}" {
+   Id "ODIN-Editor_Attribute_CompletionType_Name"
+   Target_en_us "Completion type"
+   Target_fr_fr "Type de consecución"
+   Target_de_de "Abschlusstyp"
+   Modified 1502834258
+   Author "Kex"
+   LastChanged "Kex"
+  }
   CustomStringTableItem "{5982226183CBA7D1}" {
    Id "ODIN-Editor_Attribute_EnableDamage_Name"
    Target_en_us "Enable damage"
@@ -218,6 +317,24 @@ StringTable {
    Target_pt_br "Em pé"
    Target_zh_cn "站起"
    Modified 1500346765
+   Author "Kex"
+   LastChanged "Kex"
+  }
+  CustomStringTableItem "{5991778E083F9A25}" {
+   Id "ODIN-Editor_AttributeCategory_Waypoint_Name"
+   Target_en_us "Waypoint"
+   Target_fr_fr "Point de passage"
+   Target_it_it "Destinazione"
+   Target_de_de "Wegpunkt"
+   Target_es_es "unto de referencia"
+   Target_cs_cz "Bod trasy"
+   Target_pl_pl "unkt trasy"
+   Target_ru_ru "Точка маршрута"
+   Target_ja_jp "ウェイポイント"
+   Target_ko_kr "경유지"
+   Target_pt_br "Ponto de rota"
+   Target_zh_cn "路点"
+   Modified 1502834012
    Author "Kex"
    LastChanged "Kex"
   }
