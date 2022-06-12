@@ -16,6 +16,7 @@ A mod that enhances the gamemaster mode with several tools and QoL improvements:
 
 - Cycle Waypoint, you can now add the familiar cycle waypoint to make AI move in repeated patterns
 
+- Waypoint completion radius and type attributes.
 
 ## Contributors
 Crowdedlight  
