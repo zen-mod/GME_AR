@@ -7,64 +7,58 @@ GameProject {
  }
  Configurations {
   GameProjectConfig PC {
-   WidgetManagerSettings WidgetManagerSettings "{AC4BE58770485E02}" {
+   WidgetManagerSettings WidgetManagerSettings "{5D1956746A073D9B}" {
     StringTables {
-     StringTableDefinition "{596B7D458D29A423}" {
-      StringTableSource "{91E0F6253032266E}Language/localization.st"
+     StringTableDefinition "{5D195975235D4987}" {
+      StringTableSource "{5B2F0C5E122F3563}Language/OdinZeus_localization.st.st"
       Languages {
-       LanguageDefinition "{596B7D458B6107B0}" {
-        Code "en_us"
-        StringTableRuntime "{FFABF1A438694BFD}Language/localization.en_us.conf"
-       }
-       LanguageDefinition "{596C10427FCF7337}" {
+       LanguageDefinition "{5D195975218AA430}" {
         Code "cs_cz"
-        StringTableRuntime "{742561DC41395FDB}Language/localization.cs_cz.conf"
+        StringTableRuntime "{1A307890AD35DFDF}Language/OdinZeus_localization.st.cs_cz.conf"
        }
-       LanguageDefinition "{596C10427C5BF485}" {
+       LanguageDefinition "{5D195975218AA46B}" {
         Code "de_de"
-        StringTableRuntime "{A15B7BEF529A4EFB}Language/localization.de_de.conf"
+        StringTableRuntime "{CF4E62A3BE96CEFF}Language/OdinZeus_localization.st.de_de.conf"
        }
-       LanguageDefinition "{596C10427CA91D4D}" {
+       LanguageDefinition "{5D195975218AA47B}" {
+        Code "en_us"
+        StringTableRuntime "{91BEE8E8D465CBFE}Language/OdinZeus_localization.st.en_us.conf"
+       }
+       LanguageDefinition "{5D195975218AA38F}" {
         Code "es_es"
-        StringTableRuntime "{3AE7BC2DD66B20E5}Language/localization.es_es.conf"
+        StringTableRuntime "{54F2A5613A67A0E1}Language/OdinZeus_localization.st.es_es.conf"
        }
-       LanguageDefinition "{596C10427D12F2F8}" {
+       LanguageDefinition "{5D195975218AA39C}" {
         Code "fr_fr"
-        StringTableRuntime "{814F491A30E8C3E7}Language/localization.fr_fr.conf"
+        StringTableRuntime "{EF5A5056DCE443E3}Language/OdinZeus_localization.st.fr_fr.conf"
        }
-       LanguageDefinition "{596C10427D635B18}" {
+       LanguageDefinition "{5D195975218AA3AC}" {
         Code "it_it"
-        StringTableRuntime "{0153C62E9DCA4020}Language/localization.it_it.conf"
+        StringTableRuntime "{6F46DF6271C6C01A}Language/OdinZeus_localization.st.it_it.conf"
        }
-       LanguageDefinition "{596C10427A34426E}" {
+       LanguageDefinition "{5D195975218AA3BC}" {
         Code "ja_jp"
-        FontOverride "{54A29B2BD9DE5841}UI/Fonts/NotoSans/NotoSansCJK-Light-jp.fnt"
-        LanguageGroup EastAsian
-        StringTableRuntime "{11487BBCA3BB70B5}Language/localization.ja_jp.conf"
+        StringTableRuntime "{7F5D62F04FB7F0B1}Language/OdinZeus_localization.st.ja_jp.conf"
        }
-       LanguageDefinition "{596C10427A61EE5F}" {
+       LanguageDefinition "{5D195975218AA3B3}" {
         Code "ko_kr"
-        FontOverride "{3D9620A3F9FD2DB0}UI/Fonts/NotoSans/NotoSansCJK-Light-kor.fnt"
-        LanguageGroup EastAsian
-        StringTableRuntime "{B1F653103096738C}Language/localization.ko_kr.conf"
+        StringTableRuntime "{DFE34A5CDC9AF38E}Language/OdinZeus_localization.st.ko_kr.conf"
        }
-       LanguageDefinition "{596C10427AD420C9}" {
+       LanguageDefinition "{5D195975218AA3C1}" {
         Code "pl_pl"
-        StringTableRuntime "{ED87F5EA8E79EFF8}Language/localization.pl_pl.conf"
+        StringTableRuntime "{8392ECA662756FF2}Language/OdinZeus_localization.st.pl_pl.conf"
        }
-       LanguageDefinition "{596C10427B4BBB2B}" {
+       LanguageDefinition "{5D195975218AA3D4}" {
         Code "pt_br"
-        StringTableRuntime "{38F06F26B587254E}Language/localization.pt_br.conf"
+        StringTableRuntime "{56E5766A598BA548}Language/OdinZeus_localization.st.pt_br.conf"
        }
-       LanguageDefinition "{596C10427BAD2B07}" {
+       LanguageDefinition "{5D195975218AA1B2}" {
         Code "ru_ru"
-        StringTableRuntime "{6DB17B8E28FE403C}Language/localization.ru_ru.conf"
+        StringTableRuntime "{03A462C2C4F2C03E}Language/OdinZeus_localization.st.ru_ru.conf"
        }
-       LanguageDefinition "{596C1042780E19A9}" {
+       LanguageDefinition "{5D195975218AA1DD}" {
         Code "zh_cn"
-        FontOverride "{B5902016D80E5C91}UI/Fonts/NotoSans/NotoSansCJK-Light-sc.fnt"
-        LanguageGroup EastAsian
-        StringTableRuntime "{3D5940457D702E74}Language/localization.zh_cn.conf"
+        StringTableRuntime "{534C5909917CAE76}Language/OdinZeus_localization.st.zh_cn.conf"
        }
       }
      }

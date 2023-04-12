@@ -1,10 +1,10 @@
 StringTable {
- TargetPrefix "Target_"
  ItemClassName "CustomStringTableItem"
  Items {
-  CustomStringTableItem "{596B48404F32F174}" {
+  CustomStringTableItem "{5D19597480C39F02}" {
    Id "ODIN-EditableEntity_AIWaypoint_Cycle_Name"
    Target_en_us "CYCLE"
+   Target_en_us_edited ""
    Target_fr_fr "RÉITÉRER"
    Target_it_it "CICLICO"
    Target_de_de "WIEDERHOLEN"
@@ -16,14 +16,24 @@ StringTable {
    Target_ko_kr "순환"
    Target_pt_br "PASSAR"
    Target_zh_cn "廻旋"
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
    MaxLength 0
-   Modified 1501702822
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{5991778E6BF8C0BE}" {
+  CustomStringTableItem "{5D19597480C381A5}" {
    Id "ODIN-Editor_Attribute_CompletionRadius_Name"
    Target_en_us "Completion radius"
+   Target_en_us_edited ""
    Target_fr_fr "Radio de consecución"
    Target_it_it "Raggio di completamento"
    Target_de_de "Abschlussradius"
@@ -35,13 +45,24 @@ StringTable {
    Target_ko_kr "완료 반경"
    Target_pt_br "Raio de posicionamento"
    Target_zh_cn "完成半徑"
-   Modified 1502834004
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{59936CDEFF838694}" {
+  CustomStringTableItem "{5D19597480C38375}" {
    Id "ODIN-Editor_Attribute_CompletionRadius_ValueFormating"
    Target_en_us "%1 m"
+   Target_en_us_edited ""
    Target_fr_fr "%1 m"
    Target_it_it "%1 m"
    Target_de_de "%1 m"
@@ -53,13 +74,24 @@ StringTable {
    Target_ko_kr "%1 m"
    Target_pt_br "%1 m"
    Target_zh_cn "%1 米"
-   Modified 1502835031
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{59936CDE072D6074}" {
+  CustomStringTableItem "{5D19597480C3844A}" {
    Id "ODIN-Editor_Attribute_CompletionType_All_Name"
    Target_en_us "All"
+   Target_en_us_edited ""
    Target_fr_fr "Tous"
    Target_it_it "Tutti"
    Target_de_de "Alle"
@@ -71,13 +103,24 @@ StringTable {
    Target_ko_kr "전원"
    Target_pt_br "Todos"
    Target_zh_cn "全部"
-   Modified 1502834964
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{59936CDE0F44AFB0}" {
+  CustomStringTableItem "{5D19597480C38505}" {
    Id "ODIN-Editor_Attribute_CompletionType_Any_Name"
    Target_en_us "Any"
+   Target_en_us_edited ""
    Target_fr_fr "Quelconque"
    Target_it_it "Qualsiasi"
    Target_de_de "Irgendeiner"
@@ -89,13 +132,24 @@ StringTable {
    Target_ko_kr "누구나"
    Target_pt_br "Qualquer"
    Target_zh_cn "任意"
-   Modified 1502834869
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{59936CDE02EBC2FC}" {
+  CustomStringTableItem "{5D19597480C386CB}" {
    Id "ODIN-Editor_Attribute_CompletionType_Leader_Name"
    Target_en_us "Leader"
+   Target_en_us_edited ""
    Target_fr_fr "Chef"
    Target_it_it "Capo"
    Target_de_de "Anführer"
@@ -107,22 +161,53 @@ StringTable {
    Target_ko_kr "지휘관"
    Target_pt_br "Líder"
    Target_zh_cn "隊長"
-   Modified 1502834716
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{59936CDEEA14EA7D}" {
+  CustomStringTableItem "{5D19597480C3879E}" {
    Id "ODIN-Editor_Attribute_CompletionType_Name"
    Target_en_us "Completion type"
+   Target_en_us_edited ""
    Target_fr_fr "Type de consecución"
+   Target_it_it ""
    Target_de_de "Abschlusstyp"
-   Modified 1502834258
+   Target_es_es ""
+   Target_cs_cz ""
+   Target_pl_pl ""
+   Target_ru_ru ""
+   Target_ja_jp ""
+   Target_ko_kr ""
+   Target_pt_br ""
+   Target_zh_cn ""
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{5982226183CBA7D1}" {
+  CustomStringTableItem "{5D19597480C3895E}" {
    Id "ODIN-Editor_Attribute_EnableDamage_Name"
    Target_en_us "Enable damage"
+   Target_en_us_edited ""
    Target_fr_fr "Activer dégâts"
    Target_it_it "Abilita danno"
    Target_de_de "Schaden ermöglichen"
@@ -134,13 +219,24 @@ StringTable {
    Target_ko_kr "피해 사용"
    Target_pt_br "Permitir dano"
    Target_zh_cn "启用损害"
-   Modified 1501702727
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{596C104FE13B959E}" {
+  CustomStringTableItem "{5D19597480C38A06}" {
    Id "ODIN-Editor_Attribute_Formation_Column_Name"
    Target_en_us "Column"
+   Target_en_us_edited ""
    Target_fr_fr "Colonne"
    Target_it_it "Colonna"
    Target_de_de "Kolonne"
@@ -152,13 +248,24 @@ StringTable {
    Target_ko_kr "종대"
    Target_pt_br "Coluna"
    Target_zh_cn "縱隊"
-   Modified 1500259162
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{596C104FE79A6382}" {
+  CustomStringTableItem "{5D19597480C38BC3}" {
    Id "ODIN-Editor_Attribute_Formation_Line_Name"
    Target_en_us "Line"
+   Target_en_us_edited ""
    Target_fr_fr "Ligne"
    Target_it_it "Linea"
    Target_de_de "Reihe"
@@ -170,13 +277,24 @@ StringTable {
    Target_ko_kr "횡대"
    Target_pt_br "Linha"
    Target_zh_cn "橫列"
-   Modified 1500259131
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{596B4845FA273D9B}" {
+  CustomStringTableItem "{5D19597480C38C9C}" {
    Id "ODIN-Editor_Attribute_Formation_Name"
    Target_en_us "Formation"
+   Target_en_us_edited ""
    Target_fr_fr "Formation"
    Target_it_it "Formazione"
    Target_de_de "Formation"
@@ -188,14 +306,24 @@ StringTable {
    Target_ko_kr "대형"
    Target_pt_br "Formação"
    Target_zh_cn "隊形"
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
    MaxLength 0
-   Modified 1501702812
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{596C104FE5B1F23C}" {
+  CustomStringTableItem "{5D19597480C38E30}" {
    Id "ODIN-Editor_Attribute_Formation_StaggeredColumn_Name"
    Target_en_us "Staggered Col."
+   Target_en_us_edited ""
    Target_fr_fr "Col. décalée"
    Target_it_it "Col. frammentata"
    Target_de_de "Gestaffelte Kol."
@@ -207,13 +335,24 @@ StringTable {
    Target_ko_kr "교차 종대"
    Target_pt_br "Coluna alternada"
    Target_zh_cn "交錯縱隊"
-   Modified 1500259312
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{596C104FDA05C8BC}" {
+  CustomStringTableItem "{5D19597480C38F0D}" {
    Id "ODIN-Editor_Attribute_Formation_Wedge_Name"
    Target_en_us "Wedge"
+   Target_en_us_edited ""
    Target_fr_fr "Coin"
    Target_it_it "Cuneo"
    Target_de_de "Keil"
@@ -225,13 +364,24 @@ StringTable {
    Target_ko_kr "설형"
    Target_pt_br "Strzała"
    Target_zh_cn "楔形"
-   Modified 1500258951
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{596B4845144D7E85}" {
+  CustomStringTableItem "{5D19597480C3F0C8}" {
    Id "ODIN-Editor_Attribute_Skill_Name"
    Target_en_us "Skill"
+   Target_en_us_edited ""
    Target_fr_fr "Compétence"
    Target_it_it "Abilità"
    Target_de_de "Fähigkeit"
@@ -243,14 +393,24 @@ StringTable {
    Target_ko_kr "기술"
    Target_pt_br "Habilidade"
    Target_zh_cn "技能"
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
    MaxLength 0
-   Modified 1501702797
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{596D5D1218512832}" {
+  CustomStringTableItem "{5D19597480C3F188}" {
    Id "ODIN-Editor_Attribute_Stance_Crouch_Name"
    Target_en_us "Crouch"
+   Target_en_us_edited ""
    Target_fr_fr "Accroupi"
    Target_it_it "Accovacciato"
    Target_de_de "Ducken"
@@ -262,13 +422,24 @@ StringTable {
    Target_ko_kr "앉기"
    Target_pt_br "Agachado"
    Target_zh_cn "蹲伏"
-   Modified 1500346957
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{596D5D1217832506}" {
+  CustomStringTableItem "{5D19597480C3F327}" {
    Id "ODIN-Editor_Attribute_Stance_Name"
    Target_en_us "Stance"
+   Target_en_us_edited ""
    Target_fr_fr "Position"
    Target_it_it "Posizione"
    Target_de_de "Haltung"
@@ -280,13 +451,24 @@ StringTable {
    Target_ko_kr "자세"
    Target_pt_br "Postura"
    Target_zh_cn "戰鬥態勢"
-   Modified 1500347013
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{596D5D121A19DB22}" {
+  CustomStringTableItem "{5D19597480C3F486}" {
    Id "ODIN-Editor_Attribute_Stance_Prone_Name"
    Target_en_us "Prone"
+   Target_en_us_edited ""
    Target_fr_fr "À plat ventre"
    Target_it_it "Prono"
    Target_de_de "Hinlegen"
@@ -298,13 +480,24 @@ StringTable {
    Target_ko_kr "엎드려 쏴"
    Target_pt_br "Deitado"
    Target_zh_cn "臥倒"
-   Modified 1500346807
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{596D5D121F2C8BE0}" {
+  CustomStringTableItem "{5D19597480C3EEB2}" {
    Id "ODIN-Editor_Attribute_Stance_Stand_Name"
    Target_en_us "Stand"
+   Target_en_us_edited ""
    Target_fr_fr "Debout"
    Target_it_it "In piedi"
    Target_de_de "Aufstehen"
@@ -316,13 +509,24 @@ StringTable {
    Target_ko_kr "선 자세"
    Target_pt_br "Em pé"
    Target_zh_cn "站起"
-   Modified 1500346765
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
-  CustomStringTableItem "{5991778E083F9A25}" {
+  CustomStringTableItem "{5D19597480C380D1}" {
    Id "ODIN-Editor_AttributeCategory_Waypoint_Name"
    Target_en_us "Waypoint"
+   Target_en_us_edited ""
    Target_fr_fr "Point de passage"
    Target_it_it "Destinazione"
    Target_de_de "Wegpunkt"
@@ -334,18 +538,19 @@ StringTable {
    Target_ko_kr "경유지"
    Target_pt_br "Ponto de rota"
    Target_zh_cn "路点"
-   Modified 1502834012
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1561942876
    Author "Kex"
-   LastChanged "Kex"
-  }
-  CustomStringTableItem "{598222625B2CFC35}" {
-   Id "ODIN-Editor_ContextAction_DeleteAllDead_Name"
-   Target_en_us "Delete all corpses"
-   Target_fr_fr "Effacer tous les corps"
-   Target_de_de "Lösche alle Leichen"
-   Modified 1501702516
-   Author "Kex"
-   LastChanged "Kex"
+   LastChanged "crow"
+   ImageLink ""
+   Hidden 0
   }
  }
 }
