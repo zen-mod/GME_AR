@@ -523,6 +523,13 @@ StringTable {
    ImageLink ""
    Hidden 0
   }
+  CustomStringTableItem "{5D955C2079184639}" {
+   Id "ODIN-Editor_Attribute_VisibilityToggle_Name"
+   Target_en_us "Visibility"
+   Modified 1570072175
+   Author "crow"
+   LastChanged "crow"
+  }
   CustomStringTableItem "{5D19597480C380D1}" {
    Id "ODIN-Editor_AttributeCategory_Waypoint_Name"
    Target_en_us "Waypoint"
