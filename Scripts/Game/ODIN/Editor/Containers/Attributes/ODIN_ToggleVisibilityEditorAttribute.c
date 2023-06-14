@@ -25,30 +25,14 @@ class ODIN_ToggleVisibilityEditorAttribute : SCR_ValidTypeBaseEditorAttribute
 		IEntity owner =  editableEntity.GetOwner();
 		if (!owner) return;
 		
-		// Casting juggling to get from playercontroller to entities nametag... its not pretty but seems to work
-		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
-		SCR_HUDManagerComponent hudManager = SCR_HUDManagerComponent.Cast(playerController.FindComponent(SCR_HUDManagerComponent));
-		SCR_NameTagDisplay nameTag = SCR_NameTagDisplay.Cast(hudManager.FindInfoDisplay(SCR_NameTagDisplay));
-		SCR_NameTagData ownerNameTag = nameTag.GetEntityNameTag(owner);
-
 		// if true, we gotta set the flags, otherwise we clear them. As set is OR action, so we can't remove flags by setting 0
 		if (var.GetBool())
 		{
 			owner.SetFlags(EntityFlags.VISIBLE|EntityFlags.TRACEABLE, 1);
-			// nametag
-			//ownerNameTag.SetVisibility(ownerNameTag.m_NameTagWidget, true, 0); 
-			//ownerNameTag.m_NameTagWidget.SetVisible(true);
-			//ownerNameTag.m_NameTagWidget.SetEnabled(true);
-			//ownerNameTag.m_Flags &= ~ENameTagFlags.UPDATE_DISABLE;
 		}
 		else 
 		{
 			owner.ClearFlags(EntityFlags.VISIBLE|EntityFlags.TRACEABLE);
-			// nametag
-			//ownerNameTag.SetVisibility(ownerNameTag.m_NameTagWidget, false, 0); 
-			//ownerNameTag.m_NameTagWidget.SetVisible(false);
-			//ownerNameTag.m_NameTagWidget.SetEnabled(false);
-			//ownerNameTag.m_Flags &= ~ENameTagFlags.UPDATE_DISABLE;
 		}
 	}
 };
