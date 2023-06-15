@@ -2,7 +2,7 @@
 Entity Attribute for toggle unit visiblity
 */
 [BaseContainerProps(), SCR_BaseEditorAttributeCustomTitle()]
-class ODIN_ToggleVisibilityEditorAttribute : SCR_ValidTypeBaseEditorAttribute
+class ODIN_ToggleVisibilityVehicleEditorAttribute : SCR_ValidTypeBaseEditorAttribute
 {
 	override SCR_BaseEditorAttributeVar ReadVariable(Managed item, SCR_AttributesManagerEditorComponent manager)
 	{
@@ -13,12 +13,12 @@ class ODIN_ToggleVisibilityEditorAttribute : SCR_ValidTypeBaseEditorAttribute
 		IEntity owner =  editableEntity.GetOwner();
 		if (!owner) return null;
 		
-		if (!ODIN_TypeHelper.IsUnit(owner)) 
+		if (!ODIN_TypeHelper.IsVehicle(owner)) 
 			return null;
 		
 		bool visible = ODIN_VisibilityHelper.GetVisibility(owner);
 		
-		return SCR_BaseEditorAttributeVar.CreateBool(visible);	
+		return SCR_BaseEditorAttributeVar.CreateBool(visible);		
 	}
 	override void WriteVariable(Managed item, SCR_BaseEditorAttributeVar var, SCR_AttributesManagerEditorComponent manager, int playerID)
 	{
@@ -31,4 +31,3 @@ class ODIN_ToggleVisibilityEditorAttribute : SCR_ValidTypeBaseEditorAttribute
 		ODIN_VisibilityHelper.SetVisibility(owner, var.GetBool());
 	}
 };
-
