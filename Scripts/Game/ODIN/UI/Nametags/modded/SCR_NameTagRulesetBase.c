@@ -4,7 +4,7 @@ modded class SCR_NameTagRulesetBase : Managed
 	override bool TestVisibility(SCR_NameTagData data, float timeSlice)
 	{		
 		// test if entity are invisible
-		int visible = data.m_Entity.GetFlags() & EntityFlags.VISIBLE;
+		int visible = ODIN_VisibilityHelper.GetVisibility(data.m_Entity);
 		if (!visible)
 			return false;
 		
