@@ -10,7 +10,7 @@ class ODIN_ToggleVisibilityEditorAttribute : SCR_ValidTypeBaseEditorAttribute
 		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.Cast(item);
 		if (!editableEntity) return null;
 		
-		IEntity owner =  editableEntity.GetOwner();
+		GenericEntity owner =  editableEntity.GetOwner();
 		if (!owner) return null;
 		
 		if (!ODIN_TypeHelper.IsUnit(owner)) 
@@ -25,10 +25,10 @@ class ODIN_ToggleVisibilityEditorAttribute : SCR_ValidTypeBaseEditorAttribute
 		if (!var) return;
 		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.Cast(item);
 		
-		IEntity owner =  editableEntity.GetOwner();
+		GenericEntity owner =  editableEntity.GetOwner();
 		if (!owner) return;
 		
-		ODIN_VisibilityHelper.SetVisibility(owner, var.GetBool());
+		ODIN_VisibilityHelper.SetVisibilityCharacter(owner, var.GetBool());
 	}
 };
 
