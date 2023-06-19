@@ -15,7 +15,6 @@ modded class SCR_ChimeraCharacter : ChimeraCharacter
 	
 	void ODIN_OnVisibilityValueUpdated()
 	{
-		Print(m_bODIN_isVisible);
 		if (m_bODIN_isVisible)
 			this.SetFlags(EntityFlags.VISIBLE|EntityFlags.TRACEABLE, m_bODIN_isVisible);
 		else
