@@ -2,7 +2,7 @@
 Helper class with staic functions to enable and disable visiblity of units
 */
 
-class ODIN_VisibilityHelper : Managed
+class ODIN_VisibilityHelper
 {
 	// Need different function as we have to cast to different parent objects for RPL functionality. Maybe templating could work?
 	static void SetVisibilityCharacter(GenericEntity entity, bool visible)
@@ -11,10 +11,7 @@ class ODIN_VisibilityHelper : Managed
 		// null check
 		if (!char) return;
 		
-		if (visible)
-			char.ODIN_SetGlobalFlag(EntityFlags.VISIBLE, true);
-		else 
-			char.ODIN_SetGlobalFlag(EntityFlags.VISIBLE, false);
+		char.ODIN_SetVisibility(visible);
 	}
 	
 	static void SetVisibilityVehicle(GenericEntity entity, bool visible)
@@ -23,10 +20,7 @@ class ODIN_VisibilityHelper : Managed
 		// null check 
 		if (!vic) return;
 		
-		if (visible)
-			vic.ODIN_SetGlobalFlag(EntityFlags.VISIBLE, true);
-		else 
-			vic.ODIN_SetGlobalFlag(EntityFlags.VISIBLE, false);
+		vic.ODIN_SetVisibility(visible);
 	}
 	
 	static bool GetVisibility(IEntity entity)

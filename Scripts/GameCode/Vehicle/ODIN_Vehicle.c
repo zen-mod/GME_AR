@@ -3,18 +3,22 @@
 //------------------------------------------------------------------------------------------------
 modded class Vehicle : BaseVehicle
 {
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	protected void ODIN_SetLocalFlag(EntityFlags flags, bool enable)
-	{
-		if (enable)
-			this.SetFlags(flags, enable);
-		else 
-			this.ClearFlags(flags);
+	[RplProp(onRplName: "ODIN_OnVisibilityValueUpdated")]
+	protected bool m_bODIN_isVisible = true;
+	
+	void ODIN_SetVisibility(bool visible)
+	{		
+		m_bODIN_isVisible = visible;
+		Replication.BumpMe();
+		this.ODIN_OnVisibilityValueUpdated();
 	}
 	
-	void ODIN_SetGlobalFlag(EntityFlags flags, bool enable)
+	
+	void ODIN_OnVisibilityValueUpdated()
 	{
-		Rpc(ODIN_SetLocalFlag, flags, enable);
-		ODIN_SetLocalFlag(flags, enable);
+		if (m_bODIN_isVisible)
+			this.SetFlags(EntityFlags.VISIBLE|EntityFlags.TRACEABLE, m_bODIN_isVisible);
+		else
+			this.ClearFlags(EntityFlags.VISIBLE|EntityFlags.TRACEABLE);
 	}
 };
