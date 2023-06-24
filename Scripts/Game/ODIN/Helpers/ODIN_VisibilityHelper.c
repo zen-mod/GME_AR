@@ -4,23 +4,22 @@ Helper class with staic functions to enable and disable visiblity of units
 
 class ODIN_VisibilityHelper
 {
-	// Need different function as we have to cast to different parent objects for RPL functionality. Maybe templating could work?
-	static void SetVisibilityCharacter(GenericEntity entity, bool visible)
+	static void SetVisibility(GenericEntity entity, bool visible)
 	{
+		// casting to possible supported types, if not null we found our match and change visibility and return
 		SCR_ChimeraCharacter char = SCR_ChimeraCharacter.Cast(entity);
-		// null check
-		if (!char) return;
+		if (char)
+		{
+			char.ODIN_SetVisibility(visible);
+			return;
+		}
 		
-		char.ODIN_SetVisibility(visible);
-	}
-	
-	static void SetVisibilityVehicle(GenericEntity entity, bool visible)
-	{
 		Vehicle vic = Vehicle.Cast(entity);
-		// null check 
-		if (!vic) return;
-		
-		vic.ODIN_SetVisibility(visible);
+		if (vic) 
+		{
+			vic.ODIN_SetVisibility(visible);
+			return;
+		}
 	}
 	
 	static bool GetVisibility(IEntity entity)

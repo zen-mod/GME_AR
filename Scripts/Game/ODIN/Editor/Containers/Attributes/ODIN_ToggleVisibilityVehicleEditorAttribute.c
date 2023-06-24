@@ -33,6 +33,6 @@ class ODIN_ToggleVisibilityVehicleEditorAttribute : SCR_ValidTypeBaseEditorAttri
 		if (!owner) 
 			return;
 		
-		ODIN_VisibilityHelper.SetVisibilityVehicle(owner, var.GetBool());
+		ODIN_VisibilityHelper.SetVisibility(owner, var.GetBool());
 	}
 };
