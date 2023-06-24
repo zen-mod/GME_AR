@@ -15,7 +15,7 @@ class ODIN_ToggleVisibilityVehicleEditorAttribute : SCR_ValidTypeBaseEditorAttri
 		if (!owner) 
 			return null;
 		
-		if (!ODIN_TypeHelper.IsVehicle(owner)) 
+		if (!Vehicle.Cast(owner)) 
 			return null;
 		
 		bool visible = ODIN_VisibilityHelper.GetVisibility(owner);
@@ -26,6 +26,7 @@ class ODIN_ToggleVisibilityVehicleEditorAttribute : SCR_ValidTypeBaseEditorAttri
 	{
 		if (!var) 
 			return;
+		
 		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.Cast(item);
 		
 		GenericEntity owner =  editableEntity.GetOwner();
