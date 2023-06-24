@@ -33,7 +33,7 @@ class ODIN_ToggleVisibilityEditorAttribute : SCR_ValidTypeBaseEditorAttribute
 		if (!owner) 
 			return;
 		
-		ODIN_VisibilityHelper.SetVisibilityCharacter(owner, var.GetBool());
+		ODIN_VisibilityHelper.SetVisibility(owner, var.GetBool());
 	}
 };
 
