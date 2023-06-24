@@ -8,25 +8,34 @@ class ODIN_ToggleDamageEditorAttribute : SCR_BaseEditorAttribute
 	{
 		
 		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.Cast(item);
-		if (!editableEntity) return null;
+		if (!editableEntity) 
+			return null;
 		
 		IEntity owner =  editableEntity.GetOwner();
-		if (!owner) return null;
+		if (!owner) 
+			return null;
+		
 		DamageManagerComponent damageComponent = DamageManagerComponent.Cast(owner.FindComponent(DamageManagerComponent));
 		
-		if (!damageComponent) return null;
+		if (!damageComponent) 
+			return null;
 		
 		return SCR_BaseEditorAttributeVar.CreateBool(damageComponent.IsDamageHandlingEnabled());		
 	}
 	override void WriteVariable(Managed item, SCR_BaseEditorAttributeVar var, SCR_AttributesManagerEditorComponent manager, int playerID)
 	{
-		if (!var) return;
+		if (!var) 
+			return;
+		
 		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.Cast(item);
 		
 		IEntity owner =  editableEntity.GetOwner();
-		if (!owner) return;
+		if (!owner) 
+			return;
+		
 		DamageManagerComponent damageComponent = DamageManagerComponent.Cast(owner.FindComponent(DamageManagerComponent));
-		if (!damageComponent) return;
+		if (!damageComponent) 
+			return;
 			
 		// toggle damage handling 
 		damageComponent.EnableDamageHandling(var.GetBool());
