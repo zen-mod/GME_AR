@@ -526,9 +526,11 @@ StringTable {
   CustomStringTableItem "{5D955C2079184639}" {
    Id "ODIN-Editor_Attribute_VisibilityToggle_Name"
    Target_en_us "Visibility"
-   Modified 1570072175
+   Target_fr_fr "Visibilité"
+   Target_de_de "Sichtbarkeit"
+   Modified 1571876167
    Author "crow"
-   LastChanged "crow"
+   LastChanged "kexanone"
   }
   CustomStringTableItem "{5D19597480C380D1}" {
    Id "ODIN-Editor_AttributeCategory_Waypoint_Name"
