@@ -8,10 +8,12 @@ class ODIN_ToggleVisibilityVehicleEditorAttribute : SCR_ValidTypeBaseEditorAttri
 	{
 		
 		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.Cast(item);
-		if (!editableEntity) return null;
+		if (!editableEntity) 
+			return null;
 		
 		GenericEntity owner =  editableEntity.GetOwner();
-		if (!owner) return null;
+		if (!owner) 
+			return null;
 		
 		if (!ODIN_TypeHelper.IsVehicle(owner)) 
 			return null;
@@ -22,11 +24,13 @@ class ODIN_ToggleVisibilityVehicleEditorAttribute : SCR_ValidTypeBaseEditorAttri
 	}
 	override void WriteVariable(Managed item, SCR_BaseEditorAttributeVar var, SCR_AttributesManagerEditorComponent manager, int playerID)
 	{
-		if (!var) return;
+		if (!var) 
+			return;
 		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.Cast(item);
 		
 		GenericEntity owner =  editableEntity.GetOwner();
-		if (!owner) return;
+		if (!owner) 
+			return;
 		
 		ODIN_VisibilityHelper.SetVisibilityVehicle(owner, var.GetBool());
 	}
