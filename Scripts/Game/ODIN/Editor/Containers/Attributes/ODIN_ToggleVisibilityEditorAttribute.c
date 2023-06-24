@@ -15,7 +15,7 @@ class ODIN_ToggleVisibilityEditorAttribute : SCR_ValidTypeBaseEditorAttribute
 		if (!owner) 
 			return null;
 		
-		if (!ODIN_TypeHelper.IsUnit(owner)) 
+		if (!SCR_ChimeraCharacter.Cast(owner)) 
 			return null;
 		
 		bool visible = ODIN_VisibilityHelper.GetVisibility(owner);
@@ -26,7 +26,7 @@ class ODIN_ToggleVisibilityEditorAttribute : SCR_ValidTypeBaseEditorAttribute
 	{
 		if (!var)
 			return;
-		
+	
 		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.Cast(item);
 		
 		GenericEntity owner =  editableEntity.GetOwner();
