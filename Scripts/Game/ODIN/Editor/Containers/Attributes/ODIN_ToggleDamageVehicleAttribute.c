@@ -2,7 +2,7 @@
 Entity Attribute for toggle damage on unit
 */
 [BaseContainerProps(), SCR_BaseEditorAttributeCustomTitle()]
-class ODIN_ToggleDamageEditorAttribute : SCR_BaseEditorAttribute
+class ODIN_ToggleDamageVehicleAttribute : SCR_BaseEditorAttribute
 {
 	override SCR_BaseEditorAttributeVar ReadVariable(Managed item, SCR_AttributesManagerEditorComponent manager)
 	{
@@ -15,14 +15,15 @@ class ODIN_ToggleDamageEditorAttribute : SCR_BaseEditorAttribute
 		if (!owner) 
 			return null;
 		
-		if (Vehicle.Cast(owner))
+		if (SCR_ChimeraCharacter.Cast(owner))
 			return null;
 		
-		ScriptedDamageManagerComponent damageComponent = ScriptedDamageManagerComponent.Cast(owner.FindComponent(ScriptedDamageManagerComponent));
+		DamageManagerComponent damageComponent = DamageManagerComponent.Cast(owner.FindComponent(DamageManagerComponent));
+		
 		if (!damageComponent) 
 			return null;
 		
-		return SCR_BaseEditorAttributeVar.CreateBool(damageComponent.ODIN_IsDamageEnabled());		
+		return SCR_BaseEditorAttributeVar.CreateBool(damageComponent.IsDamageHandlingEnabled());		
 	}
 	override void WriteVariable(Managed item, SCR_BaseEditorAttributeVar var, SCR_AttributesManagerEditorComponent manager, int playerID)
 	{
@@ -35,11 +36,11 @@ class ODIN_ToggleDamageEditorAttribute : SCR_BaseEditorAttribute
 		if (!owner) 
 			return;
 		
-		// todo, move it to helper when verified it works 
-		ScriptedDamageManagerComponent damageComponent = ScriptedDamageManagerComponent.Cast(owner.FindComponent(ScriptedDamageManagerComponent));
+		DamageManagerComponent damageComponent = DamageManagerComponent.Cast(owner.FindComponent(DamageManagerComponent));
 		if (!damageComponent) 
 			return;
-		
-		damageComponent.ODIN_SetDamageEnabled(var.GetBool());;
+			
+		// toggle damage handling 
+		damageComponent.EnableDamageHandling(var.GetBool());
 	}
 };
