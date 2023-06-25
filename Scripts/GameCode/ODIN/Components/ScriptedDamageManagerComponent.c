@@ -13,18 +13,16 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 	void ODIN_SetDamageEnabled(bool enabled)
 	{
 		m_bODIN_isDamageEnabled = enabled;
-		Print(m_bODIN_isDamageEnabled);
 		Replication.BumpMe();
 		this.ODIN_OnEnableDamageValueUpdated();
 	}
 	
 	void ODIN_OnEnableDamageValueUpdated()
 	{
-		Print("value update");
 		// add function to invoker if damage is disabled
 		if (!m_bODIN_isDamageEnabled)
 			this.GetOnDamage().Insert(this.ODIN_disableDamage);
-		else // What happens if we try to remove and it never was added?
+		else
 			this.GetOnDamage().Remove(this.ODIN_disableDamage);
 	}
 	
