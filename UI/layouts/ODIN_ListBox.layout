@@ -1,0 +1,87 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Color 0.014 0.014 0.014 1
+ {
+  SizeLayoutWidgetClass "{5DB50470EA093BAC}" {
+   Name "SizeLayout0"
+   Slot FrameWidgetSlot "{5DB50470EA093BBD}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -260
+    OffsetLeft -260
+    PositionY -175
+    OffsetTop -175
+    SizeX 520
+    OffsetRight -260
+    SizeY 350
+    OffsetBottom -175
+   }
+   {
+    VerticalLayoutWidgetClass "{5DB50470F1C71CEE}" {
+     Name "VerticalLayout0"
+     Slot AlignableSlot "{5DB50470F1C71CFA}" {
+      HorizontalAlign 3
+      VerticalAlign 0
+      Padding 0 0 0 0
+     }
+     {
+      HorizontalLayoutWidgetClass "{5DB50470FB678886}" {
+       Name "TitlePanelLayout"
+       Slot LayoutSlot "{5DB50470FB678893}" {
+        SizeMode Fill
+        FillWeight 1
+       }
+       {
+        PanelWidgetClass "{5DB50465525966D1}" {
+         Name "TitelPanel"
+         Slot LayoutSlot "{5DB50473AC4640B8}" {
+          Padding 0 0 0 0
+          SizeMode Auto
+         }
+         Color 1 0.48 0.043 1
+         style debugUI
+         {
+          RichTextWidgetClass "{5DB4EAAF53434182}" : "{5E0F8422A1F05728}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading2.layout" {
+           Name "TextTitel"
+           Slot FrameWidgetSlot "{5DB5046F00CADF13}" {
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 520
+            OffsetRight -520
+            SizeY 30
+            OffsetBottom -30
+           }
+           Text "TextTitel"
+           "Font Size" 20
+           "Min Font Size" 20
+           "Horizontal Alignment" Center
+           "Vertical Alignment" Center
+          }
+         }
+        }
+       }
+      }
+      HorizontalLayoutWidgetClass "{5DB50473D40ED071}" {
+       Name "ResultButtonLayout"
+       Slot LayoutSlot "{5DB50473AC464037}" {
+       }
+       {
+        ButtonWidgetClass "{5DB4EAAEFD027713}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+         Name "ButtonCancel"
+         Slot LayoutSlot "{5DB50473AC464069}" {
+         }
+        }
+        ButtonWidgetClass "{5DB4EAAEFBABF06F}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+         Name "ButtonOK"
+         Slot LayoutSlot "{5DB50473AC465FAC}" {
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
