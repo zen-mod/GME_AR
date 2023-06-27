@@ -62,19 +62,52 @@ FrameWidgetClass {
         }
        }
       }
+      HorizontalLayoutWidgetClass "{5DB755385DC34CFA}" {
+       Name "HorizontalLayout0"
+       Slot LayoutSlot "{5DB75538B792E8BF}" {
+       }
+       {
+        OverlayWidgetClass "{5DB7553A7DC3C6A4}" {
+         Name "OverlayListbox"
+         Slot LayoutSlot "{5DB7553A7DC3C6CA}" {
+         }
+         {
+          OverlayWidgetClass "{5DB7553A240C4C12}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+           Name "ListBox0"
+           Slot OverlayWidgetSlot "{5DB7553A240C4C25}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+          }
+         }
+        }
+       }
+      }
       HorizontalLayoutWidgetClass "{5DB50473D40ED071}" {
        Name "ResultButtonLayout"
        Slot LayoutSlot "{5DB50473AC464037}" {
+        Padding 10 0 10 0
        }
        {
         ButtonWidgetClass "{5DB4EAAEFD027713}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
          Name "ButtonCancel"
          Slot LayoutSlot "{5DB50473AC464069}" {
+          HorizontalAlign 0
+         }
+         components {
+          SCR_ButtonTextComponent "{5548F0143AE99095}" {
+           m_sText "Cancel"
+          }
          }
         }
         ButtonWidgetClass "{5DB4EAAEFBABF06F}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
          Name "ButtonOK"
          Slot LayoutSlot "{5DB50473AC465FAC}" {
+         }
+         components {
+          SCR_ButtonTextComponent "{5548F0143AE99095}" {
+           m_sText "Confirm"
+          }
          }
         }
        }

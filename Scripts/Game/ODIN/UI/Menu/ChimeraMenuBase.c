@@ -2,5 +2,5 @@
 //! Menu presets
 modded enum ChimeraMenuPreset
 {	
-	ODIN_ListBox,
+	ODIN_ListBox_ID,
 };

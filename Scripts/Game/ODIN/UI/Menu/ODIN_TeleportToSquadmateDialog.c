@@ -1,8 +1,20 @@
-class ODIN_TeleportToSquadmateDialog: MenuBase
+class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
 {
 	protected static const string TEXT_TITLE = "TextTitle";
 	protected static const string BUTTON_CLOSE = "ButtonCancel";
 	protected static const string BUTTON_OK = "ButtonOK";
+	
+	protected SCR_NavigationButtonComponent m_Cancel;
+	protected SCR_NavigationButtonComponent m_Confirm;
+	
+	ref ScriptInvoker m_OnConfirm = new ScriptInvoker();
+	ref ScriptInvoker m_OnCancel = new ScriptInvoker();
+	
+	OverlayWidget m_ListBoxOverlay;
+    SCR_ListBoxComponent m_ListBoxComponent;
+	
+	// passed vars
+	IEntity myCallerEntity;
 
 	//------------------------------------------------------------------------------------------------
 	protected override void OnMenuOpen()
@@ -16,28 +28,37 @@ class ODIN_TeleportToSquadmateDialog: MenuBase
 			return;
 		}
 
-		/*
-			Close button
-		*/
+		// Texts
+		m_wTitle = TextWidget.Cast(rootWidget.FindAnyWidget("Title"));
+		
+		// Cancel button
+		m_wCancelButton = rootWidget.FindAnyWidget("ButtonCancel");
+		m_Cancel = SCR_NavigationButtonComponent.GetNavigationButtonComponent("ButtonCancel", rootWidget);
+		if (m_Cancel)
+			m_Cancel.m_OnActivated.Insert(OnCancel);
 
-		SCR_ButtonTextComponent buttonClose = SCR_ButtonTextComponent.GetButtonText(BUTTON_CLOSE, rootWidget);
-		if (buttonClose)
-			buttonClose.m_OnClicked.Insert(Close);
-		else
-			Print("Button Close not found - won't be able to exit by button", LogLevel.WARNING);
-
-		/*
-			OK button
-		*/
-
-		SCR_ButtonTextComponent buttonOK = SCR_ButtonTextComponent.GetButtonText(BUTTON_OK, rootWidget);
-		if (buttonOK)
-			buttonOK.m_OnClicked.Insert(DoAction);
-		else
-			Print("Button OK not found", LogLevel.WARNING); // the button can be missing without putting the layout in jeopardy
+		// Confirm button
+		m_Confirm = SCR_NavigationButtonComponent.GetNavigationButtonComponent("ButtonOK", rootWidget);
+		if (m_Confirm)
+			m_Confirm.m_OnActivated.Insert(OnConfirm);
 		
 		// TODO Setup for listbox.... We need to fill it with data somehow
+		// MyList
+        m_ListBoxOverlay = OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBox0"));
+        m_ListBoxComponent = SCR_ListBoxComponent.Cast(m_ListBoxOverlay.FindHandler(SCR_ListBoxComponent));
+        if (m_ListBoxComponent)
+        {            
+            m_ListBoxComponent.AddItem("MyItem0");
+            m_ListBoxComponent.AddItem("MyItem1");
+            m_ListBoxComponent.AddItem("MyItem2");            
+        }
+		// In order to get the ListBox Index you can use this: m_ListBoxComponent.GetSelectedItem();
+		
+		// Play animation
+		rootWidget.SetOpacity(0);
+		AnimateWidget.Opacity(rootWidget, 1, m_fAnimationRate);
 
+		
 		/*
 			ESC/Start listener
 		*/
@@ -55,7 +76,7 @@ class ODIN_TeleportToSquadmateDialog: MenuBase
 			inputManager.AddActionListener("MenuBackWB", EActionTrigger.DOWN, Close);
 #endif
 		}
-		else if (!buttonClose)
+		else if (!m_wCancelButton)
 		{
 			Print("Auto-closing the menu that has no exit path", LogLevel.WARNING);
 			Close();
@@ -78,31 +99,29 @@ class ODIN_TeleportToSquadmateDialog: MenuBase
 #endif
 		}
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void OnConfirm()
+	{
+		m_OnConfirm.Invoke();
+		CloseAnimated();
+	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void DoAction() //TODO GetGame().GetMenuManager().OpenDialog(ChimeraMenuPreset.TAG_LayoutTutorialExample, DialogPriority.INFORMATIVE, 0, true);
+	protected void OnCancel()
 	{
-		Widget rootWidget = GetRootWidget();
-		if (!rootWidget)
-			return;
-
-		TextWidget textTitle = TextWidget.Cast(rootWidget.FindWidget(TEXT_TITLE));
-		if (!textTitle)
-		{
-			Print("Title as TextWidget could not be found", LogLevel.WARNING);
-			return;
-		}
-		
-		string result;
-		switch (Math.RandomInt(1, 6))
-		{
-			case 1: result = "This is a title"; break;
-			case 2: result = "Random text"; break;
-			case 3: result = "Third text, actually"; break;
-			case 4: result = "Bonjour"; break;
-			case 5: result = "I like trains"; break;
-		}
-
-		textTitle.SetText(result);
+		m_OnCancel.Invoke();
+		CloseAnimated();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! animates dialog closure
+	void CloseAnimated()
+	{
+		AnimateWidget.Opacity(GetRootWidget(), 0, m_fAnimationRate);
+		int delay;
+		if (m_fAnimationRate > 0)
+			delay = 1 / m_fAnimationRate * 1000;
+		GetGame().GetCallqueue().CallLater(Close, delay);
 	}
 }
