@@ -46,6 +46,9 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 		// TODO figure out if we pass hoveredentity, or get squadmates here and populate the dialog? Can we actually make a generic dialog and populate it from here? 
 		// Would have to be able to pass data to it on creation and bind callback to its "ok" method. 
 		
+		//SCR_PlayersManagerEditorComponent playersManager = SCR_PlayersManagerEditorComponent.Cast(SCR_PlayersManagerEditorComponent.GetInstance(SCR_PlayersManagerEditorComponent));
+		//playersManager.TeleportPlayerToPosition(cursorWorldPosition);
+		
 	}
 	override bool IsServer()
 	{

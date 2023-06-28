@@ -2,111 +2,225 @@ FrameWidgetClass {
  Name "rootFrame"
  Color 0.014 0.014 0.014 1
  {
-  SizeLayoutWidgetClass "{5DB50470EA093BAC}" {
-   Name "SizeLayout0"
+  SizeLayoutWidgetClass "{5DB9323F020033AB}" {
+   Name "SizeLayout1"
    Slot FrameWidgetSlot "{5DB50470EA093BBD}" {
     Anchor 0.5 0.5 0.5 0.5
     PositionX -260
     OffsetLeft -260
     PositionY -175
     OffsetTop -175
-    SizeX 520
-    OffsetRight -260
-    SizeY 350
-    OffsetBottom -175
+    SizeX 10
+    OffsetRight 250
+    SizeY 10
+    OffsetBottom 165
+    SizeToContent 1
    }
+   Color 0.028 0.023 0.023 1
+   MinDesiredWidth 520
+   MinDesiredHeight 350
    {
-    VerticalLayoutWidgetClass "{5DB50470F1C71CEE}" {
-     Name "VerticalLayout0"
-     Slot AlignableSlot "{5DB50470F1C71CFA}" {
+    PanelWidgetClass "{5DB93238B35E2730}" {
+     Name "BackgorundPanel"
+     Slot AlignableSlot "{5DB9323F0E283ED9}" {
       HorizontalAlign 3
-      VerticalAlign 0
-      Padding 0 0 0 0
+      VerticalAlign 3
      }
+     Color 0.031 0.023 0.023 1
+     style rover_sim_colorable
      {
-      HorizontalLayoutWidgetClass "{5DB50470FB678886}" {
-       Name "TitlePanelLayout"
-       Slot LayoutSlot "{5DB50470FB678893}" {
-        SizeMode Fill
-        FillWeight 1
+      VerticalLayoutWidgetClass "{5DB9323F1974BFBB}" {
+       Name "VerticalLayout0"
+       Slot FrameWidgetSlot "{5DB9323F1974BF35}" {
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 99.84
+        OffsetRight -99.84
+        SizeY 30.1
+        OffsetBottom -30.1
+        SizeToContent 1
        }
+       Color 0.039 0.033 0.033 1
        {
-        PanelWidgetClass "{5DB50465525966D1}" {
-         Name "TitelPanel"
-         Slot LayoutSlot "{5DB50473AC4640B8}" {
-          Padding 0 0 0 0
-          SizeMode Auto
+        HorizontalLayoutWidgetClass "{5DB9323F1974BFB8}" {
+         Name "TitlePanelLayout"
+         Slot LayoutSlot "{5DB50470FB678893}" {
+          SizeMode Fill
+          FillWeight 1
          }
-         Color 1 0.48 0.043 1
-         style debugUI
          {
-          RichTextWidgetClass "{5DB4EAAF53434182}" : "{5E0F8422A1F05728}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading2.layout" {
-           Name "TextTitel"
-           Slot FrameWidgetSlot "{5DB5046F00CADF13}" {
-            PositionX 0
-            OffsetLeft 0
-            PositionY 0
-            OffsetTop 0
-            SizeX 520
-            OffsetRight -520
-            SizeY 30
-            OffsetBottom -30
+          PanelWidgetClass "{5DB9323F1974BFB9}" {
+           Name "TitelPanel"
+           Slot LayoutSlot "{5DB50473AC4640B8}" {
+            Padding 0 0 0 0
+            SizeMode Auto
            }
-           Text "TextTitel"
-           "Font Size" 20
-           "Min Font Size" 20
-           "Horizontal Alignment" Center
-           "Vertical Alignment" Center
+           Color 1 0.48 0.043 1
+           style debugUI
+           {
+            RichTextWidgetClass "{5DB9323F1974BF86}" : "{5E0F8422A1F05728}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading2.layout" {
+             Name "TextTitel"
+             Slot FrameWidgetSlot "{5DB5046F00CADF13}" {
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 540
+              OffsetRight -540
+              SizeY 30
+              OffsetBottom -30
+             }
+             Text "TextTitel"
+             "Font Size" 20
+             "Min Font Size" 20
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+            }
+           }
           }
          }
         }
-       }
-      }
-      HorizontalLayoutWidgetClass "{5DB755385DC34CFA}" {
-       Name "HorizontalLayout0"
-       Slot LayoutSlot "{5DB75538B792E8BF}" {
-       }
-       {
-        OverlayWidgetClass "{5DB7553A7DC3C6A4}" {
-         Name "OverlayListbox"
-         Slot LayoutSlot "{5DB7553A7DC3C6CA}" {
+        SizeLayoutWidgetClass "{5DB9323F1974BF87}" {
+         Name "ListBoxSizeLayout"
+         Slot LayoutSlot "{5DB75538B792E8BF}" {
+          Padding 10 10 10 10
          }
+         AllowMinDesiredWidth 1
+         MinDesiredWidth 520
+         AllowMinDesiredHeight 1
+         MinDesiredHeight 240
          {
-          OverlayWidgetClass "{5DB7553A240C4C12}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
-           Name "ListBox0"
-           Slot OverlayWidgetSlot "{5DB7553A240C4C25}" {
+          PanelWidgetClass "{5DB9323F1974BF85}" {
+           Name "BackgroundListbox"
+           Slot AlignableSlot "{5DB92A78F0C7B470}" {
             HorizontalAlign 3
             VerticalAlign 3
            }
+           Color 0.122 0.122 0.122 1
+           style rover_sim_colorable
+           {
+            OverlayWidgetClass "{5DB9323F1974BF82}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+             Name "ListBox0"
+             Slot FrameWidgetSlot "{5DB9323F92065B60}" {
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 520
+              OffsetRight -520
+              SizeY 240
+              OffsetBottom -240
+             }
+             {
+              ScrollLayoutWidgetClass "{56691148E692435A}" {
+               Prefab "{56691148E692435A}"
+               Slot OverlayWidgetSlot "{56691148E692437F}" {
+               }
+               {
+                VerticalLayoutWidgetClass "{56691148E013D981}" {
+                 Prefab "{56691148E013D981}"
+                 Slot AlignableSlot "{56691148E013D9A9}" {
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
           }
          }
         }
-       }
-      }
-      HorizontalLayoutWidgetClass "{5DB50473D40ED071}" {
-       Name "ResultButtonLayout"
-       Slot LayoutSlot "{5DB50473AC464037}" {
-        Padding 10 0 10 0
-       }
-       {
-        ButtonWidgetClass "{5DB4EAAEFD027713}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
-         Name "ButtonCancel"
-         Slot LayoutSlot "{5DB50473AC464069}" {
-          HorizontalAlign 0
+        OverlayWidgetClass "{5DB9323F1974BF80}" {
+         Name "ResultButtonLayout"
+         Slot LayoutSlot "{5DB50473AC464037}" {
+          Padding 10 0 10 10
          }
-         components {
-          SCR_ButtonTextComponent "{5548F0143AE99095}" {
-           m_sText "Cancel"
+         {
+          OverlayWidgetClass "{5DB9323F1974BF81}" {
+           Name "Overlay1"
+           Slot OverlayWidgetSlot "{5DB9323B597ED7DD}" {
+            HorizontalAlign 0
+            Padding 0 0 0 0
+           }
+           Color 0.894 0.006 0.006 1
+           {
+            ButtonWidgetClass "{5DB9323F1974BF8E}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+             Name "ButtonCancel"
+             Slot OverlayWidgetSlot "{5DB9323F1974BD5F}" {
+             }
+             components {
+              SCR_ButtonTextComponent "{5548F0143AE99095}" {
+               m_bShowBorderOnHover 1
+               m_sText "Cancel"
+              }
+             }
+             {
+              SizeLayoutWidgetClass "{5548EB41A8E48247}" {
+               Prefab "{5548EB41A8E48247}"
+               Slot ButtonWidgetSlot "{5548E6E7E6AEDDC1}" {
+               }
+               AllowMinDesiredWidth 1
+               MinDesiredWidth 90
+               AllowMinDesiredHeight 1
+               MinDesiredHeight 40
+               {
+                OverlayWidgetClass "{5548EB41A8E48245}" {
+                 Prefab "{5548EB41A8E48245}"
+                 Slot ButtonWidgetSlot "{5548E6E7F213FB11}" {
+                  Padding 0 2 0 2
+                 }
+                 {
+                  ImageWidgetClass "{5548EB41A8E48243}" {
+                   Prefab "{5548EB41A8E48243}"
+                   Color 0.033 0.029 0.029 1
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
           }
-         }
-        }
-        ButtonWidgetClass "{5DB4EAAEFBABF06F}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
-         Name "ButtonOK"
-         Slot LayoutSlot "{5DB50473AC465FAC}" {
-         }
-         components {
-          SCR_ButtonTextComponent "{5548F0143AE99095}" {
-           m_sText "Confirm"
+          OverlayWidgetClass "{5DB9323F1974BF8F}" {
+           Name "Overlay0"
+           Slot OverlayWidgetSlot "{5DB9323F1974BED9}" {
+            HorizontalAlign 2
+            Padding 0 0 0 0
+           }
+           {
+            ButtonWidgetClass "{5DB9323F1974BF8C}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
+             Name "ButtonOK"
+             Slot OverlayWidgetSlot "{5DB9323F1974BE3E}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             components {
+              SCR_ButtonTextComponent "{5548F0143AE99095}" {
+               m_sText "Confirm"
+              }
+             }
+             {
+              SizeLayoutWidgetClass "{5548EB41A8E48247}" {
+               Prefab "{5548EB41A8E48247}"
+               AllowMinDesiredWidth 1
+               MinDesiredWidth 90
+               AllowMinDesiredHeight 1
+               MinDesiredHeight 40
+               {
+                OverlayWidgetClass "{5548EB41A8E48245}" {
+                 Prefab "{5548EB41A8E48245}"
+                 Slot ButtonWidgetSlot "{5548E6E7F213FB11}" {
+                  Padding 0 2 0 2
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
           }
          }
         }
