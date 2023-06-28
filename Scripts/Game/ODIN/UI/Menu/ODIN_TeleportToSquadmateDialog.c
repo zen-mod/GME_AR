@@ -10,8 +10,12 @@ class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
 	ref ScriptInvoker m_OnConfirm = new ScriptInvoker();
 	ref ScriptInvoker m_OnCancel = new ScriptInvoker();
 	
+	protected float m_fAnimationRate = UIConstants.FADE_RATE_FAST;
+	
 	OverlayWidget m_ListBoxOverlay;
     SCR_ListBoxComponent m_ListBoxComponent;
+	
+	TextWidget m_wTitle;
 	
 	// passed vars
 	IEntity myCallerEntity;
@@ -32,7 +36,7 @@ class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
 		m_wTitle = TextWidget.Cast(rootWidget.FindAnyWidget("Title"));
 		
 		// Cancel button
-		m_wCancelButton = rootWidget.FindAnyWidget("ButtonCancel");
+		Widget m_wCancelButton = rootWidget.FindAnyWidget("ButtonCancel");
 		m_Cancel = SCR_NavigationButtonComponent.GetNavigationButtonComponent("ButtonCancel", rootWidget);
 		if (m_Cancel)
 			m_Cancel.m_OnActivated.Insert(OnCancel);
