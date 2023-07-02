@@ -1,5 +1,4 @@
 
-
 class ODIN_GroupHelper
 {
 	static SCR_AIGroup GetGroup(GenericEntity entity)
