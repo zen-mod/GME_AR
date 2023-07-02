@@ -19,28 +19,39 @@ FrameWidgetClass {
    Color 0.028 0.023 0.023 1
    MinDesiredWidth 520
    MinDesiredHeight 350
+   AllowMaxDesiredHeight 1
+   MaxDesiredHeight 400
    {
-    PanelWidgetClass "{5DB93238B35E2730}" {
-     Name "BackgorundPanel"
+    OverlayWidgetClass "{5DB93238B35E2730}" {
+     Name "BoxOverlay"
      Slot AlignableSlot "{5DB9323F0E283ED9}" {
       HorizontalAlign 3
       VerticalAlign 3
      }
      Color 0.031 0.023 0.023 1
-     style rover_sim_colorable
      {
+      PanelWidgetClass "{5DC50DA00CB1EF07}" {
+       Name "Border"
+       Slot OverlayWidgetSlot "{5DC50DA00CB1EF25}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       Color 0.761 0.386 0.078 1
+       style outline_2px
+      }
+      ImageWidgetClass "{5DC50DA07F83CFAF}" {
+       Name "Background"
+       Slot OverlayWidgetSlot "{5DC50DA07F83CFB4}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 2 2 2 2
+       }
+       Opacity 0.9
+       Color 0.042 0.04 0.044 1
+      }
       VerticalLayoutWidgetClass "{5DB9323F1974BFBB}" {
        Name "VerticalLayout0"
-       Slot FrameWidgetSlot "{5DB9323F1974BF35}" {
-        PositionX 0
-        OffsetLeft 0
-        PositionY 0
-        OffsetTop 0
-        SizeX 99.84
-        OffsetRight -99.84
-        SizeY 30.1
-        OffsetBottom -30.1
-        SizeToContent 1
+       Slot OverlayWidgetSlot "{5DC50DA1ABF4A78C}" {
        }
        Color 0.039 0.033 0.033 1
        {
@@ -91,27 +102,40 @@ FrameWidgetClass {
          MinDesiredWidth 520
          AllowMinDesiredHeight 1
          MinDesiredHeight 240
+         AllowMaxDesiredHeight 1
+         MaxDesiredHeight 260
          {
-          PanelWidgetClass "{5DB9323F1974BF85}" {
-           Name "BackgroundListbox"
+          OverlayWidgetClass "{5DB9323F1974BF85}" {
+           Name "ListboxOverlay"
            Slot AlignableSlot "{5DB92A78F0C7B470}" {
             HorizontalAlign 3
             VerticalAlign 3
            }
-           Color 0.122 0.122 0.122 1
-           style rover_sim_colorable
            {
+            PanelWidgetClass "{5DC50DA0D6D9A82A}" {
+             Name "Border"
+             Slot OverlayWidgetSlot "{5DC50DA0D6D9A835}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             Opacity 0.5
+             Color 0.761 0.386 0.078 1
+             style outline_2px
+            }
+            ImageWidgetClass "{5DC50DA0D3AAFCDE}" {
+             Name "Background"
+             Slot OverlayWidgetSlot "{5DC50DA0D3AAFCEB}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+              Padding 2 2 2 2
+             }
+             Color 0.026 0.024 0.025 1
+            }
             OverlayWidgetClass "{5DB9323F1974BF82}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
              Name "ListBox0"
-             Slot FrameWidgetSlot "{5DB9323F92065B60}" {
-              PositionX 0
-              OffsetLeft 0
-              PositionY 0
-              OffsetTop 0
-              SizeX 520
-              OffsetRight -520
-              SizeY 240
-              OffsetBottom -240
+             Slot OverlayWidgetSlot "{5DC50DA1ABF4A66F}" {
+              HorizontalAlign 3
+              VerticalAlign 0
              }
              {
               ScrollLayoutWidgetClass "{56691148E692435A}" {
@@ -138,43 +162,37 @@ FrameWidgetClass {
           Padding 10 0 10 10
          }
          {
-          OverlayWidgetClass "{5DB9323F1974BF81}" {
-           Name "Overlay1"
-           Slot OverlayWidgetSlot "{5DB9323B597ED7DD}" {
+          ButtonWidgetClass "{5DC50DA3BF4E4BBB}" : "{08CF3B69CB1ACBC4}UI/layouts/WidgetLibrary/Buttons/WLib_NavigationButton.layout" {
+           Name "ButtonCancel"
+           Slot OverlayWidgetSlot "{5DC50DA3BF4E4BC1}" {
             HorizontalAlign 0
+            VerticalAlign 3
             Padding 0 0 0 0
            }
-           Color 0.894 0.006 0.006 1
+           components {
+            SCR_NavigationButtonComponent "{5474BAC5DBCF129A}" {
+             m_sLabel "Cancel"
+             m_sActionName "MenuTabLeft"
+            }
+           }
            {
-            ButtonWidgetClass "{5DB9323F1974BF8E}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
-             Name "ButtonCancel"
-             Slot OverlayWidgetSlot "{5DB9323F1974BD5F}" {
-             }
-             components {
-              SCR_ButtonTextComponent "{5548F0143AE99095}" {
-               m_bShowBorderOnHover 1
-               m_sText "Cancel"
-              }
-             }
+            SizeLayoutWidgetClass "{5562AD435529FB36}" {
+             Prefab "{5562AD435529FB36}"
              {
-              SizeLayoutWidgetClass "{5548EB41A8E48247}" {
-               Prefab "{5548EB41A8E48247}"
-               Slot ButtonWidgetSlot "{5548E6E7E6AEDDC1}" {
+              OverlayWidgetClass "{000000005E70868E}" {
+               Prefab "{000000005E70868E}"
+               Slot ButtonWidgetSlot "{5452C531C2876D63}" {
+                Padding 0 2 2 2
                }
-               AllowMinDesiredWidth 1
-               MinDesiredWidth 90
-               AllowMinDesiredHeight 1
-               MinDesiredHeight 40
                {
-                OverlayWidgetClass "{5548EB41A8E48245}" {
-                 Prefab "{5548EB41A8E48245}"
-                 Slot ButtonWidgetSlot "{5548E6E7F213FB11}" {
-                  Padding 0 2 0 2
-                 }
+                HorizontalLayoutWidgetClass "{00000000E3602307}" {
+                 Prefab "{00000000E3602307}"
                  {
-                  ImageWidgetClass "{5548EB41A8E48243}" {
-                   Prefab "{5548EB41A8E48243}"
-                   Color 0.033 0.029 0.029 1
+                  RichTextWidgetClass "{00000000DB061E92}" {
+                   Prefab "{00000000DB061E92}"
+                   Slot LayoutSlot "{547AD5678196CD13}" {
+                    Padding 2 0 5 0
+                   }
                   }
                  }
                 }
@@ -184,36 +202,39 @@ FrameWidgetClass {
             }
            }
           }
-          OverlayWidgetClass "{5DB9323F1974BF8F}" {
-           Name "Overlay0"
-           Slot OverlayWidgetSlot "{5DB9323F1974BED9}" {
+          ButtonWidgetClass "{5DC50DA3FD29EA8D}" : "{08CF3B69CB1ACBC4}UI/layouts/WidgetLibrary/Buttons/WLib_NavigationButton.layout" {
+           Name "ButtonOK"
+           Slot OverlayWidgetSlot "{5DC50DA3FD29EAA8}" {
             HorizontalAlign 2
-            Padding 0 0 0 0
+            VerticalAlign 3
+           }
+           components {
+            SCR_NavigationButtonComponent "{5474BAC5DBCF129A}" {
+             m_sLabel "Confirm"
+            }
            }
            {
-            ButtonWidgetClass "{5DB9323F1974BF8C}" : "{75C912A1C89BE6C2}UI/layouts/WidgetLibrary/Buttons/WLib_ButtonText.layout" {
-             Name "ButtonOK"
-             Slot OverlayWidgetSlot "{5DB9323F1974BE3E}" {
-              HorizontalAlign 3
-              VerticalAlign 3
-             }
-             components {
-              SCR_ButtonTextComponent "{5548F0143AE99095}" {
-               m_sText "Confirm"
-              }
+            SizeLayoutWidgetClass "{5562AD435529FB36}" {
+             Prefab "{5562AD435529FB36}"
+             Slot ButtonWidgetSlot "{5562AD435529FB5D}" {
+              HorizontalAlign 1
              }
              {
-              SizeLayoutWidgetClass "{5548EB41A8E48247}" {
-               Prefab "{5548EB41A8E48247}"
-               AllowMinDesiredWidth 1
-               MinDesiredWidth 90
-               AllowMinDesiredHeight 1
-               MinDesiredHeight 40
+              OverlayWidgetClass "{000000005E70868E}" {
+               Prefab "{000000005E70868E}"
+               Slot ButtonWidgetSlot "{5452C531C2876D63}" {
+                Padding 2 2 0 2
+               }
                {
-                OverlayWidgetClass "{5548EB41A8E48245}" {
-                 Prefab "{5548EB41A8E48245}"
-                 Slot ButtonWidgetSlot "{5548E6E7F213FB11}" {
-                  Padding 0 2 0 2
+                HorizontalLayoutWidgetClass "{00000000E3602307}" {
+                 Prefab "{00000000E3602307}"
+                 {
+                  RichTextWidgetClass "{00000000DB061E92}" {
+                   Prefab "{00000000DB061E92}"
+                   Slot LayoutSlot "{547AD5678196CD13}" {
+                    Padding 5 0 2 0
+                   }
+                  }
                  }
                 }
                }
