@@ -38,21 +38,25 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 		// null check 
 		if (!myMenu)
 		{
-			Print("ERROR in TeleportToSquadmateContextAction: Could not find dialog defined");
+			ODIN_LogHelper.Log("Could not find listbox dialog defined", "TeleportToSquadmateContextAction", LogLevel.WARNING);
 			return;	
 		}
 		
-		// cast so we have dialog object. Set hovered entity, we need to get squadmates from it and have it to teleport it
-		ODIN_TeleportToSquadmateDialog myMenuUI = ODIN_TeleportToSquadmateDialog.Cast(myMenu);
+		// cast so we have dialog object. Set hovered-entity, we need to get squadmates from it and have it to teleport it
+		ODIN_ListboxSingleSelectDialog myMenuUI = ODIN_ListboxSingleSelectDialog.Cast(myMenu);
 		myMenuUI.SetHoveredEntity(hoveredEntity);
 		
 		// set Title 
-		myMenuUI.SetTitle("Teleport To Squadmate");
+		myMenuUI.SetTitle("#ODIN-ActionList_TeleportToSquadmate_Name");
 			
 		// Get squadmates 
 		SCR_AIGroup group = ODIN_GroupHelper.GetGroup(owner);
 		if (!group || group.GetPlayerCount() <= 0) 
-			return; // TODO give error message back to zeus that unit is not in a group 
+		{
+			// TODO give error message back to zeus that unit is not in a group 
+			ODIN_LogHelper.Log("null group or <= 0 in group", "TeleportToSquadmateContextAction", LogLevel.WARNING);
+			return;
+		}
 		
 		// can't get character entities directly from group, only for AI. So for players we get their IDs and gotta find and cast them with that
 		array<int> members = group.GetPlayerIDs();
@@ -79,14 +83,6 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 		
 		// add action to confirm 
 		myMenuUI.GetOnConfirm().Insert(ODIN_TeleportToSquadmateContextAction.ODIN_OnConfirm);
-		
-		// TODO remember to move all strings to stringtable!
-		
-		// TODO figure out if we pass hoveredentity, or get squadmates here and populate the dialog? Can we actually make a generic dialog and populate it from here? 
-		// Would have to be able to pass data to it on creation and bind callback to its "ok" method. 
-		
-		//SCR_PlayersManagerEditorComponent playersManager = SCR_PlayersManagerEditorComponent.Cast(SCR_PlayersManagerEditorComponent.GetInstance(SCR_PlayersManagerEditorComponent));
-		//playersManager.TeleportPlayerToPosition(cursorWorldPosition);
 	}
 	
 	// function for script invoker
@@ -94,12 +90,24 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 	{
 		// todo, get selected player 
 		int selectedItem = listbox.GetSelectedItem();
-		ChimeraCharacter selectedPlayer = ChimeraCharacter.Cast(listbox.GetItemData(selectedItem));
-
-		if (selectedPlayer.IsInVehicle())
+		if (selectedItem == -1)
 		{
-			// try to put hoveredentity inside vehicle? otherwise keep going and put it next to vic 
+			ODIN_LogHelper.Log("Listbox returned -1 as selection, seemed like no option was selected", "TeleportToSquadmateContextAction", LogLevel.WARNING);
+			return;
 		}
+		
+		ChimeraCharacter selectedPlayer = ChimeraCharacter.Cast(listbox.GetItemData(selectedItem));
+		if (!selectedPlayer)
+		{
+			ODIN_LogHelper.Log("ChimeraCharacter in userdata for selected listbox item is null", "TeleportToSquadmateContextAction", LogLevel.WARNING);
+			return;
+		}
+
+		//if (selectedPlayer.IsInVehicle())
+		//{
+			// try to put hoveredentity inside vehicle? otherwise keep going and put it next to vic 
+			//  For now I didn't find a way to obtain the vehicle, check empty spots and directly move a player into one... Potential for future!
+		//}
 		
 		// Get world coordinates of player 
 		vector target_pos;

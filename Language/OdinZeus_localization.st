@@ -1,6 +1,40 @@
 StringTable {
  ItemClassName "CustomStringTableItem"
  Items {
+  CustomStringTableItem "{5DC552DCD58C02A3}" {
+   Id "ODIN-ActionList_TeleportToSquadmate_Description"
+   Target_en_us "Teleport unit to one of its squadmates"
+   Target_fr_fr "Téléporter l'unité à l'un de ses coéquipiers"
+   Target_it_it "Teletrasporta l'unità a uno dei suoi compagni di squadra"
+   Target_de_de "Teleportiere die Einheit zu einem ihrer Truppkameraden"
+   Target_es_es "Unidad de teletransporte a uno de sus compañeros de escuadrón"
+   Target_cs_cz "Teleportujte jednotku k jednomu z jejích spoluhráčů"
+   Target_pl_pl "Teleportuj jednostkę do jednego z członków jej drużyny"
+   Target_ru_ru "Телепортировать юнит к одному из его товарищей по отряду"
+   Target_ja_jp "ユニットを分隊メンバーの一人にテレポートする"
+   Target_ko_kr "유닛을 분대원 중 한 명에게 텔레포트합니다."
+   Target_zh_cn "将单位传送至其一名队员处"
+   Modified 1573216556
+   Author "crow"
+   LastChanged "crow"
+  }
+  CustomStringTableItem "{5DC552DCFF58F14E}" {
+   Id "ODIN-ActionList_TeleportToSquadmate_Name"
+   Target_en_us "Teleport To Squadmate"
+   Target_fr_fr "Téléportation vers un coéquipier"
+   Target_it_it "Teletrasporta al compagno di squadra"
+   Target_de_de "Zum Squadmate teleportieren"
+   Target_es_es "Teletransportarse a compañero de escuadrón"
+   Target_cs_cz "Teleportujte se ke Squadmate"
+   Target_pl_pl "Teleportuj się do członka drużyny"
+   Target_ru_ru "Телепортироваться к товарищу по отряду"
+   Target_ja_jp "分隊へテレポート"
+   Target_ko_kr "분대원에게 텔레포트"
+   Target_zh_cn "传送至队友"
+   Modified 1573216480
+   Author "crow"
+   LastChanged "crow"
+  }
   CustomStringTableItem "{5D19597480C39F02}" {
    Id "ODIN-EditableEntity_AIWaypoint_Cycle_Name"
    Target_en_us "CYCLE"
@@ -560,6 +594,40 @@ StringTable {
    LastChanged "crow"
    ImageLink ""
    Hidden 0
+  }
+  CustomStringTableItem "{5DC552DA2913D62A}" {
+   Id "ODIN-UI_Listbox_OnCancel"
+   Target_en_us "Cancel"
+   Target_fr_fr "Annuler"
+   Target_it_it "Annulla"
+   Target_de_de "Stornieren"
+   Target_es_es "Cancelar"
+   Target_cs_cz "zrušení"
+   Target_pl_pl "Anulować"
+   Target_ru_ru "Отмена"
+   Target_ja_jp "キャンセル"
+   Target_ko_kr "취소"
+   Target_zh_cn "取消"
+   Modified 1573216690
+   Author "crow"
+   LastChanged "crow"
+  }
+  CustomStringTableItem "{5DC552DA2D2CBC68}" {
+   Id "ODIN-UI_Listbox_OnConfirm"
+   Target_en_us "Confirm"
+   Target_fr_fr "Confirmer"
+   Target_it_it "Confermare"
+   Target_de_de "Bestätigen"
+   Target_es_es "Confirmar"
+   Target_cs_cz "Potvrdit"
+   Target_pl_pl "Potwierdzać"
+   Target_ru_ru "Подтверждать"
+   Target_ja_jp "確認"
+   Target_ko_kr "확인하다"
+   Target_zh_cn "确认"
+   Modified 1573216623
+   Author "crow"
+   LastChanged "crow"
   }
  }
 }

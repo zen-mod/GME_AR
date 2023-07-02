@@ -1,9 +1,5 @@
-class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
+class ODIN_ListboxSingleSelectDialog: ChimeraMenuBase
 {
-	protected static const string TEXT_TITLE = "TextTitle";
-	protected static const string BUTTON_CLOSE = "ButtonCancel";
-	protected static const string BUTTON_OK = "ButtonOK";
-	
 	protected SCR_NavigationButtonComponent m_Cancel;
 	protected SCR_NavigationButtonComponent m_Confirm;
 	
@@ -17,20 +13,22 @@ class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
 	
 	protected TextWidget m_wTitle;
 	
-	// passed vars
+	// passed entity for storing owner/caller
 	protected SCR_EditableEntityComponent m_HoveredEntity;
 
 	//------------------------------------------------------------------------------------------------
 	protected override void OnMenuOpen()
 	{
-		Print("OnMenuOpen: dialog opened!", LogLevel.NORMAL);
-
 		Widget rootWidget = GetRootWidget();
 		if (!rootWidget)
 		{
-			Print("Error in Layout Tutorial layout creation", LogLevel.ERROR);
+			ODIN_LogHelper.Log("Could not get root widget", "ListboxSingleSelect", LogLevel.ERROR);
 			return;
 		}
+		
+		// Play animation
+		rootWidget.SetOpacity(0);
+		AnimateWidget.Opacity(rootWidget, 1, m_fAnimationRate);
 
 		// Texts
 		m_wTitle = TextWidget.Cast(rootWidget.FindAnyWidget("TextTitel"));
@@ -46,13 +44,9 @@ class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
 		if (m_Confirm)
 			m_Confirm.m_OnActivated.Insert(OnConfirm);
 		
-		// In order to get the ListBox Index you can use this: m_ListBoxComponent.GetSelectedItem();
+		// Get listbox component
 		m_ListBoxOverlay = OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBox0"));
         m_ListBoxComponent = SCR_ListBoxComponent.Cast(m_ListBoxOverlay.FindHandler(SCR_ListBoxComponent));
-		
-		// Play animation
-		rootWidget.SetOpacity(0);
-		AnimateWidget.Opacity(rootWidget, 1, m_fAnimationRate);
 		
 		/*
 			ESC/Start listener
@@ -73,7 +67,7 @@ class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
 		}
 		else if (!m_wCancelButton)
 		{
-			Print("Auto-closing the menu that has no exit path", LogLevel.WARNING);
+			ODIN_LogHelper.Log("Auto-closing the dialog that has no exit path", "ListboxSingleSelect", LogLevel.WARNING);
 			Close();
 			return;
 		}
@@ -102,6 +96,12 @@ class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
 			m_ListBoxComponent.AddItem(name, data);	
 	}
 	
+	void AddItemAndIconToListbox(string name, ResourceName imageOrImageset, string iconName, Managed data = null)
+	{
+        if (m_ListBoxComponent)
+			m_ListBoxComponent.AddItemAndIcon(name, imageOrImageset, iconName, data);	
+	}
+	
 	void SetTitle(string title)
 	{
 		if (m_wTitle)
@@ -110,7 +110,6 @@ class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
 	
 	int getSelectedListBox()
 	{
-		// null check
 		if (!m_ListBoxComponent)
 			return -1;	
 		

@@ -171,8 +171,8 @@ FrameWidgetClass {
            }
            components {
             SCR_NavigationButtonComponent "{5474BAC5DBCF129A}" {
-             m_sLabel "Cancel"
-             m_sActionName "MenuTabLeft"
+             m_sLabel "#ODIN-UI_Listbox_OnCancel"
+             m_sActionName "MenuBack"
             }
            }
            {
@@ -182,7 +182,7 @@ FrameWidgetClass {
               OverlayWidgetClass "{000000005E70868E}" {
                Prefab "{000000005E70868E}"
                Slot ButtonWidgetSlot "{5452C531C2876D63}" {
-                Padding 0 2 2 2
+                Padding 2 2 2 2
                }
                {
                 HorizontalLayoutWidgetClass "{00000000E3602307}" {
@@ -210,7 +210,7 @@ FrameWidgetClass {
            }
            components {
             SCR_NavigationButtonComponent "{5474BAC5DBCF129A}" {
-             m_sLabel "Confirm"
+             m_sLabel "#ODIN-UI_Listbox_OnConfirm"
             }
            }
            {
@@ -223,7 +223,7 @@ FrameWidgetClass {
               OverlayWidgetClass "{000000005E70868E}" {
                Prefab "{000000005E70868E}"
                Slot ButtonWidgetSlot "{5452C531C2876D63}" {
-                Padding 2 2 0 2
+                Padding 2 2 2 2
                }
                {
                 HorizontalLayoutWidgetClass "{00000000E3602307}" {
