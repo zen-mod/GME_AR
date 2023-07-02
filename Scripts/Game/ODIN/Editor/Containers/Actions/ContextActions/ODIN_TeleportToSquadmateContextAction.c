@@ -13,9 +13,9 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 		
 		if (!SCR_ChimeraCharacter.Cast(owner))
 			return false;
-				
-		// TODO only able to do on players
-		if (!SCR_EntityHelper.IsAPlayer(owner))
+		
+		// only able to do on players
+		if (!EntityUtils.IsPlayer(owner))
 			return false;
 		
 		return true;
