@@ -12,13 +12,13 @@ class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
 	
 	protected float m_fAnimationRate = UIConstants.FADE_RATE_FAST;
 	
-	OverlayWidget m_ListBoxOverlay;
-    SCR_ListBoxComponent m_ListBoxComponent;
+	protected OverlayWidget m_ListBoxOverlay;
+    protected SCR_ListBoxComponent m_ListBoxComponent;
 	
-	TextWidget m_wTitle;
+	protected TextWidget m_wTitle;
 	
 	// passed vars
-	IEntity myCallerEntity;
+	protected SCR_EditableEntityComponent m_HoveredEntity;
 
 	//------------------------------------------------------------------------------------------------
 	protected override void OnMenuOpen()
@@ -33,7 +33,7 @@ class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
 		}
 
 		// Texts
-		m_wTitle = TextWidget.Cast(rootWidget.FindAnyWidget("Title"));
+		m_wTitle = TextWidget.Cast(rootWidget.FindAnyWidget("TextTitel"));
 		
 		// Cancel button
 		Widget m_wCancelButton = rootWidget.FindAnyWidget("ButtonCancel");
@@ -46,22 +46,13 @@ class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
 		if (m_Confirm)
 			m_Confirm.m_OnActivated.Insert(OnConfirm);
 		
-		// TODO Setup for listbox.... We need to fill it with data somehow
-		// MyList
-        m_ListBoxOverlay = OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBox0"));
-        m_ListBoxComponent = SCR_ListBoxComponent.Cast(m_ListBoxOverlay.FindHandler(SCR_ListBoxComponent));
-        if (m_ListBoxComponent)
-        {            
-            m_ListBoxComponent.AddItem("MyItem0");
-            m_ListBoxComponent.AddItem("MyItem1");
-            m_ListBoxComponent.AddItem("MyItem2");            
-        }
 		// In order to get the ListBox Index you can use this: m_ListBoxComponent.GetSelectedItem();
+		m_ListBoxOverlay = OverlayWidget.Cast(rootWidget.FindAnyWidget("ListBox0"));
+        m_ListBoxComponent = SCR_ListBoxComponent.Cast(m_ListBoxOverlay.FindHandler(SCR_ListBoxComponent));
 		
 		// Play animation
 		rootWidget.SetOpacity(0);
 		AnimateWidget.Opacity(rootWidget, 1, m_fAnimationRate);
-
 		
 		/*
 			ESC/Start listener
@@ -73,11 +64,11 @@ class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
 			// this is for the menu/dialog to close when pressing ESC
 			// an alternative is to have a button with the SCR_NavigationButtonComponent component
 			// and its Action Name field set to MenuBack - this would activate the button on ESC press
-			inputManager.AddActionListener("MenuOpen", EActionTrigger.DOWN, Close);
-			inputManager.AddActionListener("MenuBack", EActionTrigger.DOWN, Close);
+			inputManager.AddActionListener("MenuOpen", EActionTrigger.DOWN, CloseAnimated);
+			inputManager.AddActionListener("MenuBack", EActionTrigger.DOWN, CloseAnimated);
 #ifdef WORKBENCH // in Workbench, F10 is used because ESC closes the preview
-			inputManager.AddActionListener("MenuOpenWB", EActionTrigger.DOWN, Close);
-			inputManager.AddActionListener("MenuBackWB", EActionTrigger.DOWN, Close);
+			inputManager.AddActionListener("MenuOpenWB", EActionTrigger.DOWN, CloseAnimated);
+			inputManager.AddActionListener("MenuBackWB", EActionTrigger.DOWN, CloseAnimated);
 #endif
 		}
 		else if (!m_wCancelButton)
@@ -95,26 +86,71 @@ class ODIN_TeleportToSquadmateDialog: ChimeraMenuBase
 		InputManager inputManager = GetGame().GetInputManager();
 		if (inputManager)
 		{
-			inputManager.RemoveActionListener("MenuOpen", EActionTrigger.DOWN, Close);
-			inputManager.RemoveActionListener("MenuBack", EActionTrigger.DOWN, Close);
+			inputManager.RemoveActionListener("MenuOpen", EActionTrigger.DOWN, CloseAnimated);
+			inputManager.RemoveActionListener("MenuBack", EActionTrigger.DOWN, CloseAnimated);
 #ifdef WORKBENCH
-			inputManager.RemoveActionListener("MenuOpenWB", EActionTrigger.DOWN, Close);
-			inputManager.RemoveActionListener("MenuBackWB", EActionTrigger.DOWN, Close);
+			inputManager.RemoveActionListener("MenuOpenWB", EActionTrigger.DOWN, CloseAnimated);
+			inputManager.RemoveActionListener("MenuBackWB", EActionTrigger.DOWN, CloseAnimated);
 #endif
 		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void AddItemToListbox(string name, Managed data = null)
+	{
+        if (m_ListBoxComponent)
+			m_ListBoxComponent.AddItem(name, data);	
+	}
+	
+	void SetTitle(string title)
+	{
+		if (m_wTitle)
+			m_wTitle.SetText(title);
+	}
+	
+	int getSelectedListBox()
+	{
+		// null check
+		if (!m_ListBoxComponent)
+			return -1;	
+		
+		return m_ListBoxComponent.GetSelectedItem();
+	}
+	
+	Managed getDataForListboxItem(int itemID)
+	{
+		if (!m_ListBoxComponent)
+			return null;
+		
+		return m_ListBoxComponent.GetItemData(itemID);
+	}
+	
+	void SetHoveredEntity(SCR_EditableEntityComponent owner)
+	{
+		m_HoveredEntity = owner;
+	}
+	
+	ScriptInvoker GetOnConfirm()
+	{
+		return m_OnConfirm;
+	} 
+	
+	ScriptInvoker GetOnCancel()
+	{
+		return m_OnCancel;
+	} 
+	
+	//------------------------------------------------------------------------------------------------
 	protected void OnConfirm()
 	{
-		m_OnConfirm.Invoke();
+		m_OnConfirm.Invoke(m_HoveredEntity, m_ListBoxComponent);
 		CloseAnimated();
 	}
 
 	//------------------------------------------------------------------------------------------------
 	protected void OnCancel()
 	{
-		m_OnCancel.Invoke();
+		m_OnCancel.Invoke(m_HoveredEntity, m_ListBoxComponent);
 		CloseAnimated();
 	}
 	
