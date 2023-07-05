@@ -38,7 +38,7 @@ class ODIN_MoveLineDownPlugin : WorkbenchPlugin
 		int totalLines = scriptEditor.GetLinesCount();
 		int currentLine = scriptEditor.GetCurrentLine();
 		
-		if (currentLine <= 0 || currentLine >= totalLines-1)
+		if (currentLine < 0 || currentLine >= totalLines-1)
 			return;
 				
 		// get line below
