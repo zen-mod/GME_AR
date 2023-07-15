@@ -66,6 +66,10 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 			string name = playerManager.GetPlayerName(playerID);
 			ChimeraCharacter player = ChimeraCharacter.Cast(playerManager.GetPlayerControlledEntity(playerID));
 			
+			// if player is dead and the object is null, we skip
+			if (!player)
+				continue;
+			
 			// don't add the unit we want to teleport
 			if (player.GetID() == owner.GetID())
 				continue;
