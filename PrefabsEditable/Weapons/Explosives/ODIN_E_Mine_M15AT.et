@@ -9,7 +9,7 @@ GenericEntity : "{49FFE8F373F55960}Prefabs/Weapons/Explosives/Mine_M15AT/Mine_M1
     Name "#AR-Weapon_M15_Name"
     Description "#AR-Weapon_M15_Description"
     Icon "{1FBE76E25DDFB65C}UI/Textures/Editor/EditableEntities/Systems/EditableEntity_System_ZoneRestriction.edds"
-    m_Image "{1FBE76E25DDFB65C}UI/Textures/Editor/EditableEntities/Systems/EditableEntity_System_ZoneRestriction.edds"
+    m_Image "{CD6EDD2DB7E02594}UI/Textures/EditorPreviews/Weapons/Explosives/ODIN_E_Mine_M15AT.edds"
     m_sFaction "US"
     m_aAuthoredLabels {
      38

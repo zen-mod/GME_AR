@@ -9,7 +9,7 @@ GenericEntity : "{D6EF54367CECE1D9}Prefabs/Weapons/Explosives/Mine_TM62M/Mine_TM
     Name "#AR-Weapon_TM62M_Name"
     Description "#AR-Weapon_TM62M_Description"
     Icon "{1FBE76E25DDFB65C}UI/Textures/Editor/EditableEntities/Systems/EditableEntity_System_ZoneRestriction.edds"
-    m_Image "{1FBE76E25DDFB65C}UI/Textures/Editor/EditableEntities/Systems/EditableEntity_System_ZoneRestriction.edds"
+    m_Image "{D80F859993FA99FA}UI/Textures/EditorPreviews/Weapons/Explosives/ODIN_E_Mine_TM62M.edds"
     m_sFaction "USSR"
     m_aAuthoredLabels {
      38
