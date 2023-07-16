@@ -12,21 +12,21 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 	void ODIN_SetDamageEnabled(bool enabled)
 	{
 		m_bODIN_isDamageEnabled = enabled;
-		this.ODIN_OnEnableDamageValueUpdated();
+		ODIN_OnEnableDamageValueUpdated();
 	}
 	
 	void ODIN_OnEnableDamageValueUpdated()
 	{
 		// add function to invoker if damage is disabled
 		if (!m_bODIN_isDamageEnabled)
-			this.GetOnDamage().Insert(this.ODIN_disableDamage);
+			GetOnDamage().Insert(ODIN_disableDamage);
 		else
-			this.GetOnDamage().Remove(this.ODIN_disableDamage);
+			GetOnDamage().Remove(ODIN_disableDamage);
 	}
 	
 	void ODIN_disableDamage(EDamageType type, float damage, HitZone pHitZone, IEntity instigator, inout vector outMat[3], float speed, int colliderID, int nodeID)
 	{
-		ChimeraCharacter char = ChimeraCharacter.Cast(this.GetOwner());
+		ChimeraCharacter char = ChimeraCharacter.Cast(GetOwner());
 		// null check might not be needed as this lives inside the ScriptedDamageManager component, and as such a char should always be "connected"
 		if (!char)
 			return;
