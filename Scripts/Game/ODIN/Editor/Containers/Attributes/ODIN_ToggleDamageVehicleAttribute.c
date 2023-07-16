@@ -15,7 +15,7 @@ class ODIN_ToggleDamageVehicleAttribute : SCR_BaseEditorAttribute
 		if (!owner) 
 			return null;
 		
-		if (SCR_ChimeraCharacter.Cast(owner))
+		if (!Vehicle.Cast(owner))
 			return null;
 		
 		DamageManagerComponent damageComponent = DamageManagerComponent.Cast(owner.FindComponent(DamageManagerComponent));
