@@ -2,7 +2,6 @@
 //------------------------------------------------------------------------------------------------
 modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 {
-	[RplProp(onRplName: "ODIN_OnEnableDamageValueUpdated")]
 	protected bool m_bODIN_isDamageEnabled = true;
 	
 	bool ODIN_IsDamageEnabled()
@@ -13,7 +12,6 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 	void ODIN_SetDamageEnabled(bool enabled)
 	{
 		m_bODIN_isDamageEnabled = enabled;
-		Replication.BumpMe();
 		this.ODIN_OnEnableDamageValueUpdated();
 	}
 	
