@@ -2,15 +2,14 @@
 [BaseContainerProps(), SCR_BaseContainerCustomTitleUIInfo("m_Info")]
 class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 {	
+	static int emptyTerrainAreaRadius = 20;
+	
 	override bool CanBeShown(SCR_EditableEntityComponent hoveredEntity, notnull set<SCR_EditableEntityComponent> selectedEntities, vector cursorWorldPosition, int flags)
 	{
 		if (!hoveredEntity)
 			return false;
 		
 		GenericEntity owner = hoveredEntity.GetOwner();
-		if (!owner) 
-			return false;
-		
 		if (!SCR_ChimeraCharacter.Cast(owner))
 			return false;
 		
@@ -53,16 +52,16 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 		SCR_AIGroup group = ODIN_GroupHelper.GetGroup(owner);
 		if (!group || group.GetPlayerCount() <= 0) 
 		{
-			// TODO give error message back to zeus that unit is not in a group 
+			// give error message back to zeus that unit is not in a group 
 			ODIN_LogHelper.Log("null group or <= 0 in group", "TeleportToSquadmateContextAction", LogLevel.WARNING);
 			return;
 		}
 		
+		PlayerManager playerManager = GetGame().GetPlayerManager();
 		// can't get character entities directly from group, only for AI. So for players we get their IDs and gotta find and cast them with that
 		array<int> members = group.GetPlayerIDs();
 		foreach (int playerID : members)
 		{
-			PlayerManager playerManager = GetGame().GetPlayerManager();
 			string name = playerManager.GetPlayerName(playerID);
 			ChimeraCharacter player = ChimeraCharacter.Cast(playerManager.GetPlayerControlledEntity(playerID));
 			
@@ -71,7 +70,7 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 				continue;
 			
 			// don't add the unit we want to teleport
-			if (player.GetID() == owner.GetID())
+			if (player == owner)
 				continue;
 			
 			// if Leader, show it
@@ -84,7 +83,7 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 			
 			myMenuUI.AddItemToListbox(name, player);
 		}
-		
+
 		// add action to confirm 
 		myMenuUI.GetOnConfirm().Insert(ODIN_TeleportToSquadmateContextAction.ODIN_OnConfirm);
 	}
@@ -92,7 +91,7 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 	// function for script invoker
 	static void ODIN_OnConfirm(SCR_EditableEntityComponent hoveredEntity, SCR_ListBoxComponent listbox)
 	{
-		// todo, get selected player 
+		// get selected player 
 		int selectedItem = listbox.GetSelectedItem();
 		if (selectedItem == -1)
 		{
@@ -115,7 +114,7 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 		
 		// Get world coordinates of player 
 		vector target_pos;
-		SCR_WorldTools.FindEmptyTerrainPosition(target_pos, selectedPlayer.GetOrigin(), 20);
+		SCR_WorldTools.FindEmptyTerrainPosition(target_pos, selectedPlayer.GetOrigin(), emptyTerrainAreaRadius);
 		
 		// get transform for rotation etc. 
 		vector target_transform[4];
