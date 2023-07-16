@@ -6,7 +6,7 @@ StringTable {
    Target_en_us "Teleport unit to one of its squadmates"
    Target_fr_fr "Téléporter l'unité à l'un de ses coéquipiers"
    Target_it_it "Teletrasporta l'unità a uno dei suoi compagni di squadra"
-   Target_de_de "Teleportiere die Einheit zu einem ihrer Truppkameraden"
+   Target_de_de "Teleportiere die Einheit zu einem seiner Kameraden"
    Target_es_es "Unidad de teletransporte a uno de sus compañeros de escuadrón"
    Target_cs_cz "Teleportujte jednotku k jednomu z jejích spolubojovníci"
    Target_pl_pl "Teleportuj jednostkę do jednego z członków jej drużyny"
@@ -14,7 +14,7 @@ StringTable {
    Target_ja_jp "ユニットを分隊メンバーの一人にテレポートする"
    Target_ko_kr "유닛을 분대원 중 한 명에게 텔레포트합니다."
    Target_zh_cn "将单位传送至其一名队员处"
-   Modified 1575019480
+   Modified 1575019898
    Author "crow"
    LastChanged "kexanone"
   }
