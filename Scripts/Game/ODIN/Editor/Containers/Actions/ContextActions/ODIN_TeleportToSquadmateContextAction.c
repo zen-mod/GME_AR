@@ -105,12 +105,18 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 			ODIN_LogHelper.Log("ChimeraCharacter in userdata for selected listbox item is null", "TeleportToSquadmateContextAction", LogLevel.WARNING);
 			return;
 		}
-
-		//if (selectedPlayer.IsInVehicle())
-		//{
-			// try to put hoveredentity inside vehicle? otherwise keep going and put it next to vic 
-			//  For now I didn't find a way to obtain the vehicle, check empty spots and directly move a player into one... Potential for future!
-		//}
+	
+		// If target is sitting in a vehicle, move player inside as well (Taken from SCR_PlayerSpawnPoint.c)
+		SCR_CompartmentAccessComponent compartmentAccessTarget = SCR_CompartmentAccessComponent.Cast(selectedPlayer.FindComponent(SCR_CompartmentAccessComponent));
+		IEntity vehicle = compartmentAccessTarget.GetVehicle();
+		if (vehicle)
+		{
+			SCR_CompartmentAccessComponent compartmentAccessPlayer = SCR_CompartmentAccessComponent.Cast(hoveredEntity.GetOwner().FindComponent(SCR_CompartmentAccessComponent));
+			
+			// only return here if we were succesfull in moving into vehicle. If false its likely vehicle is full; Then we continue function to move unit right next to vehicle
+			if (compartmentAccessPlayer.MoveInVehicleAny(vehicle))
+				return;
+		}
 		
 		// Get world coordinates of player 
 		vector target_pos;
