@@ -32,7 +32,7 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 		
 		GenericEntity owner = hoveredEntity.GetOwner();
 		
-		MenuBase myMenu = GetGame().GetMenuManager().OpenDialog(ChimeraMenuPreset.ODIN_ListBox_ID, DialogPriority.INFORMATIVE, 0, true); 
+		MenuBase myMenu = GetGame().GetMenuManager().OpenDialog(ChimeraMenuPreset.ODIN_Listbox_SingleSelect_ID, DialogPriority.INFORMATIVE, 0, true); 
 		
 		// null check 
 		if (!myMenu)
