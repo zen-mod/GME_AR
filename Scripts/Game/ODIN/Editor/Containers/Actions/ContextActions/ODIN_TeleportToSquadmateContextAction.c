@@ -105,35 +105,19 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 			ODIN_LogHelper.Log("ChimeraCharacter in userdata for selected listbox item is null", "TeleportToSquadmateContextAction", LogLevel.WARNING);
 			return;
 		}
-	
-		// If target is sitting in a vehicle, move player inside as well (Taken from SCR_PlayerSpawnPoint.c)
-		SCR_CompartmentAccessComponent compartmentAccessTarget = SCR_CompartmentAccessComponent.Cast(selectedPlayer.FindComponent(SCR_CompartmentAccessComponent));
-		IEntity vehicle = compartmentAccessTarget.GetVehicle();
-		if (vehicle)
-		{
-			SCR_CompartmentAccessComponent compartmentAccessPlayer = SCR_CompartmentAccessComponent.Cast(hoveredEntity.GetOwner().FindComponent(SCR_CompartmentAccessComponent));
-			
-			// only return here if we were succesfull in moving into vehicle. If false its likely vehicle is full; Then we continue function to move unit right next to vehicle
-			if (compartmentAccessPlayer.MoveInVehicleAny(vehicle))
-				return;
-		}
 		
-		// Get world coordinates of player 
-		vector target_pos;
-		SCR_WorldTools.FindEmptyTerrainPosition(target_pos, selectedPlayer.GetOrigin(), emptyTerrainAreaRadius);
-		
-		// get transform for rotation etc. 
-		vector target_transform[4];
-		hoveredEntity.GetTransform(target_transform);
-		
-		// use new position, but keep rotation 
-		target_transform[3] = target_pos;
-		
-		hoveredEntity.SetTransform(target_transform, true);
+		// get target player RplId
+		RplComponent targetRpl = RplComponent.Cast(selectedPlayer.FindComponent(RplComponent));
+		if (!targetRpl)
+			return;
+					
+		// Call RPC through EditorManagerEntity to reach server 
+		SCR_EditorManagerEntity managerEntity = SCR_EditorManagerEntity.GetInstance();
+		managerEntity.ODIN_TeleportEntityToPlayer(hoveredEntity.GetOwnerRplId(), targetRpl.Id(), emptyTerrainAreaRadius);
 	}
 	
 	override bool IsServer()
 	{
-		return true;
+		return false;
 	}
 };
