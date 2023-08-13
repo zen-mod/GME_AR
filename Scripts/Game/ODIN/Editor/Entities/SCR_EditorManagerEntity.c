@@ -20,7 +20,7 @@ The entity which enables all editor functionality for the player.
 */
 modded class SCR_EditorManagerEntity : SCR_EditorBaseEntity
 {
-	static int emptyTerrainAreaRadius = 20;
+	static int ODIN_emptyTerrainAreaRadius = 20;
 	
 	/*!
 	Functions to tell the server to move an entity
@@ -60,7 +60,7 @@ modded class SCR_EditorManagerEntity : SCR_EditorBaseEntity
 		
 		// Get world coordinates of player 
 		vector target_pos;
-		SCR_WorldTools.FindEmptyTerrainPosition(target_pos, targetEntity.GetOrigin(), emptyTerrainAreaRadius);
+		SCR_WorldTools.FindEmptyTerrainPosition(target_pos, targetEntity.GetOrigin(), ODIN_emptyTerrainAreaRadius);
 		
 		// get transform for rotation etc. 
 		vector target_transform[4];
