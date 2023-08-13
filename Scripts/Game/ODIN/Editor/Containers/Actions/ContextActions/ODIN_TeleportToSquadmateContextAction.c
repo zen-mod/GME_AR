@@ -1,9 +1,7 @@
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps(), SCR_BaseContainerCustomTitleUIInfo("m_Info")]
 class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
-{	
-	static int emptyTerrainAreaRadius = 20;
-	
+{		
 	override bool CanBeShown(SCR_EditableEntityComponent hoveredEntity, notnull set<SCR_EditableEntityComponent> selectedEntities, vector cursorWorldPosition, int flags)
 	{
 		if (!hoveredEntity)
@@ -113,7 +111,7 @@ class ODIN_TeleportToSquadmateContextAction: SCR_BaseContextAction
 					
 		// Call RPC through EditorManagerEntity to reach server 
 		SCR_EditorManagerEntity managerEntity = SCR_EditorManagerEntity.GetInstance();
-		managerEntity.ODIN_TeleportEntityToPlayer(hoveredEntity.GetOwnerRplId(), targetRpl.Id(), emptyTerrainAreaRadius);
+		managerEntity.ODIN_TeleportEntityToPlayer(hoveredEntity.GetOwnerRplId(), targetRpl.Id());
 	}
 	
 	override bool IsServer()

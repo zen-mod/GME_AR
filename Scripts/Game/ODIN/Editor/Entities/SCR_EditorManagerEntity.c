@@ -20,16 +20,18 @@ The entity which enables all editor functionality for the player.
 */
 modded class SCR_EditorManagerEntity : SCR_EditorBaseEntity
 {
+	static int emptyTerrainAreaRadius = 20;
+	
 	/*!
 	Functions to tell the server to move an entity
 	*/
-	void ODIN_TeleportEntityToPlayer(RplId sourceEntityId, RplId targetEntityId, int emptyTerrainAreaRadius)
+	void ODIN_TeleportEntityToPlayer(RplId sourceEntityId, RplId targetEntityId)
 	{
-		Rpc(ODIN_Server_TeleportEntityToPlayer, sourceEntityId, targetEntityId, emptyTerrainAreaRadius);
+		Rpc(ODIN_Server_TeleportEntityToPlayer, sourceEntityId, targetEntityId);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void ODIN_Server_TeleportEntityToPlayer(RplId entityId, RplId targetEntityId, int emptyTerrainAreaRadius)
+	protected void ODIN_Server_TeleportEntityToPlayer(RplId entityId, RplId targetEntityId)
 	{		
 		// get entity from id 
 		RplComponent entityRpl = RplComponent.Cast(Replication.FindItem(entityId));
@@ -67,20 +69,11 @@ modded class SCR_EditorManagerEntity : SCR_EditorBaseEntity
 		// use new position, but keep rotation 
 		target_transform[3] = target_pos;
 		
-		// call transform
-		ODIN_SetTransform(sourceEntity, target_transform);
-	}
-	
-	void ODIN_SetTransform(IEntity sourceEntity, vector transform[4])
-	{
-		// if not server we exit as we don't have permission to transform anything
-		if (!IsAuthority())
-			return;
-		
 		// Get editable component 
 		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.Cast(sourceEntity.FindComponent(SCR_EditableEntityComponent));
 		
+		// call transform
 		if (editableEntity)
-			editableEntity.SetTransform(transform, true);
+			editableEntity.SetTransform(target_transform, true);
 	}
 };
