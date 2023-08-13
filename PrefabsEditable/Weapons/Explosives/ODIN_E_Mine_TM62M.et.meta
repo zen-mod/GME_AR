@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{ED80D725A6D4D08D}Prefabs/Weapons/Explosives/Mine_TM62M/ODIN_E_Mine_TM62M.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
