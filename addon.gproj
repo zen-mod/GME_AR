@@ -9,69 +9,69 @@ GameProject {
   GameProjectConfig PC {
    WidgetManagerSettings WidgetManagerSettings "{5D1956746A073D9B}" {
     StringTables {
-     StringTableDefinition "{5D195975235D4987}" {
-      StringTableSource "{5B2F0C5E122F3563}Language/OdinZeus_localization.st.st"
+     StringTableDefinition "{5ED6C9F07C619C36}" {
+      StringTableSource "{5B2F0C5E122F3563}Language/OdinZeus_localization.st"
       Languages {
-       LanguageDefinition "{5D195975218AA430}" {
+       LanguageDefinition "{5ED6C9F07A12AC64}" {
         Code "cs_cz"
-        StringTableRuntime "{1A307890AD35DFDF}Language/OdinZeus_localization.st.cs_cz.conf"
+        StringTableRuntime "{8EC5FC52087A9C7D}Language/OdinZeus_localization.cs_cz.conf"
        }
-       LanguageDefinition "{5D195975218AA46B}" {
+       LanguageDefinition "{5ED6C9F07A12A9C0}" {
         Code "de_de"
-        StringTableRuntime "{CF4E62A3BE96CEFF}Language/OdinZeus_localization.st.de_de.conf"
+        StringTableRuntime "{5BBBE6611BD98D5D}Language/OdinZeus_localization.de_de.conf"
        }
-       LanguageDefinition "{5D195975218AA47B}" {
+       LanguageDefinition "{5ED6C9F07A12A45F}" {
         Code "en_us"
-        StringTableRuntime "{91BEE8E8D465CBFE}Language/OdinZeus_localization.st.en_us.conf"
+        StringTableRuntime "{054B6C2A712A885C}Language/OdinZeus_localization.en_us.conf"
        }
-       LanguageDefinition "{5D195975218AA38F}" {
+       LanguageDefinition "{5ED6C9F07A12A58C}" {
         Code "es_es"
-        StringTableRuntime "{54F2A5613A67A0E1}Language/OdinZeus_localization.st.es_es.conf"
+        StringTableRuntime "{C00721A39F28E343}Language/OdinZeus_localization.es_es.conf"
        }
-       LanguageDefinition "{5D195975218AA39C}" {
+       LanguageDefinition "{5ED6C9F07A12A067}" {
         Code "fr_fr"
-        StringTableRuntime "{EF5A5056DCE443E3}Language/OdinZeus_localization.st.fr_fr.conf"
+        StringTableRuntime "{7BAFD49479AB0041}Language/OdinZeus_localization.fr_fr.conf"
        }
-       LanguageDefinition "{5D195975218AA3AC}" {
+       LanguageDefinition "{5ED6C9F07A129F17}" {
         Code "it_it"
-        StringTableRuntime "{6F46DF6271C6C01A}Language/OdinZeus_localization.st.it_it.conf"
+        StringTableRuntime "{FBB35BA0D48983B8}Language/OdinZeus_localization.it_it.conf"
        }
-       LanguageDefinition "{5D195975218AA3BC}" {
+       LanguageDefinition "{5ED6C9F07A129B99}" {
         Code "ja_jp"
-        StringTableRuntime "{7F5D62F04FB7F0B1}Language/OdinZeus_localization.st.ja_jp.conf"
+        StringTableRuntime "{EBA8E632EAF8B313}Language/OdinZeus_localization.ja_jp.conf"
        }
-       LanguageDefinition "{5D195975218AA3B3}" {
+       LanguageDefinition "{5ED6C9F07A129614}" {
         Code "ko_kr"
-        StringTableRuntime "{DFE34A5CDC9AF38E}Language/OdinZeus_localization.st.ko_kr.conf"
+        StringTableRuntime "{4B16CE9E79D5B02C}Language/OdinZeus_localization.ko_kr.conf"
        }
-       LanguageDefinition "{5D195975218AA3C1}" {
+       LanguageDefinition "{5ED6C9F07A12955E}" {
         Code "pl_pl"
-        StringTableRuntime "{8392ECA662756FF2}Language/OdinZeus_localization.st.pl_pl.conf"
+        StringTableRuntime "{17676864C73A2C50}Language/OdinZeus_localization.pl_pl.conf"
        }
-       LanguageDefinition "{5D195975218AA3D4}" {
+       LanguageDefinition "{5ED6C9F07A1291A6}" {
         Code "pt_br"
-        StringTableRuntime "{56E5766A598BA548}Language/OdinZeus_localization.st.pt_br.conf"
+        StringTableRuntime "{C210F2A8FCC4E6EA}Language/OdinZeus_localization.pt_br.conf"
        }
-       LanguageDefinition "{5D195975218AA1B2}" {
+       LanguageDefinition "{5ED6C9F07A128D81}" {
         Code "ru_ru"
-        StringTableRuntime "{03A462C2C4F2C03E}Language/OdinZeus_localization.st.ru_ru.conf"
+        StringTableRuntime "{9751E60061BD839C}Language/OdinZeus_localization.ru_ru.conf"
        }
-       LanguageDefinition "{5D195975218AA1DD}" {
+       LanguageDefinition "{5ED6C9F07A128A6B}" {
         Code "zh_cn"
-        StringTableRuntime "{534C5909917CAE76}Language/OdinZeus_localization.st.zh_cn.conf"
+        StringTableRuntime "{C7B9DDCB3433EDD4}Language/OdinZeus_localization.zh_cn.conf"
        }
       }
      }
     }
    }
   }
+  GameProjectConfig HEADLESS {
+  }
   GameProjectConfig XBOX_ONE {
   }
   GameProjectConfig XBOX_SERIES {
   }
   GameProjectConfig PS4 {
-  }
-  GameProjectConfig HEADLESS {
   }
  }
 }

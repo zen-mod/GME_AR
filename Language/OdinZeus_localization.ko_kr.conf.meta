@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{4B16CE9E79D5B02C}Language/OdinZeus_localization.ko_kr.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}
