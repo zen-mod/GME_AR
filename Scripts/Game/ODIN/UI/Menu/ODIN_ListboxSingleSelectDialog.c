@@ -1,7 +1,7 @@
 class ODIN_ListboxSingleSelectDialog: ChimeraMenuBase
 {
-	protected SCR_NavigationButtonComponent m_Cancel;
-	protected SCR_NavigationButtonComponent m_Confirm;
+	protected SCR_InputButtonComponent m_Cancel;
+	protected SCR_InputButtonComponent m_Confirm;
 	
 	ref ScriptInvoker m_OnConfirm = new ScriptInvoker();
 	ref ScriptInvoker m_OnCancel = new ScriptInvoker();
@@ -35,12 +35,12 @@ class ODIN_ListboxSingleSelectDialog: ChimeraMenuBase
 		
 		// Cancel button
 		Widget m_wCancelButton = rootWidget.FindAnyWidget("ButtonCancel");
-		m_Cancel = SCR_NavigationButtonComponent.GetNavigationButtonComponent("ButtonCancel", rootWidget);
+		m_Cancel = SCR_InputButtonComponent.GetInputButtonComponent("ButtonCancel", rootWidget);
 		if (m_Cancel)
 			m_Cancel.m_OnActivated.Insert(OnCancel);
 
 		// Confirm button
-		m_Confirm = SCR_NavigationButtonComponent.GetNavigationButtonComponent("ButtonOK", rootWidget);
+		m_Confirm = SCR_InputButtonComponent.GetInputButtonComponent("ButtonOK", rootWidget);
 		if (m_Confirm)
 			m_Confirm.m_OnActivated.Insert(OnConfirm);
 		
