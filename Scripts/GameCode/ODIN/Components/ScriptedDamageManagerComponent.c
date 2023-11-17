@@ -24,7 +24,7 @@ modded class ScriptedDamageManagerComponent : BaseScriptedDamageManagerComponent
 			GetOnDamage().Remove(ODIN_disableDamage);
 	}
 	
-	void ODIN_disableDamage(EDamageType type, float damage, HitZone pHitZone, IEntity instigator, inout vector outMat[3], float speed, int colliderID, int nodeID)
+	void ODIN_disableDamage(EDamageType type, float damage, HitZone pHitZone, Instigator instigator, inout vector hitTransform[3], float speed, int colliderID, int nodeID)
 	{
 		ChimeraCharacter char = ChimeraCharacter.Cast(GetOwner());
 		// null check might not be needed as this lives inside the ScriptedDamageManager component, and as such a char should always be "connected"

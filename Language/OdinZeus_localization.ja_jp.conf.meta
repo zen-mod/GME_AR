@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{EBA8E632EAF8B313}Language/OdinZeus_localization.ja_jp.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

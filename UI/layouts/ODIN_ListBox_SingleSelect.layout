@@ -69,7 +69,7 @@ FrameWidgetClass {
             SizeMode Auto
            }
            Color 1 0.48 0.043 1
-           style debugUI
+           style full
            {
             RichTextWidgetClass "{5DB9323F1974BF86}" : "{5E0F8422A1F05728}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading2.layout" {
              Name "TextTitel"
@@ -150,6 +150,11 @@ FrameWidgetClass {
                 }
                }
               }
+              ImageWidgetClass "{5DB6D18100D38307}" {
+               Prefab "{5DB6D18100D38307}"
+               "Is Visible" 0
+               "Blend Mode" Additive
+              }
              }
             }
            }
@@ -170,35 +175,8 @@ FrameWidgetClass {
             Padding 0 0 0 0
            }
            components {
-            SCR_NavigationButtonComponent "{5474BAC5DBCF129A}" {
+            SCR_InputButtonComponent "{5D346C3DD81D95CD}" {
              m_sLabel "#ODIN-UI_Listbox_OnCancel"
-             m_sActionName "MenuBack"
-            }
-           }
-           {
-            SizeLayoutWidgetClass "{5562AD435529FB36}" {
-             Prefab "{5562AD435529FB36}"
-             {
-              OverlayWidgetClass "{000000005E70868E}" {
-               Prefab "{000000005E70868E}"
-               Slot ButtonWidgetSlot "{5452C531C2876D63}" {
-                Padding 2 2 2 2
-               }
-               {
-                HorizontalLayoutWidgetClass "{00000000E3602307}" {
-                 Prefab "{00000000E3602307}"
-                 {
-                  RichTextWidgetClass "{00000000DB061E92}" {
-                   Prefab "{00000000DB061E92}"
-                   Slot LayoutSlot "{547AD5678196CD13}" {
-                    Padding 2 0 5 0
-                   }
-                  }
-                 }
-                }
-               }
-              }
-             }
             }
            }
           }
@@ -209,37 +187,9 @@ FrameWidgetClass {
             VerticalAlign 3
            }
            components {
-            SCR_NavigationButtonComponent "{5474BAC5DBCF129A}" {
+            SCR_InputButtonComponent "{5D346C3DD81D95CD}" {
+             m_sActionName "MenuTabRight"
              m_sLabel "#ODIN-UI_Listbox_OnConfirm"
-            }
-           }
-           {
-            SizeLayoutWidgetClass "{5562AD435529FB36}" {
-             Prefab "{5562AD435529FB36}"
-             Slot ButtonWidgetSlot "{5562AD435529FB5D}" {
-              HorizontalAlign 1
-             }
-             {
-              OverlayWidgetClass "{000000005E70868E}" {
-               Prefab "{000000005E70868E}"
-               Slot ButtonWidgetSlot "{5452C531C2876D63}" {
-                Padding 2 2 2 2
-               }
-               {
-                HorizontalLayoutWidgetClass "{00000000E3602307}" {
-                 Prefab "{00000000E3602307}"
-                 {
-                  RichTextWidgetClass "{00000000DB061E92}" {
-                   Prefab "{00000000DB061E92}"
-                   Slot LayoutSlot "{547AD5678196CD13}" {
-                    Padding 5 0 2 0
-                   }
-                  }
-                 }
-                }
-               }
-              }
-             }
             }
            }
           }
