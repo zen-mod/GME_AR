@@ -77,7 +77,7 @@ SCR_GameModeEditor GameMode_GameMaster : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Edi
 }
 GenericEntity : "{08C3C0CBFDBFE35A}PrefabsEditable/Auto/Props/Civilian/E_Notebook_01_Single_Blue.et" {
  components {
-  ODIN_IntelManagerComponent "{5986055E14A21E87}" {
+  GME_IntelManagerComponent "{5986055E14A21E87}" {
    m_sIntelTitle "Test Book Closed"
    m_sIntelContent "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
   }
@@ -90,13 +90,13 @@ AIWaypointCycle : "{0FBDE34BE96FB7BA}PrefabsEditable/Auto/AI/Waypoints/E_AIWaypo
 }
 GenericEntity : "{1B99870437838BB5}PrefabsEditable/Auto/Props/Civilian/E_Notebook_01_Open.et" {
  components {
-  ODIN_IntelManagerComponent "{5986055E14A21E87}" {
+  GME_IntelManagerComponent "{5986055E14A21E87}" {
    m_sIntelTitle "Test Book Open"
    m_sIntelContent "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
   }
   ActionsManagerComponent "{5985563B1A2B06F7}" {
    additionalActions {
-    ODIN_IntelUserAction "{59855D24072943F1}" {
+    GME_IntelUserAction "{59855D24072943F1}" {
      UIInfo UIInfo "{598728676F5FBE95}" {
       Name ""
       Description ""
@@ -157,13 +157,13 @@ GenericEntity : "{F4EB98A746D96060}PrefabsEditable/Auto/Compositions/Slotted/Slo
     GenericEntity {
      ID "5704A24D39D499D6"
      components {
-      ODIN_IntelManagerComponent "{5986055E14A21E87}" {
+      GME_IntelManagerComponent "{5986055E14A21E87}" {
        m_sIntelTitle "Test intel 2"
        m_sIntelContent "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
       }
       ActionsManagerComponent "{5985563B1A2B06F7}" {
        additionalActions {
-        ODIN_IntelUserAction "{59855D24072943F1}" {
+        GME_IntelUserAction "{59855D24072943F1}" {
          UIInfo UIInfo "{59855D2405AB6CDE}" {
           Name " "
           Description " "
@@ -176,7 +176,7 @@ GenericEntity : "{F4EB98A746D96060}PrefabsEditable/Auto/Compositions/Slotted/Slo
     GenericEntity {
      ID "5704A24D39D49E9D"
      components {
-      ODIN_IntelManagerComponent "{5986055E14A21E87}" {
+      GME_IntelManagerComponent "{5986055E14A21E87}" {
        m_sIntelTitle "Test Intel"
        m_sIntelContent "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
       }

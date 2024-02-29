@@ -78,7 +78,7 @@ GenericTerrainEntity GM_AchilliteIsland : "{221ABC927C672E4E}Prefabs/World/Defau
 }
 GenericEntity : "{0692BB439764BB1E}Prefabs/Props/Civilian/Notebook_01_base.et" {
  components {
-  ODIN_IntelManagerComponent "{5986055E14A21E87}" {
+  GME_IntelManagerComponent "{5986055E14A21E87}" {
    m_ActionSoundProject "{13F8D0DE67678118}Sounds/Items/_SharedData/PickUp/Items_PickUp_Map.acp"
    m_ActionSoundEventName "SOUND_PICK_UP"
   }

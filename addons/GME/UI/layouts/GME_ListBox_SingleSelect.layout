@@ -1,0 +1,205 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Color 0.014 0.014 0.014 1
+ {
+  SizeLayoutWidgetClass "{5DB9323F020033AB}" {
+   Name "SizeLayout1"
+   Slot FrameWidgetSlot "{5DB50470EA093BBD}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -260
+    OffsetLeft -260
+    PositionY -175
+    OffsetTop -175
+    SizeX 10
+    OffsetRight 250
+    SizeY 10
+    OffsetBottom 165
+    SizeToContent 1
+   }
+   Color 0.028 0.023 0.023 1
+   MinDesiredWidth 520
+   MinDesiredHeight 350
+   AllowMaxDesiredHeight 1
+   MaxDesiredHeight 400
+   {
+    OverlayWidgetClass "{5DB93238B35E2730}" {
+     Name "BoxOverlay"
+     Slot AlignableSlot "{5DB9323F0E283ED9}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0.031 0.023 0.023 1
+     {
+      PanelWidgetClass "{5DC50DA00CB1EF07}" {
+       Name "Border"
+       Slot OverlayWidgetSlot "{5DC50DA00CB1EF25}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       Color 0.761 0.386 0.078 1
+       style outline_2px
+      }
+      ImageWidgetClass "{5DC50DA07F83CFAF}" {
+       Name "Background"
+       Slot OverlayWidgetSlot "{5DC50DA07F83CFB4}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 2 2 2 2
+       }
+       Opacity 0.9
+       Color 0.042 0.04 0.044 1
+      }
+      VerticalLayoutWidgetClass "{5DB9323F1974BFBB}" {
+       Name "VerticalLayout0"
+       Slot OverlayWidgetSlot "{5DC50DA1ABF4A78C}" {
+       }
+       Color 0.039 0.033 0.033 1
+       {
+        HorizontalLayoutWidgetClass "{5DB9323F1974BFB8}" {
+         Name "TitlePanelLayout"
+         Slot LayoutSlot "{5DB50470FB678893}" {
+          SizeMode Fill
+          FillWeight 1
+         }
+         {
+          PanelWidgetClass "{5DB9323F1974BFB9}" {
+           Name "TitelPanel"
+           Slot LayoutSlot "{5DB50473AC4640B8}" {
+            Padding 0 0 0 0
+            SizeMode Auto
+           }
+           Color 1 0.48 0.043 1
+           style full
+           {
+            RichTextWidgetClass "{5DB9323F1974BF86}" : "{5E0F8422A1F05728}UI/layouts/WidgetLibrary/RichTextWidgets/RichText_Heading2.layout" {
+             Name "TextTitel"
+             Slot FrameWidgetSlot "{5DB5046F00CADF13}" {
+              PositionX 0
+              OffsetLeft 0
+              PositionY 0
+              OffsetTop 0
+              SizeX 540
+              OffsetRight -540
+              SizeY 30
+              OffsetBottom -30
+             }
+             Text "TextTitel"
+             "Font Size" 20
+             "Min Font Size" 20
+             "Horizontal Alignment" Center
+             "Vertical Alignment" Center
+            }
+           }
+          }
+         }
+        }
+        SizeLayoutWidgetClass "{5DB9323F1974BF87}" {
+         Name "ListBoxSizeLayout"
+         Slot LayoutSlot "{5DB75538B792E8BF}" {
+          Padding 10 10 10 10
+         }
+         AllowMinDesiredWidth 1
+         MinDesiredWidth 520
+         AllowMinDesiredHeight 1
+         MinDesiredHeight 240
+         AllowMaxDesiredHeight 1
+         MaxDesiredHeight 260
+         {
+          OverlayWidgetClass "{5DB9323F1974BF85}" {
+           Name "ListboxOverlay"
+           Slot AlignableSlot "{5DB92A78F0C7B470}" {
+            HorizontalAlign 3
+            VerticalAlign 3
+           }
+           {
+            PanelWidgetClass "{5DC50DA0D6D9A82A}" {
+             Name "Border"
+             Slot OverlayWidgetSlot "{5DC50DA0D6D9A835}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+             }
+             Opacity 0.5
+             Color 0.761 0.386 0.078 1
+             style outline_2px
+            }
+            ImageWidgetClass "{5DC50DA0D3AAFCDE}" {
+             Name "Background"
+             Slot OverlayWidgetSlot "{5DC50DA0D3AAFCEB}" {
+              HorizontalAlign 3
+              VerticalAlign 3
+              Padding 2 2 2 2
+             }
+             Color 0.026 0.024 0.025 1
+            }
+            OverlayWidgetClass "{5DB9323F1974BF82}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+             Name "ListBox0"
+             Slot OverlayWidgetSlot "{5DC50DA1ABF4A66F}" {
+              HorizontalAlign 3
+              VerticalAlign 0
+             }
+             {
+              ScrollLayoutWidgetClass "{56691148E692435A}" {
+               Prefab "{56691148E692435A}"
+               Slot OverlayWidgetSlot "{56691148E692437F}" {
+               }
+               {
+                VerticalLayoutWidgetClass "{56691148E013D981}" {
+                 Prefab "{56691148E013D981}"
+                 Slot AlignableSlot "{56691148E013D9A9}" {
+                 }
+                }
+               }
+              }
+              ImageWidgetClass "{5DB6D18100D38307}" {
+               Prefab "{5DB6D18100D38307}"
+               "Is Visible" 0
+               "Blend Mode" Additive
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        OverlayWidgetClass "{5DB9323F1974BF80}" {
+         Name "ResultButtonLayout"
+         Slot LayoutSlot "{5DB50473AC464037}" {
+          Padding 10 0 10 10
+         }
+         {
+          ButtonWidgetClass "{5DC50DA3BF4E4BBB}" : "{08CF3B69CB1ACBC4}UI/layouts/WidgetLibrary/Buttons/WLib_NavigationButton.layout" {
+           Name "ButtonCancel"
+           Slot OverlayWidgetSlot "{5DC50DA3BF4E4BC1}" {
+            HorizontalAlign 0
+            VerticalAlign 3
+            Padding 0 0 0 0
+           }
+           components {
+            SCR_InputButtonComponent "{5D346C3DD81D95CD}" {
+             m_sLabel "#GME-UI_Listbox_OnCancel"
+            }
+           }
+          }
+          ButtonWidgetClass "{5DC50DA3FD29EA8D}" : "{08CF3B69CB1ACBC4}UI/layouts/WidgetLibrary/Buttons/WLib_NavigationButton.layout" {
+           Name "ButtonOK"
+           Slot OverlayWidgetSlot "{5DC50DA3FD29EAA8}" {
+            HorizontalAlign 2
+            VerticalAlign 3
+           }
+           components {
+            SCR_InputButtonComponent "{5D346C3DD81D95CD}" {
+             m_sActionName "MenuTabRight"
+             m_sLabel "#GME-UI_Listbox_OnConfirm"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

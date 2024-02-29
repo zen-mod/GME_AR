@@ -1,10 +1,10 @@
 AIWaypointCycle {
  ID "59820BA0F3B4C026"
  components {
-  ODIN_EditableWaypointCycleComponent "{59820BA18441CD68}" {
+  GME_EditableWaypointCycleComponent "{59820BA18441CD68}" {
    m_EntityType WAYPOINT
    m_UIInfo SCR_EditableEntityUIInfo "{59820BA18AE1B54C}" {
-    Name "#ODIN-EditableEntity_AIWaypoint_Cycle_Name"
+    Name "#GME-EditableEntity_AIWaypoint_Cycle_Name"
     Icon "{2373DD0E0D31AF81}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Waypoint_Cycle.edds"
     m_aAutoLabels {
      7 124
