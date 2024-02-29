@@ -5,8 +5,10 @@
 
 # Change GitHub language categorization
 addons/**/*.c linguist-language=EnforceScript
+addons/**/*.st linguist-language=Stringtable
 
 optionals/**/*.c linguist-language=EnforceScript
+optionals/**/*.st linguist-language=Stringtable
 
 # Do not count extras in language usage stats
 extras/* linguist-vendored
