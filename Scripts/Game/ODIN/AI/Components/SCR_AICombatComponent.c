@@ -1,18 +1,24 @@
-
-
+//------------------------------------------------------------------------------------------------
 modded class SCR_AICombatComponent : ScriptComponent
 {
-	override bool SelectTarget(BaseTarget newTarget)
+	//------------------------------------------------------------------------------------------------
+	//! Resets selected target if it is not visible
+	override void EvaluateWeaponAndTarget(out bool outWeaponEvent, out bool outSelectedTargetChanged,
+		out BaseTarget outPrevTarget, out BaseTarget outCurrentTarget,
+		out bool outRetreatTargetChanged, out bool outCompartmentChanged)
 	{
-		// gotta do null check as otherwise we crash, as when there is no targets at spawn, NewTarget is null. So we just call super and call it a day
-		if (!newTarget)
-			return super.SelectTarget(newTarget);
+		BaseTarget prevTarget = m_SelectedTarget;
+		super.EvaluateWeaponAndTarget(outWeaponEvent, outSelectedTargetChanged, outPrevTarget, outCurrentTarget, outRetreatTargetChanged, outCompartmentChanged);
 		
-		// get visibility, if not visible AI can't change to that target, otherwise up to super
-		bool visible = ODIN_VisibilityHelper.GetVisibility(newTarget.GetTargetEntity());
-		if (!visible)
-			return false;
-		else
-			return super.SelectTarget(newTarget);
+		if (!outCurrentTarget)
+			return;
+		
+		bool visible = ODIN_VisibilityHelper.GetVisibility(outCurrentTarget.GetTargetEntity());
+		if (visible)
+			return;
+			
+		m_SelectedTarget = prevTarget;
+		outCurrentTarget = prevTarget;
+		outSelectedTargetChanged = false;
 	}
-};
+}

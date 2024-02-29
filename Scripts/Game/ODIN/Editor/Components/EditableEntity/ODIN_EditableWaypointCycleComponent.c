@@ -11,7 +11,7 @@ Special configuration for editable waypoint cycle.
 */
 class ODIN_EditableWaypointCycleComponent : SCR_EditableWaypointComponent
 {
-	override SCR_EditableEntityComponent EOnEditorPlace(out SCR_EditableEntityComponent parent, SCR_EditableEntityComponent recipient, EEditorPlacingFlags flags, bool isQueue)
+	override SCR_EditableEntityComponent EOnEditorPlace(out SCR_EditableEntityComponent parent, SCR_EditableEntityComponent recipient, EEditorPlacingFlags flags, bool isQueue, int playerID = 0)
 	{
 		//--- Add the group's waypoints to the waypoint cycle 
 		if (recipient)
@@ -26,7 +26,7 @@ class ODIN_EditableWaypointCycleComponent : SCR_EditableWaypointComponent
 			};
 		};
 		
-		return super.EOnEditorPlace(parent, recipient, flags, isQueue);
+		return super.EOnEditorPlace(parent, recipient, flags, isQueue, playerID);
 	}
 	
 	override void OnDelete(IEntity owner)

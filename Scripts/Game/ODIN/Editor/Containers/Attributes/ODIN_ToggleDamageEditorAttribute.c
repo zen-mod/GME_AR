@@ -18,7 +18,7 @@ class ODIN_ToggleDamageEditorAttribute : SCR_BaseEditorAttribute
 		if (!SCR_ChimeraCharacter.Cast(owner))
 			return null;
 		
-		ScriptedDamageManagerComponent damageComponent = ScriptedDamageManagerComponent.Cast(owner.FindComponent(ScriptedDamageManagerComponent));
+		SCR_DamageManagerComponent damageComponent = SCR_DamageManagerComponent.Cast(owner.FindComponent(SCR_DamageManagerComponent));
 		if (!damageComponent) 
 			return null;
 		
@@ -36,7 +36,7 @@ class ODIN_ToggleDamageEditorAttribute : SCR_BaseEditorAttribute
 			return;
 		
 		// todo, move it to helper when verified it works 
-		ScriptedDamageManagerComponent damageComponent = ScriptedDamageManagerComponent.Cast(owner.FindComponent(ScriptedDamageManagerComponent));
+		SCR_DamageManagerComponent damageComponent = SCR_DamageManagerComponent.Cast(owner.FindComponent(SCR_DamageManagerComponent));
 		if (!damageComponent) 
 			return;
 		
