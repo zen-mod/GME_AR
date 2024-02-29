@@ -1,0 +1,12 @@
+* text=auto
+*.png binary
+*.jpg binary
+*.edds binary
+
+# Change GitHub language categorization
+addons/**/*.c linguist-language=EnforceScript
+
+optionals/**/*.c linguist-language=EnforceScript
+
+# Do not count extras in language usage stats
+extras/* linguist-vendored
