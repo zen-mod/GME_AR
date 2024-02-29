@@ -5,7 +5,7 @@
 
 <p align="center">
     <a href="https://github.com/zen-mod/GME_AR/releases">
-        <img src="https://img.shields.io/github/release/zen-mod/GME_AR.svg?style=flat-square" alt="Game Master Version">
+        <img src="https://img.shields.io/github/release/zen-mod/GME_AR.svg?style=flat-square&label=Version" alt="Game Master Version">
     </a>
     <a href="https://github.com/zen-mod/GME_AR/issues">
         <img src="https://img.shields.io/github/issues-raw/zen-mod/GME.svg?style=flat-square&label=Issues" alt="Game Master Enhanced Issues">
