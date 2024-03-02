@@ -6,7 +6,7 @@
 # request, preferably including an email address.
 
 # CORE TEAM
-Crowdedlight
+Crowdedlight <crowdedhd@gmail.com>
 Kexanone <kexanone@gmail.com>
 
 # CONTRIBUTORS
