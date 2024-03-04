@@ -18,7 +18,7 @@
     </a>
 </p>
 
-**Game Master Enhanced**, also known as **GME**, is an Arma Reforger mod aimed at improving and expanding the functionality of the Game Master real-time editor.
+**Game Master Enhanced (GME)**, formerly known as Odin's Game Master Additions, is an Arma Reforger mod aimed at improving and expanding the functionality of the Game Master real-time editor.
 
 GME is built with communities who use Game Master as their primary mission making tool in mind by enabling them with powerful tools to create dynamic scenarios in an efficient manner.
 
