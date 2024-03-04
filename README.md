@@ -23,7 +23,7 @@
 GME is built with communities who use Game Master as their primary mission making tool in mind by enabling them with powerful tools to create dynamic scenarios in an efficient manner.
 
 ## Features
-- Makes saving/loading of scenarios available in MP.
+- Makes saving/loading of scenarios available in MP (**PC only**).
 - Context action to teleport a player to their group leader.
 - Toggle damage and visibility of objects.
 - Formation, stance and skill attributes for AI.
