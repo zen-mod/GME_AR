@@ -16,10 +16,10 @@ modded class SCR_DamageManagerComponent : BaseSCR_DamageManagerComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override bool SCR_HijackDamageHandling(notnull BaseDamageContext damageContext)
+	override bool HijackDamageHandling(notnull BaseDamageContext damageContext)
 	{
 		if (m_bGME_isDamageEnabled)
-			return super.SCR_HijackDamageHandling(damageContext);
+			return super.HijackDamageHandling(damageContext);
 		
 		return true;
 	}
