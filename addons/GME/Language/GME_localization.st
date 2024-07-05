@@ -35,35 +35,6 @@ StringTable {
    Author "crow"
    LastChanged "kexanone"
   }
-  CustomStringTableItem "{5D19597480C39F02}" {
-   Id "GME-EditableEntity_AIWaypoint_Cycle_Name"
-   Target_en_us "CYCLE"
-   Target_en_us_edited ""
-   Target_fr_fr "RÉITÉRER"
-   Target_it_it "CICLICO"
-   Target_de_de "WIEDERHOLEN"
-   Target_es_es "CICLO"
-   Target_cs_cz "OPAKUJ"
-   Target_pl_pl "PĘTLA"
-   Target_ru_ru "ЗАЦИКЛИТЬ"
-   Target_ja_jp "サイクル"
-   Target_ko_kr "순환"
-   Target_pt_br "PASSAR"
-   Target_zh_cn "廻旋"
-   Comment ""
-   DevNote ""
-   Repro ""
-   ActorGender NONE
-   Terminology NONE
-   Status DEVELOPMENT_PENDING
-   NonTranslatable 0
-   MaxLength 0
-   Modified 1561942876
-   Author "Kex"
-   LastChanged "crow"
-   ImageLink ""
-   Hidden 0
-  }
   CustomStringTableItem "{5D19597480C381A5}" {
    Id "GME-Editor_Attribute_CompletionRadius_Name"
    Target_en_us "Completion radius"
