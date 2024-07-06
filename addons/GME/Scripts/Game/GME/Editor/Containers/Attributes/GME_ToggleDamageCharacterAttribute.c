@@ -1,12 +1,12 @@
 //------------------------------------------------------------------------------------------------
-//! Entity attribute for toggle damage on vehicle
+//! Entity attribute for toggle damage on unit
 [BaseContainerProps(), SCR_BaseEditorAttributeCustomTitle()]
-class GME_ToggleDamageVehicleEditorAttribute : GME_ToggleDamageEditorAttribute
+class GME_ToggleDamageCharacterAttribute : GME_ToggleDamageEditorAttribute
 {
 	//------------------------------------------------------------------------------------------------
 	override SCR_BaseEditorAttributeVar ReadVariable(Managed item, SCR_AttributesManagerEditorComponent manager)
 	{
-		if (!SCR_EditableVehicleComponent.Cast(item))
+		if (!SCR_EditableCharacterComponent.Cast(item))
 			return null;
 		
 		return super.ReadVariable(item, manager);
