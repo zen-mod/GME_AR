@@ -12,15 +12,33 @@ class GME_Modules_Base : GenericEntity
 	[Attribute(defvalue: "false", desc: "Module will get deleted immediatly when true")]
 	protected bool m_bDeleteImmediately;
 	
+	protected bool m_bInitDone = false;
+	
+	//------------------------------------------------------------------------------------------------
+	//! Add functionality to the module by overriding this method
+	void Run();
+	
+	//------------------------------------------------------------------------------------------------
+	//! Triggered when the module gets moved
+	void OnMoved(vector oldTransform[4], vector newTransform[4]);
+	
+	//------------------------------------------------------------------------------------------------
+	//! Triggered when the module gets deleted
+	void OnDelete();
+	
+	//------------------------------------------------------------------------------------------------
+	//! Returns true after the initial attribute window was closed
+	//! Can be used to distinguish whether an attribute is changed during init or later
+	bool IsInitDone()
+	{
+		return m_bInitDone;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	void GME_Module_Base(IEntitySource src, IEntity parent)
 	{
 		SetEventMask(EntityEvent.INIT);
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Add functionality to the module by overriding this method
-	void Run();
 	
 	//------------------------------------------------------------------------------------------------
 	override protected void EOnInit(IEntity owner)
@@ -53,7 +71,7 @@ class GME_Modules_Base : GenericEntity
 		}
 		else
 		{
-			OnRun();
+			OnInitDone();
 		}
 	}
 	
@@ -68,12 +86,13 @@ class GME_Modules_Base : GenericEntity
 			attributesManager.GetOnAttributesCancel().Remove(OnInitialDialogClosedServer);
 		}
 		
-		OnRun();
+		OnInitDone();
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected void OnRun()
+	protected void OnInitDone()
 	{
+		m_bInitDone = true;
 		Run();
 		
 		if (m_bDeleteImmediately)
@@ -82,13 +101,5 @@ class GME_Modules_Base : GenericEntity
 			SCR_EntityHelper.DeleteEntityAndChildren(this);
 		}
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Triggered when the module gets moved
-	void OnMoved(vector oldTransform[4], vector newTransform[4]);
-	
-	//------------------------------------------------------------------------------------------------
-	//! Triggered when the module gets deleted
-	void OnDelete();
 }
 
