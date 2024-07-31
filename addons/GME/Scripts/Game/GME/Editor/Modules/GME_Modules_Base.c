@@ -48,7 +48,7 @@ class GME_Modules_Base : GenericEntity
 			
 			if (rpl.IsOwner())
 			{
-				attributesManager.StartEditing(this);
+				attributesManager.StartEditing(FindComponent(GME_EditableModuleComponent));
 			}
 		}
 		else
