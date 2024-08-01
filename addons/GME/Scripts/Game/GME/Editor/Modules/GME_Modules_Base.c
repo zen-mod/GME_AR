@@ -71,7 +71,8 @@ class GME_Modules_Base : GenericEntity
 		}
 		else
 		{
-			OnInitDone();
+			if (rpl.Role() == RplRole.Authority)
+				OnInitDoneServer();
 		}
 	}
 	
@@ -86,11 +87,11 @@ class GME_Modules_Base : GenericEntity
 			attributesManager.GetOnAttributesCancel().Remove(OnInitialDialogClosedServer);
 		}
 		
-		OnInitDone();
+		OnInitDoneServer();
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected void OnInitDone()
+	protected void OnInitDoneServer()
 	{
 		m_bInitDone = true;
 		Run();
