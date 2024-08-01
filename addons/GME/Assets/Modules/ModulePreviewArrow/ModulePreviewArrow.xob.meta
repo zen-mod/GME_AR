@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A215E87110025E26}ModulePreviewArrow.xob"
+ Name "{A215E87110025E26}Assets/Modules/ModulePreviewArrow/ModulePreviewArrow.xob"
  Configurations {
   FBXResourceClass PC {
    MaterialAssigns {
