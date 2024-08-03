@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-class GME_Modules_PlacingAction_PlaceEntity : GME_Modules_PlacingAction_EditorBrowserBase
+class GME_Modules_InitAction_PlaceEntity : GME_Modules_InitAction_EditorBrowserBase
 {
 	//------------------------------------------------------------------------------------------------
 	override void RunOwner(array<IEntity> params = null)

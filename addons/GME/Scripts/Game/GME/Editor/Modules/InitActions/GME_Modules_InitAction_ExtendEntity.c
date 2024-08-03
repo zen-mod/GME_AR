@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-class GME_Modules_PlacingAction_ExtendEntity : GME_Modules_PlacingAction_EditorBrowserBase
+class GME_Modules_InitAction_ExtendEntity : GME_Modules_InitAction_EditorBrowserBase
 {
 	[Attribute(desc: "Getter on the module for the entity to extend")]
 	protected string m_sEntityToExtendGetter;
@@ -8,7 +8,7 @@ class GME_Modules_PlacingAction_ExtendEntity : GME_Modules_PlacingAction_EditorB
 	override void OnInitServer()
 	{
 		IEntity entityToExtend = m_pModule.GetPlacingParamServer(m_sEntityToExtendGetter);
-		m_pModule.RunPlacingActionOwner({entityToExtend});
+		m_pModule.RunInitActionOwner({entityToExtend});
 	}
 	
 	//------------------------------------------------------------------------------------------------
