@@ -153,9 +153,18 @@ class GME_Modules_EditableModuleComponent : SCR_EditableSystemComponent
 		Replication.BumpMe();
 		
 		if (m_iCurrentInitActionIdx < m_iInitActionCount)
+		{
 			m_aInitActions[m_iCurrentInitActionIdx].OnInitServer();
+		}
 		else
+		{
+			foreach (GME_Modules_InitAction_Base action : m_aInitActions)
+			{
+				action.OnConfirmServer();
+			}
+			
 			m_pModule.OnInitDoneServer();
+		}	
 	}
 	
 	//------------------------------------------------------------------------------------------------
