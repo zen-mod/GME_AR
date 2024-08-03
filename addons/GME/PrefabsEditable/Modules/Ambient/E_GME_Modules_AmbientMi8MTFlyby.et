@@ -4,6 +4,7 @@ GME_Modules_AmbientFlyby : "{7B675D73A2E19F7F}PrefabsEditable/Modules/Ambient/E_
   GME_Modules_EditableModuleComponent "{61FEF0AC6FC047BE}" {
    m_UIInfo SCR_EditableEntityUIInfo "{61FEF0AC6FC047A8}" {
     Name "#GME-Modules_AmbientFlyby_Mi8MT_name"
+    m_sFaction "USSR"
    }
   }
  }

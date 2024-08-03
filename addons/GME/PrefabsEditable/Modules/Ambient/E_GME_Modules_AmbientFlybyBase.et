@@ -4,7 +4,11 @@ GME_Modules_AmbientFlyby : "{57C4079FD5B14D31}PrefabsEditable/Modules/E_GME_Modu
   GME_Modules_EditableModuleComponent "{61FEF0AC6FC047BE}" {
    m_UIInfo SCR_EditableEntityUIInfo "{61FEF0AC6FC047A8}" {
     Icon "{BFBA42C85CB25019}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Helicopter.edds"
-    m_Image "{BFBA42C85CB25019}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Helicopter.edds"
+    m_Image "{6C492D2DC9F2EF04}UI/Textures/Editor/ContentBrowser/ContentBrowser_Vehicle_Helicopter.edds"
+   }
+   m_aInitActions {
+    GME_Modules_InitAction_EditAttributes "{62071BC22085279E}" {
+    }
    }
   }
   SCR_PreviewEntityComponent "{61FEF54A09A195CE}" {
