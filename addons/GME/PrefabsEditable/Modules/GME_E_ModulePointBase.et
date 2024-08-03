@@ -1,0 +1,12 @@
+GME_Modules_Base : "{57C4079FD5B14D31}PrefabsEditable/Modules/GME_E_ModuleBase.et" {
+ ID "61FEF0AC6FC068E1"
+ components {
+  GME_EditablePointComponent "{61FEF0AC6FC047BE}" {
+   m_UIInfo GME_EditablePointUIInfo "{61FEF0AC6FC047A8}" {
+    Icon "{D03F58B327C582D0}UI/Textures/Editor/EditableEntities/Locations/EditableEntity_Location_Base.edds"
+    m_Image "{D03F58B327C582D0}UI/Textures/Editor/EditableEntities/Locations/EditableEntity_Location_Base.edds"
+   }
+  }
+ }
+ m_bDeleteImmediately 0
+}
