@@ -12,7 +12,7 @@ modded class SCR_AttributesManagerEditorComponent : SCR_BaseEditorComponent
 	//------------------------------------------------------------------------------------------------
 	protected bool GME_IsEditingModule()
 	{
-		return GME_EditableModuleComponent.Cast(m_aEditedItems[0]);
+		return GME_Modules_EditableModuleComponent.Cast(m_aEditedItems[0]);
 	}
 	
 	//------------------------------------------------------------------------------------------------

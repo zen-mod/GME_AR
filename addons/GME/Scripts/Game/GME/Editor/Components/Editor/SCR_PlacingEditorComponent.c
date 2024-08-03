@@ -21,7 +21,7 @@ modded class SCR_PlacingEditorComponent : SCR_BaseEditorComponent
 		RplComponent moduleRpl = RplComponent.Cast(module.FindComponent(RplComponent));
 		PlayerController playerCtrl = GetGame().GetPlayerManager().GetPlayerController(playerID);
 		moduleRpl.Give(playerCtrl.GetRplIdentity());
-		GME_EditableModuleComponent editableModuleComponent = GME_EditableModuleComponent.Cast(entity);
+		GME_Modules_EditableModuleComponent editableModuleComponent = GME_Modules_EditableModuleComponent.Cast(entity);
 		editableModuleComponent.OnInitServer();
 	}
 		

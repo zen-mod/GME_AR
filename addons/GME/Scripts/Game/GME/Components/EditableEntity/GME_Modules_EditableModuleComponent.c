@@ -1,11 +1,11 @@
 //------------------------------------------------------------------------------------------------
 [ComponentEditorProps(category: "GameScripted/Editor (Editables)", description: "", icon: "WBData/ComponentEditorProps/componentEditor.png")]
-class GME_EditableModuleComponentClass : SCR_EditableSystemComponentClass
+class GME_Modules_EditableModuleComponentClass : SCR_EditableSystemComponentClass
 {
 }
 
 //------------------------------------------------------------------------------------------------
-class GME_EditableModuleComponent : SCR_EditableSystemComponent
+class GME_Modules_EditableModuleComponent : SCR_EditableSystemComponent
 {
 	[Attribute(desc: "Interactive actions that will run immediately after placing the module", category: "Editable Entity")]
 	protected ref array<ref GME_Modules_PlacingAction_Base> m_aPlacingActions;
