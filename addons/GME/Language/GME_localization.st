@@ -576,7 +576,7 @@ StringTable {
    Hidden 0
   }
   CustomStringTableItem "{61FF20CD7A430C94}" {
-   Id "GME-Module_AmbientFlyby_Mi8MT_name"
+   Id "GME-Modules_AmbientFlyby_Mi8MT_name"
    Target_en_us "Ambient Mi-8MT Flyby"
    Target_de_de "Atmosphärischer Vorbeiflug eines Mi-9MT"
    Modified 1644113190
@@ -584,7 +584,7 @@ StringTable {
    LastChanged "Kexanone"
   }
   CustomStringTableItem "{61FF20CD461AC2BD}" {
-   Id "GME-Module_AmbientFlyby_UH1H_name"
+   Id "GME-Modules_AmbientFlyby_UH1H_name"
    Target_en_us "Ambient UH-1H Flyby"
    Target_de_de "Atmosphärischer Vorbeiflug eines UH-1H"
    Modified 1644113187
