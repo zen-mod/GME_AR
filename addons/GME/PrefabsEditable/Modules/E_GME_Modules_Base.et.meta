@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{57C4079FD5B14D31}PrefabsEditable/Modules/GME_E_ModuleBase.et"
+ Name "{57C4079FD5B14D31}PrefabsEditable/Modules/E_GME_Modules_Base.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

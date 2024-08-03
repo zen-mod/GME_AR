@@ -1,11 +1,11 @@
 GME_Modules_Base {
  ID "61FEF0AC6FC068E1"
  components {
-  GME_EditableModuleComponent "{61FEF0AC6FC047BE}" {
+  GME_Modules_EditableModuleComponent "{61FEF0AC6FC047BE}" {
    m_EntityType SYSTEM
    m_UIInfo SCR_EditableEntityUIInfo "{61FEF0AC6FC047A8}" {
     Icon "{DD5F23CBB1731598}UI/Textures/Editor/EditableEntities/Systems/EditableEntity_System_Base.edds"
-    m_Image "{DD5F23CBB1731598}UI/Textures/Editor/EditableEntities/Systems/EditableEntity_System_Base.edds"
+    m_Image "{42484F03A5B5B395}UI/Textures/Editor/Toolbar/ToolbarFilter_Systems.edds"
     m_aAuthoredLabels {
      7
     }
@@ -24,6 +24,7 @@ GME_Modules_Base {
    m_State 96
   }
   RplComponent "{61FEF0AC6FC047D2}" {
+   Streamable Disabled
   }
   Hierarchy "{61FEF0AC6FC047D7}" {
   }

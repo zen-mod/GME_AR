@@ -591,6 +591,14 @@ StringTable {
    Author "Kexanone"
    LastChanged "Kexanone"
   }
+  CustomStringTableItem "{620508C43021603F}" {
+   Id "GME-Notification_PLACE_PREFAB_FIRST"
+   Target_en_us "Place %1 first!"
+   Target_de_de "Plaziere %1 zuerst!"
+   Modified 1644511846
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
   CustomStringTableItem "{5DC552DA2913D62A}" {
    Id "GME-UI_Listbox_OnCancel"
    Target_en_us "Cancel"
