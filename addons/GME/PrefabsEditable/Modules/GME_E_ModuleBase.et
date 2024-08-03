@@ -24,6 +24,7 @@ GME_Modules_Base {
    m_State 96
   }
   RplComponent "{61FEF0AC6FC047D2}" {
+   Streamable Disabled
   }
   Hierarchy "{61FEF0AC6FC047D7}" {
   }
