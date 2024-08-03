@@ -3,7 +3,7 @@ GME_Modules_SpawnReinforcements : "{57C4079FD5B14D31}PrefabsEditable/Modules/E_G
  components {
   GME_EditableModuleComponent "{61FEF0AC6FC047BE}" {
    m_UIInfo SCR_EditableEntityUIInfo "{61FEF0AC6FC047A8}" {
-    Name "#GME-Module_SpawnReinforcements_name"
+    Name "#GME-Modules_SpawnReinforcements_name"
     Icon "{A489F552FB7489C3}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Custom.edds"
     m_Image "{8083D425A749EE46}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_Custom.edds"
    }

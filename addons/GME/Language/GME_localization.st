@@ -576,7 +576,7 @@ StringTable {
    Hidden 0
   }
   CustomStringTableItem "{6202E59FD262279C}" {
-   Id "GME-Module_LZ_name"
+   Id "GME-Modules_LZ_name"
    Target_en_us "LZ"
    Target_de_de "LZ"
    Target_pl_pl "LZ (Strefa lądowania)"
@@ -585,7 +585,7 @@ StringTable {
    LastChanged "Kexanone"
   }
   CustomStringTableItem "{6202E59FDCD14A02}" {
-   Id "GME-Module_RallyPoint_name"
+   Id "GME-Modules_RallyPoint_name"
    Target_en_us "Rally Point"
    Target_de_de "Sammelpunkt"
    Target_pl_pl "Punkt spotkania"
@@ -594,7 +594,7 @@ StringTable {
    LastChanged "Kexanone"
   }
   CustomStringTableItem "{6202F0DA1EEF77C4}" {
-   Id "GME-Module_SpawnReinforcements_name"
+   Id "GME-Modules_SpawnReinforcements_name"
    Target_en_us "Spawn Reinforcements"
    Target_it_it "Genera rinforzi"
    Target_de_de "Erstelle Verstärkung"
@@ -607,7 +607,7 @@ StringTable {
    LastChanged "Kexanone"
   }
   CustomStringTableItem "{62055062957C227C}" {
-   Id "GME-ModuleAttributes_RTBAndDespawn_Name"
+   Id "GME-Modules_Attribute_RTBAndDespawn_Name"
    Target_en_us "RTB and Despawn"
    Target_it_it "Indietro ed elimina"
    Target_de_de "Zurück und Löschen<"
@@ -620,7 +620,7 @@ StringTable {
    LastChanged "Kexanone"
   }
   CustomStringTableItem "{620550636AF46B2D}" {
-   Id "GME-ModuleAttributes_StayAtLZ_Name"
+   Id "GME-Modules_Attribute_StayAtLZ_Name"
    Target_en_us "Stay at LZ"
    Target_it_it "Soggiorna a LZ"
    Target_de_de "Bei LZ verbleiben"
@@ -633,7 +633,7 @@ StringTable {
    LastChanged "Kexanone"
   }
   CustomStringTableItem "{62055062CA08FD71}" {
-   Id "GME-ModuleAttributes_VehicleBehavior_Name"
+   Id "GME-Modules_Attribute_VehicleBehavior_Name"
    Target_en_us "Vehicle behaviour"
    Target_it_it "Comportamento del veicolo"
    Target_de_de "Fahrzeugverhalten"
