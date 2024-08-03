@@ -4,6 +4,7 @@ class GME_Modules_InitAction_EditorBrowserBase : GME_Modules_InitAction_Base
 	[Attribute(desc: "Setter on the module for the spawned entity")]
 	protected string m_sSpawnedEntitySetter;
 	protected SCR_EditableEntityComponent m_pEntity;
+	protected SimulationState m_eEntitySimulationState;
 	
 	[Attribute(desc: "Content browser configuration")]
 	protected ref SCR_EditorContentBrowserDisplayConfig m_ContentBrowserConfig;
@@ -36,7 +37,14 @@ class GME_Modules_InitAction_EditorBrowserBase : GME_Modules_InitAction_Base
 	void OnPlacingConfirmedServer(RplId prefabID, SCR_EditableEntityComponent entity, int playerID)
 	{
 		m_pEntity = entity;
-		SCR_PhysicsHelper.ChangeSimulationState(m_pEntity.GetOwner(), SimulationState.NONE);
+		
+		Physics physics = m_pEntity.GetOwner().GetPhysics();
+		if (physics)
+		{
+			m_eEntitySimulationState = physics.GetSimulationState();
+			physics.ChangeSimulationState(SimulationState.NONE);
+		}
+		
 		m_pPlacingManager.GetOnPlaceEntityServer().Remove(OnPlacingConfirmedServer);
 		m_pPlacingManager.GME_GetOnPlacingCanceledServer().Remove(OnPlacingCanceledServer);
 		m_pModule.SetPlacingParamServer(m_sSpawnedEntitySetter, entity.GetOwner());
@@ -55,7 +63,7 @@ class GME_Modules_InitAction_EditorBrowserBase : GME_Modules_InitAction_Base
 	override void OnConfirmServer()
 	{
 		if (m_pEntity)
-			SCR_PhysicsHelper.ChangeSimulationState(m_pEntity.GetOwner(), SimulationState.SIMULATION);
+			SCR_PhysicsHelper.ChangeSimulationState(m_pEntity.GetOwner(), m_eEntitySimulationState);
 	}
 	
 	//------------------------------------------------------------------------------------------------
