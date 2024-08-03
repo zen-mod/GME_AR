@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{57C4079FD5B14D31}PrefabsEditable/Modules/GME_E_ModuleBase.et"
+ Name "{B11FA818A134D5AE}PrefabsEditable/Modules/Reinforcements/E_GME_Modules_RallyPoint.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

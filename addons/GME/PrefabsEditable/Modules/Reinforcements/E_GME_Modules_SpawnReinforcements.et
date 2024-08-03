@@ -1,4 +1,4 @@
-GME_Modules_SpawnReinforcements : "{57C4079FD5B14D31}PrefabsEditable/Modules/GME_E_ModuleBase.et" {
+GME_Modules_SpawnReinforcements : "{57C4079FD5B14D31}PrefabsEditable/Modules/E_GME_Modules_Base.et" {
  ID "61FEF0AC6FC068E1"
  components {
   GME_EditableModuleComponent "{61FEF0AC6FC047BE}" {
@@ -9,10 +9,10 @@ GME_Modules_SpawnReinforcements : "{57C4079FD5B14D31}PrefabsEditable/Modules/GME
    }
    m_aPlacingActions {
     GME_Modules_PlacingAction_RequireEntityInWorld "{62046D5104B3C822}" {
-     m_sRequiredPrefab "{06E1603BE4D59D63}PrefabsEditable/Modules/Reinforcements/GME_E_ModuleLZ.et"
+     m_sRequiredPrefab "{06E1603BE4D59D63}PrefabsEditable/Modules/Reinforcements/E_GME_Modules_LZ.et"
     }
     GME_Modules_PlacingAction_RequireEntityInWorld "{62046D56AE44F6D2}" {
-     m_sRequiredPrefab "{B11FA818A134D5AE}PrefabsEditable/Modules/Reinforcements/GME_E_ModuleRallyPoint.et"
+     m_sRequiredPrefab "{B11FA818A134D5AE}PrefabsEditable/Modules/Reinforcements/E_GME_Modules_RallyPoint.et"
     }
     GME_Modules_PlacingAction_EditAttributes "{62036B9EF9C75CAC}" {
     }
