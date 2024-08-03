@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{7B675D73A2E19F7F}PrefabsEditable/Modules/E_GME_Modules_AmbientFlyby.et"
+ Name "{7B675D73A2E19F7F}PrefabsEditable/Modules/Ambient/E_GME_Modules_AmbientFlybyBase.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
