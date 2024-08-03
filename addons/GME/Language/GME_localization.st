@@ -595,6 +595,22 @@ StringTable {
    ImageLink ""
    Hidden 0
   }
+  CustomStringTableItem "{6207444BFA04A823}" {
+   Id "GME-Editor_ContentBrowser_Filter_AI_Name"
+   Target_en_us "AI"
+   Target_de_de "KI"
+   Modified 1644643579
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62072CE8E3670EA2}" {
+   Id "GME-Editor_ContentBrowser_FilterCategory_MODULETYPE_Name"
+   Target_en_us "Module Type"
+   Target_de_de "Modultyp"
+   Modified 1644639744
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
   CustomStringTableItem "{61FF20CD7A430C94}" {
    Id "GME-Modules_AmbientFlyby_Mi8MT_name"
    Target_en_us "Ambient Mi-8MT Flyby"
@@ -632,14 +648,6 @@ StringTable {
    Target_en_us "Start distance"
    Target_de_de "Startdistanz"
    Modified 1644634991
-   Author "Kexanone"
-   LastChanged "Kexanone"
-  }
-  CustomStringTableItem "{62072CE8E3670EA2}" {
-   Id "GME-Editor_ContentBrowser_FilterCategory_MODULETYPE_Name"
-   Target_en_us "Module Type"
-   Target_de_de "Modultyp"
-   Modified 1644639744
    Author "Kexanone"
    LastChanged "Kexanone"
   }

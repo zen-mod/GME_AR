@@ -5,6 +5,9 @@ GME_Modules_AmbientFlyby : "{57C4079FD5B14D31}PrefabsEditable/Modules/E_GME_Modu
    m_UIInfo SCR_EditableEntityUIInfo "{61FEF0AC6FC047A8}" {
     Icon "{BFBA42C85CB25019}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Helicopter.edds"
     m_Image "{6C492D2DC9F2EF04}UI/Textures/Editor/ContentBrowser/ContentBrowser_Vehicle_Helicopter.edds"
+    m_aAuthoredLabels + {
+     9350
+    }
    }
    m_aInitActions {
     GME_Modules_InitAction_EditAttributes "{62071BC22085279E}" {
