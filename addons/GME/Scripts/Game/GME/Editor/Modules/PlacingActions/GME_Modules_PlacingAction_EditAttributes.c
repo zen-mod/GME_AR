@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-class GME_ModulePlacingAction_EditAttributes : GME_ModulePlacingAction_Base
+class GME_Modules_PlacingAction_EditAttributes : GME_Modules_PlacingAction_Base
 {
 	//------------------------------------------------------------------------------------------------
 	override void OnInitServer()

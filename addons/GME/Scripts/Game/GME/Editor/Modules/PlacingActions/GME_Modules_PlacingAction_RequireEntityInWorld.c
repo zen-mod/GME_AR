@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-class GME_ModulePlacingAction_RequireEntityInWorld : GME_ModulePlacingAction_Base
+class GME_Modules_PlacingAction_RequireEntityInWorld : GME_Modules_PlacingAction_Base
 {
 	[Attribute(uiwidget: UIWidgets.ResourcePickerThumbnail, desc: "Prefab name of the entity that has to be present in the world", params: "et")]
 	protected ResourceName m_sRequiredPrefab;

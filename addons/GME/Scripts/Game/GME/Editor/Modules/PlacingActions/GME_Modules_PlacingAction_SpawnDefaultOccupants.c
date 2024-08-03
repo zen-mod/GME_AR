@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-class GME_ModulePlacingAction_SpawnDefaultOccupants : GME_ModulePlacingAction_Base
+class GME_Modules_PlacingAction_SpawnDefaultOccupants : GME_Modules_PlacingAction_Base
 {
 	[Attribute(desc: "Getter on the module for the vehicle to occupy")]
 	protected string m_sVehicleToOccupyGetter;
