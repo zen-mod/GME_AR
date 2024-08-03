@@ -36,7 +36,7 @@ class GME_Modules_EditablePointComponentClass : GME_Modules_EditableModuleCompon
 //------------------------------------------------------------------------------------------------
 class GME_Modules_EditablePointComponent  : GME_Modules_EditableModuleComponent
 {
-	protected ref GME_EditablePointUIInfo m_CustomUIInfo = new GME_EditablePointUIInfo();
+	protected ref GME_Modules_EditablePointUIInfo m_CustomUIInfo = new GME_Modules_EditablePointUIInfo();
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)

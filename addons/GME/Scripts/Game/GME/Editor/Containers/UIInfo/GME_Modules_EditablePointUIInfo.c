@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps()]
-class GME_EditablePointUIInfo : SCR_EditableEntityUIInfo
+class GME_Modules_EditablePointUIInfo : SCR_EditableEntityUIInfo
 {
 	protected LocalizedString m_sCallsign;
 	
