@@ -635,6 +635,14 @@ StringTable {
    Author "Kexanone"
    LastChanged "Kexanone"
   }
+  CustomStringTableItem "{62072CE8E3670EA2}" {
+   Id "GME-Editor_ContentBrowser_FilterCategory_MODULETYPE_Name"
+   Target_en_us "Module Type"
+   Target_de_de "Modultyp"
+   Modified 1644639744
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
   CustomStringTableItem "{620508C43021603F}" {
    Id "GME-Notification_PLACE_PREFAB_FIRST"
    Target_en_us "Place %1 first!"
