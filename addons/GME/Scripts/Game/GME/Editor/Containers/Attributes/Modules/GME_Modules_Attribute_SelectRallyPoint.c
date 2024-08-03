@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps(), SCR_BaseEditorAttributeCustomTitle()]
-class GME_ModuleAttributes_SelectLZ : GME_ModuleAttributes_SelectPointBase
+class GME_Modules_Attribute_SelectRallyPoint : GME_Modules_Attribute_SelectPointBase
 {
 	//------------------------------------------------------------------------------------------------
 	override SCR_BaseEditorAttributeVar ReadVariable(Managed item, SCR_AttributesManagerEditorComponent manager)
@@ -32,12 +32,12 @@ class GME_ModuleAttributes_SelectLZ : GME_ModuleAttributes_SelectPointBase
 		if (!module)
 			return;
 		
-		module.SetLZPosition(m_aAllPoints[var.GetInt()].GetOwner().GetOrigin());
+		module.SetRPPosition(m_aAllPoints[var.GetInt()].GetOwner().GetOrigin());
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	override protected bool IsPoint(SCR_EditableEntityComponent entity)
 	{
-		return GME_Modules_LZ.Cast(entity.GetOwner());
+		return GME_Modules_RallyPoint.Cast(entity.GetOwner());
 	}
 }

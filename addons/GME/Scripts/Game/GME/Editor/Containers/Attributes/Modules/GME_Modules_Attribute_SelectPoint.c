@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps(), SCR_BaseEditorAttributeCustomTitle()]
-class GME_ModuleAttributes_SelectPointBase : SCR_BasePresetsEditorAttribute
+class GME_Modules_Attribute_SelectPointBase : SCR_BasePresetsEditorAttribute
 {
 	protected ref array<SCR_EditableEntityComponent> m_aAllPoints = {};
 	
