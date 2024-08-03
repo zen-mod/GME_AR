@@ -20,6 +20,19 @@ class GME_Modules_SpawnReinforcements : GME_Modules_Base
 	
 	protected const int RTB_DELAY_MS = 15000;
 	
+	//------------------------------------------------------------------------------------------------
+	override protected void EOnInit(IEntity owner)
+	{
+		if (!GetGame().InPlayMode() || !Replication.IsServer())
+			return super.EOnInit(owner);
+		
+		m_SpawnPointParams.TransformMode = ETransformMode.WORLD;
+		GetWorldTransform(m_SpawnPointParams.Transform);
+		m_LZParams.TransformMode = ETransformMode.WORLD;
+		m_RPParams.TransformMode = ETransformMode.WORLD;
+		
+		super.EOnInit(owner);
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void Run()
@@ -136,42 +149,6 @@ class GME_Modules_SpawnReinforcements : GME_Modules_Base
 	GME_Reinforcements_EVehicleBehavior GetVehicleBehavior()
 	{
 		return m_eVehicleBehavior;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Temporary
-	override protected void EOnInit(IEntity owner)
-	{
-		super.EOnInit(owner);
-		
-		if (!GetGame().InPlayMode() || !Replication.IsServer())
-			return;
-		
-		SCR_EditableEntityCore core = SCR_EditableEntityCore.Cast(SCR_EditableEntityCore.GetInstance(SCR_EditableEntityCore));
-		set<SCR_EditableEntityComponent> entities = new set<SCR_EditableEntityComponent>();
-		core.GetAllEntities(entities, true);
-		
-		foreach (SCR_EditableEntityComponent entity : entities)
-		{
-			if (GME_Modules_LZ.Cast(entity.GetOwner()))
-			{
-				m_LZParams.TransformMode = ETransformMode.WORLD;
-				entity.GetTransform(m_LZParams.Transform);
-			}
-			else if (GME_Modules_RallyPoint.Cast(entity.GetOwner()))
-			{
-				m_RPParams.TransformMode = ETransformMode.WORLD;
-				entity.GetTransform(m_RPParams.Transform);
-			}
-		}
-		
-		GME_Modules_EditableModuleComponent edit = GME_Modules_EditableModuleComponent.Cast(FindComponent(GME_Modules_EditableModuleComponent));
-		
-		m_SpawnPointParams.TransformMode = ETransformMode.WORLD;
-		edit.GetTransform(m_SpawnPointParams.Transform);
-		float yaw = (m_LZParams.Transform[3] - m_SpawnPointParams.Transform[3]).ToYaw();
-		Math3D.AnglesToMatrix(Vector(yaw, 0, 0), m_SpawnPointParams.Transform);
-		edit.SetTransform(m_SpawnPointParams.Transform);
 	}
 }
 
