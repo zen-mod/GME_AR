@@ -1,10 +1,10 @@
 //------------------------------------------------------------------------------------------------
 class GME_Modules_PlacingAction_Base : ScriptAndConfig
 {
-	protected GME_EditableModuleComponent m_pModule;
+	protected GME_Modules_EditableModuleComponent m_pModule;
 	
 	//------------------------------------------------------------------------------------------------
-	void SetModule(GME_EditableModuleComponent module)
+	void SetModule(GME_Modules_EditableModuleComponent module)
 	{
 		m_pModule = module;
 	}

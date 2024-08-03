@@ -25,8 +25,8 @@ class GME_Modules_Base : GenericEntity
 		if (!GetGame().InPlayMode() && !Replication.IsServer())
 			return;
 		
-		// Interactive mode: OnInitDoneServer gets called by GME_EditableModuleComponent instead
-		if (FindComponent(GME_EditableModuleComponent))
+		// Interactive mode: OnInitDoneServer gets called by GME_Modules_EditableModuleComponent instead
+		if (FindComponent(GME_Modules_EditableModuleComponent))
 			return;
 		
 		// Complete init for non-interative mode
