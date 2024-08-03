@@ -575,34 +575,19 @@ StringTable {
    ImageLink ""
    Hidden 0
   }
-  CustomStringTableItem "{6202E59FD262279C}" {
-   Id "GME-Modules_LZ_name"
-   Target_en_us "LZ"
-   Target_de_de "LZ"
-   Target_pl_pl "LZ (Strefa lądowania)"
-   Modified 1644521376
+  CustomStringTableItem "{62072CE78F00B469}" {
+   Id "GME-Editor_ContentBrowser_Filter_REINFORCEMENTS_Name"
+   Target_en_us "Reinforcements"
+   Target_de_de "Verstärkungen"
+   Modified 1644643107
    Author "Kexanone"
    LastChanged "Kexanone"
   }
-  CustomStringTableItem "{6202E59FDCD14A02}" {
-   Id "GME-Modules_RallyPoint_name"
-   Target_en_us "Rally Point"
-   Target_de_de "Sammelpunkt"
-   Target_pl_pl "Punkt spotkania"
-   Modified 1644358788
-   Author "Kexanone"
-   LastChanged "Kexanone"
-  }
-  CustomStringTableItem "{6202F0DA1EEF77C4}" {
-   Id "GME-Modules_SpawnReinforcements_name"
-   Target_en_us "Spawn Reinforcements"
-   Target_it_it "Genera rinforzi"
-   Target_de_de "Erstelle Verstärkung"
-   Target_pl_pl "Spawnuj Wzmocnienia (posiłki)"
-   Target_ja_jp "増援生成"
-   Target_ko_kr "증원군 소환"
-   Target_zh_cn "生成增援"
-   Modified 1644360233
+  CustomStringTableItem "{62072CE8E3670EA2}" {
+   Id "GME-Editor_ContentBrowser_FilterCategory_MODULETYPE_Name"
+   Target_en_us "Module Type"
+   Target_de_de "Modultyp"
+   Modified 1644639744
    Author "Kexanone"
    LastChanged "Kexanone"
   }
@@ -645,11 +630,34 @@ StringTable {
    Author "Kexanone"
    LastChanged "Kexanone"
   }
-  CustomStringTableItem "{62072CE8E3670EA2}" {
-   Id "GME-Editor_ContentBrowser_FilterCategory_MODULETYPE_Name"
-   Target_en_us "Module Type"
-   Target_de_de "Modultyp"
-   Modified 1644639744
+  CustomStringTableItem "{6202E59FD262279C}" {
+   Id "GME-Modules_LZ_name"
+   Target_en_us "LZ"
+   Target_de_de "LZ"
+   Target_pl_pl "LZ (Strefa lądowania)"
+   Modified 1644521376
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{6202E59FDCD14A02}" {
+   Id "GME-Modules_RallyPoint_name"
+   Target_en_us "Rally Point"
+   Target_de_de "Sammelpunkt"
+   Target_pl_pl "Punkt spotkania"
+   Modified 1644358788
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{6202F0DA1EEF77C4}" {
+   Id "GME-Modules_SpawnReinforcements_name"
+   Target_en_us "Spawn Reinforcements"
+   Target_it_it "Genera rinforzi"
+   Target_de_de "Erstelle Verstärkung"
+   Target_pl_pl "Spawnuj Wzmocnienia (posiłki)"
+   Target_ja_jp "増援生成"
+   Target_ko_kr "증원군 소환"
+   Target_zh_cn "生成增援"
+   Modified 1644360233
    Author "Kexanone"
    LastChanged "Kexanone"
   }

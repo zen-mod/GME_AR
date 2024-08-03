@@ -1,4 +1,4 @@
-GME_Modules_LZ : "{DFF6ACA2BBB52FF2}PrefabsEditable/Modules/Reinforcements/E_GME_Modules_PointBase.et" {
+GME_Modules_LZ : "{DFF6ACA2BBB52FF2}PrefabsEditable/Modules/E_GME_Modules_PointBase.et" {
  ID "61FEF0AC6FC068E1"
  components {
   GME_Modules_EditablePointComponent "{61FEF0AC6FC047BE}" {
@@ -6,6 +6,9 @@ GME_Modules_LZ : "{DFF6ACA2BBB52FF2}PrefabsEditable/Modules/Reinforcements/E_GME
     Name "#GME-Modules_LZ_name"
     Icon "{73BF1C0CEFC8B7B9}UI/Textures/Editor/EditableEntities/Objectives/EditableEntity_Objective_GetOut.edds"
     m_Image "{F26F67F2F0A4E838}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_GetOut.edds"
+    m_aAuthoredLabels + {
+     9350
+    }
    }
   }
  }
