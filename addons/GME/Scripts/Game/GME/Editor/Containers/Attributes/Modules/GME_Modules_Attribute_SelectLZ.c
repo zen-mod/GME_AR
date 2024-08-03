@@ -5,7 +5,7 @@ class GME_Modules_Attribute_SelectLZ : GME_Modules_Attribute_SelectPointBase
 	//------------------------------------------------------------------------------------------------
 	override SCR_BaseEditorAttributeVar ReadVariable(Managed item, SCR_AttributesManagerEditorComponent manager)
 	{
-		GME_EditableModuleComponent editableModuleComponent = GME_EditableModuleComponent.Cast(item);
+		GME_Modules_EditableModuleComponent editableModuleComponent = GME_Modules_EditableModuleComponent.Cast(item);
 		if (!editableModuleComponent)
 			return null;
 		
@@ -24,7 +24,7 @@ class GME_Modules_Attribute_SelectLZ : GME_Modules_Attribute_SelectPointBase
 	{
 		super.WriteVariable(item, var, manager, playerID);
 		
-		GME_EditableModuleComponent editableModuleComponent = GME_EditableModuleComponent.Cast(item);
+		GME_Modules_EditableModuleComponent editableModuleComponent = GME_Modules_EditableModuleComponent.Cast(item);
 		if (!editableModuleComponent)
 			return;
 		

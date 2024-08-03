@@ -5,7 +5,7 @@ class GME_Modules_Attribute_VehicleBehavior : SCR_BasePresetsEditorAttribute
 	//------------------------------------------------------------------------------------------------
 	override SCR_BaseEditorAttributeVar ReadVariable(Managed item, SCR_AttributesManagerEditorComponent manager)
 	{
-		GME_EditableModuleComponent editableModuleComponent = GME_EditableModuleComponent.Cast(item);
+		GME_Modules_EditableModuleComponent editableModuleComponent = GME_Modules_EditableModuleComponent.Cast(item);
 		if (!editableModuleComponent)
 			return null;
 		
@@ -19,7 +19,7 @@ class GME_Modules_Attribute_VehicleBehavior : SCR_BasePresetsEditorAttribute
 	//------------------------------------------------------------------------------------------------
 	override void WriteVariable(Managed item, SCR_BaseEditorAttributeVar var, SCR_AttributesManagerEditorComponent manager, int playerID)
 	{
-		GME_EditableModuleComponent editableModuleComponent = GME_EditableModuleComponent.Cast(item);
+		GME_Modules_EditableModuleComponent editableModuleComponent = GME_Modules_EditableModuleComponent.Cast(item);
 		if (!editableModuleComponent)
 			return;
 		

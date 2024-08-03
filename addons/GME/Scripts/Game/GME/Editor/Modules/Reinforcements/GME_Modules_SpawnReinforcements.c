@@ -165,7 +165,7 @@ class GME_Modules_SpawnReinforcements : GME_Modules_Base
 			}
 		}
 		
-		GME_EditableModuleComponent edit = GME_EditableModuleComponent.Cast(FindComponent(GME_EditableModuleComponent));
+		GME_Modules_EditableModuleComponent edit = GME_Modules_EditableModuleComponent.Cast(FindComponent(GME_Modules_EditableModuleComponent));
 		
 		m_SpawnPointParams.TransformMode = ETransformMode.WORLD;
 		edit.GetTransform(m_SpawnPointParams.Transform);

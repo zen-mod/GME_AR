@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------------------------
 [ComponentEditorProps(category: "GameScripted/Editor (Editables)", description: "", icon: "WBData/ComponentEditorProps/componentEditor.png")]
-class GME_EditablePointComponentClass : GME_EditableModuleComponentClass
+class GME_Modules_EditablePointComponentClass : GME_Modules_EditableModuleComponentClass
 {
 	protected SCR_Faction m_pCallsignFaction;
 	protected ref array<int> m_aCallsignIdcs = {};
@@ -34,7 +34,7 @@ class GME_EditablePointComponentClass : GME_EditableModuleComponentClass
 }
 
 //------------------------------------------------------------------------------------------------
-class GME_EditablePointComponent  : GME_EditableModuleComponent
+class GME_Modules_EditablePointComponent  : GME_Modules_EditableModuleComponent
 {
 	protected ref GME_EditablePointUIInfo m_CustomUIInfo = new GME_EditablePointUIInfo();
 	
@@ -48,7 +48,7 @@ class GME_EditablePointComponent  : GME_EditableModuleComponent
 				
 		m_CustomUIInfo.CopyFrom(GetInfo());
 		SetInfoInstance(m_CustomUIInfo);
-		GME_EditablePointComponentClass prefabData = GME_EditablePointComponentClass.Cast(GetEditableEntityData());
+		GME_Modules_EditablePointComponentClass prefabData = GME_Modules_EditablePointComponentClass.Cast(GetEditableEntityData());
 		m_CustomUIInfo.SetCallsign(prefabData.GetNextCallsign());
 		Event_OnUIRefresh.Invoke();
 	}
