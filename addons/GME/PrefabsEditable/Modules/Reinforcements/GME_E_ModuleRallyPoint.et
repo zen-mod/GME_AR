@@ -1,0 +1,12 @@
+GME_Modules_RallyPoint : "{DFF6ACA2BBB52FF2}PrefabsEditable/Modules/Reinforcements/GME_E_ModulePointBase.et" {
+ ID "61FEF0AC6FC068E1"
+ components {
+  GME_EditablePointComponent "{61FEF0AC6FC047BE}" {
+   m_UIInfo GME_EditablePointUIInfo "{61FEF0AC6FC047A8}" {
+    Name "#GME-Module_RallyPoint_name"
+    Icon "{FDE4238500835875}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_Move.edds"
+    m_Image "{2006D8738EA93571}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Waypoint_Move.edds"
+   }
+  }
+ }
+}
