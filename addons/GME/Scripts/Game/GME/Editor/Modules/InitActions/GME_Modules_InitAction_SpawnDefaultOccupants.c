@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-class GME_Modules_PlacingAction_SpawnDefaultOccupants : GME_Modules_PlacingAction_Base
+class GME_Modules_InitAction_SpawnDefaultOccupants : GME_Modules_InitAction_Base
 {
 	[Attribute(desc: "Getter on the module for the vehicle to occupy")]
 	protected string m_sVehicleToOccupyGetter;
@@ -19,7 +19,7 @@ class GME_Modules_PlacingAction_SpawnDefaultOccupants : GME_Modules_PlacingActio
 	//------------------------------------------------------------------------------------------------
 	override void OnInitServer()
 	{
-		m_pModule.RunPlacingActionServer();
+		m_pModule.RunInitActionServer();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ class GME_Modules_PlacingAction_SpawnDefaultOccupants : GME_Modules_PlacingActio
 		}
 		
 		m_pCompartmentManager.GetOnDoneSpawningDefaultOccupants().Remove(OnOccupantsSpawned);
-		m_pModule.OnPlacingActionCompleted();
+		m_pModule.OnInitActionCompleted();
 	}
 	
 	//------------------------------------------------------------------------------------------------

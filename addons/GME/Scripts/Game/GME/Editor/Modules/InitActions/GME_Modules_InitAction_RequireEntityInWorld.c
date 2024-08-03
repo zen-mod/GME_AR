@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-class GME_Modules_PlacingAction_RequireEntityInWorld : GME_Modules_PlacingAction_Base
+class GME_Modules_InitAction_RequireEntityInWorld : GME_Modules_InitAction_Base
 {
 	[Attribute(uiwidget: UIWidgets.ResourcePickerThumbnail, desc: "Prefab name of the entity that has to be present in the world", params: "et")]
 	protected ResourceName m_sRequiredPrefab;
@@ -10,7 +10,7 @@ class GME_Modules_PlacingAction_RequireEntityInWorld : GME_Modules_PlacingAction
 	//------------------------------------------------------------------------------------------------
 	override void OnInitServer()
 	{
-		m_pModule.RunPlacingActionOwner();
+		m_pModule.RunInitActionOwner();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -24,13 +24,13 @@ class GME_Modules_PlacingAction_RequireEntityInWorld : GME_Modules_PlacingAction
 		{
 			if (entity.GetPrefab() == m_sRequiredPrefab)
 			{
-				m_pModule.OnPlacingActionCompleted();
+				m_pModule.OnInitActionCompleted();
 				return;
 			}
 		}
 		
 		SCR_PlacingEditorComponent placingManager = SCR_PlacingEditorComponent.Cast(SCR_PlacingEditorComponent.GetInstance(SCR_PlacingEditorComponent, true, true));
 		SCR_NotificationsComponent.SendLocal(m_eNotificationOnFailure, placingManager.GetPrefabID(m_sRequiredPrefab));
-		m_pModule.OnPlacingActionCanceled();
+		m_pModule.OnInitActionCanceled();
 	}
 }

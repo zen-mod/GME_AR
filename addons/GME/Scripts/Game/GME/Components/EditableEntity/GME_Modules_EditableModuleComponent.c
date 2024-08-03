@@ -8,11 +8,11 @@ class GME_Modules_EditableModuleComponentClass : SCR_EditableSystemComponentClas
 class GME_Modules_EditableModuleComponent : SCR_EditableSystemComponent
 {
 	[Attribute(desc: "Interactive actions that will run immediately after placing the module", category: "Editable Entity")]
-	protected ref array<ref GME_Modules_PlacingAction_Base> m_aPlacingActions;
+	protected ref array<ref GME_Modules_InitAction_Base> m_aInitActions;
 	
 	[RplProp()]
-	protected int m_iCurrentPlacingActionIdx = 0;
-	protected int m_iPlacingActionCount;
+	protected int m_iCurrentInitActionIdx = 0;
+	protected int m_iInitActionCount;
 	
 	protected GME_Modules_Base m_pModule;
 	
@@ -40,7 +40,7 @@ class GME_Modules_EditableModuleComponent : SCR_EditableSystemComponent
 		
 		m_pModule = GME_Modules_Base.Cast(owner);
 		
-		foreach (GME_Modules_PlacingAction_Base action : m_aPlacingActions)
+		foreach (GME_Modules_InitAction_Base action : m_aInitActions)
 		{
 			action.SetModule(this);
 		}
@@ -49,10 +49,10 @@ class GME_Modules_EditableModuleComponent : SCR_EditableSystemComponent
 	//------------------------------------------------------------------------------------------------
 	void OnInitServer()
 	{
-		m_iPlacingActionCount = m_aPlacingActions.Count();
+		m_iInitActionCount = m_aInitActions.Count();
 		
-		if (m_iCurrentPlacingActionIdx < m_iPlacingActionCount)
-			m_aPlacingActions[m_iCurrentPlacingActionIdx].OnInitServer();
+		if (m_iCurrentInitActionIdx < m_iInitActionCount)
+			m_aInitActions[m_iCurrentInitActionIdx].OnInitServer();
 		else
 			m_pModule.OnInitDoneServer();
 	}
@@ -114,61 +114,61 @@ class GME_Modules_EditableModuleComponent : SCR_EditableSystemComponent
 	
 	
 	//------------------------------------------------------------------------------------------------
-	void RunPlacingActionOwner(array<IEntity> params = null)
+	void RunInitActionOwner(array<IEntity> params = null)
 	{
-		Rpc(RpcDo_RunPlacingActionOwner, ActionParamsToRpl(params));
+		Rpc(RpcDo_RunInitActionOwner, ActionParamsToRpl(params));
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	protected void RpcDo_RunPlacingActionOwner(array<RplId> params)
+	protected void RpcDo_RunInitActionOwner(array<RplId> params)
 	{
-		m_aPlacingActions[m_iCurrentPlacingActionIdx].RunOwner(ActionParamsFromRpl(params));
+		m_aInitActions[m_iCurrentInitActionIdx].RunOwner(ActionParamsFromRpl(params));
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void RunPlacingActionServer(array<IEntity> params = null)
+	void RunInitActionServer(array<IEntity> params = null)
 	{
-		Rpc(RpcDo_RunPlacingActionServer, ActionParamsToRpl(params));
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcDo_RunPlacingActionServer(array<RplId> params)
-	{
-		m_aPlacingActions[m_iCurrentPlacingActionIdx].RunServer(ActionParamsFromRpl(params));
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void OnPlacingActionCompleted()
-	{
-		Rpc(OnPlacingActionCompletedServer);
+		Rpc(RpcDo_RunInitActionServer, ActionParamsToRpl(params));
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void OnPlacingActionCompletedServer()
+	protected void RpcDo_RunInitActionServer(array<RplId> params)
+	{
+		m_aInitActions[m_iCurrentInitActionIdx].RunServer(ActionParamsFromRpl(params));
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void OnInitActionCompleted()
+	{
+		Rpc(OnInitActionCompletedServer);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void OnInitActionCompletedServer()
 	{		
-		m_iCurrentPlacingActionIdx++;
+		m_iCurrentInitActionIdx++;
 		Replication.BumpMe();
 		
-		if (m_iCurrentPlacingActionIdx < m_iPlacingActionCount)
-			m_aPlacingActions[m_iCurrentPlacingActionIdx].OnInitServer();
+		if (m_iCurrentInitActionIdx < m_iInitActionCount)
+			m_aInitActions[m_iCurrentInitActionIdx].OnInitServer();
 		else
 			m_pModule.OnInitDoneServer();
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void OnPlacingActionCanceled()
+	void OnInitActionCanceled()
 	{
-		Rpc(OnPlacingActionCanceledServer);
+		Rpc(OnInitActionCanceledServer);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void OnPlacingActionCanceledServer()
+	protected void OnInitActionCanceledServer()
 	{
-		foreach (GME_Modules_PlacingAction_Base action : m_aPlacingActions)
+		foreach (GME_Modules_InitAction_Base action : m_aInitActions)
 		{
 			action.OnCancelServer();
 		}

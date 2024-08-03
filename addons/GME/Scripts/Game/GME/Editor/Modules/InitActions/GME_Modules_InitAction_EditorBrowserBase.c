@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-class GME_Modules_PlacingAction_EditorBrowserBase : GME_Modules_PlacingAction_Base
+class GME_Modules_InitAction_EditorBrowserBase : GME_Modules_InitAction_Base
 {
 	[Attribute(desc: "Setter on the module for the spawned entity")]
 	protected string m_sSpawnedEntitySetter;
@@ -13,14 +13,14 @@ class GME_Modules_PlacingAction_EditorBrowserBase : GME_Modules_PlacingAction_Ba
 	//------------------------------------------------------------------------------------------------
 	override void OnInitServer()
 	{
-		m_pModule.RunPlacingActionOwner();
+		m_pModule.RunInitActionOwner();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void RunOwner(array<IEntity> params = null)
 	{
 		m_pPlacingManager = SCR_PlacingEditorComponent.Cast(SCR_PlacingEditorComponent.GetInstance(SCR_PlacingEditorComponent, true, true));
-		m_pModule.RunPlacingActionServer({m_pPlacingManager.GetOwner()});
+		m_pModule.RunInitActionServer({m_pPlacingManager.GetOwner()});
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ class GME_Modules_PlacingAction_EditorBrowserBase : GME_Modules_PlacingAction_Ba
 		m_pPlacingManager.GetOnPlaceEntityServer().Remove(OnPlacingConfirmedServer);
 		m_pPlacingManager.GME_GetOnPlacingCanceledServer().Remove(OnPlacingCanceledServer);
 		m_pModule.SetPlacingParamServer(m_sSpawnedEntitySetter, entity.GetOwner());
-		m_pModule.OnPlacingActionCompleted();
+		m_pModule.OnInitActionCompleted();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ class GME_Modules_PlacingAction_EditorBrowserBase : GME_Modules_PlacingAction_Ba
 	{
 		m_pPlacingManager.GetOnPlaceEntityServer().Remove(OnPlacingConfirmedServer);
 		m_pPlacingManager.GME_GetOnPlacingCanceledServer().Remove(OnPlacingCanceledServer);
-		m_pModule.OnPlacingActionCanceled();
+		m_pModule.OnInitActionCanceled();
 	}
 	
 	//------------------------------------------------------------------------------------------------

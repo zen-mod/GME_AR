@@ -1,10 +1,10 @@
 //------------------------------------------------------------------------------------------------
-class GME_Modules_PlacingAction_EditAttributes : GME_Modules_PlacingAction_Base
+class GME_Modules_InitAction_EditAttributes : GME_Modules_InitAction_Base
 {
 	//------------------------------------------------------------------------------------------------
 	override void OnInitServer()
 	{
-		m_pModule.RunPlacingActionOwner();
+		m_pModule.RunInitActionOwner();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -22,6 +22,6 @@ class GME_Modules_PlacingAction_EditAttributes : GME_Modules_PlacingAction_Base
 		SCR_AttributesManagerEditorComponent attributesManager = SCR_AttributesManagerEditorComponent.Cast(SCR_AttributesManagerEditorComponent.GetInstance(SCR_AttributesManagerEditorComponent));
 		attributesManager.GetOnAttributesConfirm().Remove(OnEditingCompleted);
 		attributesManager.GetOnAttributesCancel().Remove(OnEditingCompleted);
-		m_pModule.OnPlacingActionCompleted();
+		m_pModule.OnInitActionCompleted();
 	}
 }
