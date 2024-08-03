@@ -16,5 +16,5 @@ GME_Modules_AmbientFlyby : "{57C4079FD5B14D31}PrefabsEditable/Modules/E_GME_Modu
    }
   }
  }
- m_bShowAttributesOnInit 0
+ m_bDeleteImmediately 0
 }
