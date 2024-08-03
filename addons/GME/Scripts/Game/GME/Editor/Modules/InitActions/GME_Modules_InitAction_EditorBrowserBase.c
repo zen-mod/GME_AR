@@ -36,6 +36,7 @@ class GME_Modules_InitAction_EditorBrowserBase : GME_Modules_InitAction_Base
 	void OnPlacingConfirmedServer(RplId prefabID, SCR_EditableEntityComponent entity, int playerID)
 	{
 		m_pEntity = entity;
+		SCR_PhysicsHelper.ChangeSimulationState(m_pEntity.GetOwner(), SimulationState.NONE);
 		m_pPlacingManager.GetOnPlaceEntityServer().Remove(OnPlacingConfirmedServer);
 		m_pPlacingManager.GME_GetOnPlacingCanceledServer().Remove(OnPlacingCanceledServer);
 		m_pModule.SetPlacingParamServer(m_sSpawnedEntitySetter, entity.GetOwner());
@@ -48,6 +49,13 @@ class GME_Modules_InitAction_EditorBrowserBase : GME_Modules_InitAction_Base
 		m_pPlacingManager.GetOnPlaceEntityServer().Remove(OnPlacingConfirmedServer);
 		m_pPlacingManager.GME_GetOnPlacingCanceledServer().Remove(OnPlacingCanceledServer);
 		m_pModule.OnInitActionCanceled();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	override void OnConfirmServer()
+	{
+		if (m_pEntity)
+			SCR_PhysicsHelper.ChangeSimulationState(m_pEntity.GetOwner(), SimulationState.SIMULATION);
 	}
 	
 	//------------------------------------------------------------------------------------------------

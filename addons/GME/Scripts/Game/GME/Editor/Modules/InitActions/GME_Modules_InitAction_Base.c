@@ -26,6 +26,11 @@ class GME_Modules_InitAction_Base : ScriptAndConfig
 	void RunServer(array<IEntity> params = null);
 	
 	//------------------------------------------------------------------------------------------------
+	//! Called when all init actions are completed
+	void OnConfirmServer();
+	
+	//------------------------------------------------------------------------------------------------
+	//! Called when any init action has been cancelled
 	//! Do clean-up here when module has been canceled
 	void OnCancelServer();
 }
