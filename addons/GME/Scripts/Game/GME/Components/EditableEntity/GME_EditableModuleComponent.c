@@ -8,7 +8,7 @@ class GME_EditableModuleComponentClass : SCR_EditableSystemComponentClass
 class GME_EditableModuleComponent : SCR_EditableSystemComponent
 {
 	[Attribute(desc: "Interactive actions that will run immediately after placing the module", category: "Editable Entity")]
-	protected ref array<ref GME_ModulePlacingAction_Base> m_aPlacingActions;
+	protected ref array<ref GME_Modules_PlacingAction_Base> m_aPlacingActions;
 	
 	[RplProp()]
 	protected int m_iCurrentPlacingActionIdx = 0;
@@ -40,7 +40,7 @@ class GME_EditableModuleComponent : SCR_EditableSystemComponent
 		
 		m_pModule = GME_Modules_Base.Cast(owner);
 		
-		foreach (GME_ModulePlacingAction_Base action : m_aPlacingActions)
+		foreach (GME_Modules_PlacingAction_Base action : m_aPlacingActions)
 		{
 			action.SetModule(this);
 		}
@@ -168,7 +168,7 @@ class GME_EditableModuleComponent : SCR_EditableSystemComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void OnPlacingActionCanceledServer()
 	{
-		foreach (GME_ModulePlacingAction_Base action : m_aPlacingActions)
+		foreach (GME_Modules_PlacingAction_Base action : m_aPlacingActions)
 		{
 			action.OnCancelServer();
 		}

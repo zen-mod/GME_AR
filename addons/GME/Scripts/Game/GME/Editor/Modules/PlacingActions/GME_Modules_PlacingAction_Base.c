@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-class GME_ModulePlacingAction_Base : ScriptAndConfig
+class GME_Modules_PlacingAction_Base : ScriptAndConfig
 {
 	protected GME_EditableModuleComponent m_pModule;
 	

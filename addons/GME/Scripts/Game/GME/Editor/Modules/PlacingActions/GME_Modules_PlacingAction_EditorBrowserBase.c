@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-class GME_ModulePlacingAction_EditorBrowserBase : GME_ModulePlacingAction_Base
+class GME_Modules_PlacingAction_EditorBrowserBase : GME_Modules_PlacingAction_Base
 {
 	[Attribute(desc: "Setter on the module for the spawned entity")]
 	protected string m_sSpawnedEntitySetter;

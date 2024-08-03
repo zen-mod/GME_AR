@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-class GME_ModulePlacingAction_ExtendEntity : GME_ModulePlacingAction_EditorBrowserBase
+class GME_Modules_PlacingAction_ExtendEntity : GME_Modules_PlacingAction_EditorBrowserBase
 {
 	[Attribute(desc: "Getter on the module for the entity to extend")]
 	protected string m_sEntityToExtendGetter;
