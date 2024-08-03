@@ -40,6 +40,14 @@ GME_Modules_SpawnReinforcements : "{57C4079FD5B14D31}PrefabsEditable/Modules/E_G
     }
    }
   }
+  SCR_PreviewEntityComponent "{62070866842D0C76}" {
+   m_aEntries {
+    SCR_BasePreviewEntry "{62070866BA39D66E}" {
+     m_Mesh "{A215E87110025E26}Assets/Modules/ModulePreviewArrow/ModulePreviewArrow.xob"
+     m_Shape MESH
+    }
+   }
+  }
  }
  m_bDeleteImmediately 0
 }
