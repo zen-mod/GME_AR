@@ -1,7 +1,7 @@
 GME_Modules_AmbientFlyby : "{7B675D73A2E19F7F}PrefabsEditable/Modules/Ambient/E_GME_Modules_AmbientFlybyBase.et" {
  ID "61FEF0AC6FC068E1"
  components {
-  GME_EditableModuleComponent "{61FEF0AC6FC047BE}" {
+  GME_Modules_EditableModuleComponent "{61FEF0AC6FC047BE}" {
    m_UIInfo SCR_EditableEntityUIInfo "{61FEF0AC6FC047A8}" {
     Name "#GME-Modules_AmbientFlyby_UH1H_name"
    }
