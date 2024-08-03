@@ -1,0 +1,12 @@
+GME_Modules_AmbientFlyby : "{7B675D73A2E19F7F}PrefabsEditable/Modules/Ambient/E_GME_Modules_AmbientFlybyBase.et" {
+ ID "61FEF0AC6FC068E1"
+ components {
+  GME_Modules_EditableModuleComponent "{61FEF0AC6FC047BE}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{61FEF0AC6FC047A8}" {
+    Name "#GME-Modules_AmbientFlyby_Mi8MT_name"
+    m_sFaction "USSR"
+   }
+  }
+ }
+ m_sAmbientHeloPrefabName "{1AC8EBD00FF27447}Prefabs/Vehicles/Helicopters/Mi8MT/GME_Mi8MT_ambient.et"
+}
