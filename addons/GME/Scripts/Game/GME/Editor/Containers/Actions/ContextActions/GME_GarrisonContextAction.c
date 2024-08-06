@@ -7,6 +7,10 @@ class GME_GarrisonContextAction : SCR_BaseContextAction
 	
 	protected SCR_DestructibleBuildingEntity m_pBuilding = null;
 	protected ref GME_BuildingPosQuery m_BuildingPosQuery;
+	protected ref array<vector> m_aPositions;
+	protected ref array<vector> m_aDirections;
+	protected ref array<vector> m_aCoverPostPositions;
+	protected ref array<vector> m_aCoverPostDirections;
 	
 	protected static const string GROUP_PREFAB_NAME = "{000CD338713F2B5A}Prefabs/AI/Groups/Group_Base.et";
 	
@@ -48,8 +52,37 @@ class GME_GarrisonContextAction : SCR_BaseContextAction
 		placingManager.SetInstantPlacing(SCR_EditorPreviewParams.CreateParams(transform));
 		placingManager.GetOnPlaceEntityServer().Insert(OnPlacingConfirmed);
 		placingManager.GME_GetOnPlacingCanceledServer().Insert(DetachPlacingHandlers);
+		
+		array<Managed> components = {};
+		m_pBuilding.FindComponents(SCR_AISmartActionSentinelComponent, components);
+		m_aCoverPostPositions = {};
+		m_aCoverPostDirections = {};
+		
+		foreach (Managed component : components)
+		{
+			SCR_AISmartActionSentinelComponent sentinel = SCR_AISmartActionSentinelComponent.Cast(component);
+			vector pos = m_pBuilding.CoordToParent(sentinel.GetActionOffset());
+			bool isNew = true;
+			
+			foreach (vector otherPos : m_aCoverPostPositions)
+			{
+				if (vector.DistanceSq(pos, otherPos) < 0.1)
+				{
+					isNew = false;
+					break;
+				}
+			}
+			
+			if (!isNew)
+				continue;
+			
+			m_aCoverPostPositions.Insert(pos);
+			vector dir = m_pBuilding.CoordToParent(sentinel.GetLookPosition()) - m_pBuilding.CoordToParent(sentinel.GetActionOffset());
+			m_aCoverPostDirections.Insert(dir.Normalized());
+		}
+		
 		m_BuildingPosQuery = new GME_BuildingPosQuery(m_pBuilding);
-		m_BuildingPosQuery.RunRandomQuery(10);
+		m_BuildingPosQuery.RunRandomQueries(10);
 	}
 	
 	protected SCR_AIGroup m_pGroup;
@@ -57,15 +90,16 @@ class GME_GarrisonContextAction : SCR_BaseContextAction
 	//------------------------------------------------------------------------------------------------
 	protected void OnPlacingConfirmed(RplId prefabID, SCR_EditableEntityComponent entity, int playerID)
 	{
+		m_aPositions = m_BuildingPosQuery.GetPositions();
+		m_aDirections = m_BuildingPosQuery.GetDirections();
+		
 		m_pGroup = SCR_AIGroup.Cast(entity.GetOwner());
-		m_iCurPosIdx = 0;
 		m_pGroup.GetOnAgentAdded().Insert(OnCharacterSpawned);
 		
 		DetachPlacingHandlers();
 	}
-	
-	protected int m_iCurPosIdx;
-	
+		
+	//------------------------------------------------------------------------------------------------
 	protected void OnCharacterSpawned(AIAgent agent)
 	{
 		GetGame().GetCallqueue().CallLater(OnCharacterSpawnedDelayed, 1000, false, agent);
@@ -76,10 +110,34 @@ class GME_GarrisonContextAction : SCR_BaseContextAction
 	{
 		EntitySpawnParams params = new EntitySpawnParams();
 		params.TransformMode = ETransformMode.WORLD;
+		float yaw;
+		float waypointRadius;
 		
-		float yaw = m_BuildingPosQuery.GetDirections()[m_iCurPosIdx].ToYaw();
+		if (!m_aCoverPostPositions.IsEmpty())
+		{
+			int idx = m_aCoverPostPositions.GetRandomIndex();
+			params.Transform[3] = m_aCoverPostPositions[idx];
+			yaw = m_aCoverPostDirections[idx].ToYaw();
+			m_aCoverPostPositions.Remove(idx);
+			m_aCoverPostDirections.Remove(idx);
+			waypointRadius = 0;
+		}
+		else if (!m_aPositions.IsEmpty())
+		{
+			int idx = m_aPositions.GetRandomIndex();
+			params.Transform[3] = m_aPositions[idx];
+			yaw = m_aDirections[idx].ToYaw();
+			m_aPositions.Remove(idx);
+			m_aDirections.Remove(idx);
+			waypointRadius = 3;
+		}
+		else
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(agent.GetControlledEntity());
+			return;
+		}
+		
 		Math3D.AnglesToMatrix(Vector(yaw, 0, 0), params.Transform);
-		params.Transform[3] = m_BuildingPosQuery.GetPositions()[m_iCurPosIdx];
 		SCR_EditableEntityComponent entity = SCR_EditableEntityComponent.Cast(agent.GetControlledEntity().FindComponent(SCR_EditableEntityComponent));
 		
 		SCR_AIGroup newGroup = SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(Resource.Load(GROUP_PREFAB_NAME), null, params));
@@ -87,10 +145,9 @@ class GME_GarrisonContextAction : SCR_BaseContextAction
 		m_pGroup.RemoveAgent(agent);
 		newGroup.AddAgent(agent);
 		SCR_AIWaypoint waypoint = SCR_AIWaypoint.Cast(GetGame().SpawnEntityPrefab(Resource.Load("{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et"), null, params));
-		waypoint.SetCompletionRadius(0);
+		waypoint.SetCompletionRadius(waypointRadius);
 		newGroup.AddWaypoint(waypoint);
 		entity.SetTransform(params.Transform);
-		m_iCurPosIdx++;
 	}
 	
 	//------------------------------------------------------------------------------------------------
