@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{B0A29E28B532C418}Configs/System/ActionContext/EditorContext.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}
