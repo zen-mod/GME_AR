@@ -1,0 +1,21 @@
+changelog:
+  categories:
+    - title: '**ADDED:**'
+      labels:
+        - 'feature'
+    - title: '**IMPROVED:**'
+      labels:
+        - 'enhancement'
+        - 'optimization'
+    - title: '**CHANGED:**'
+      labels:
+        - 'cleanup'
+    - title: '**FIXED:**'
+      labels:
+        - 'bug fix'
+    - title: '**TRANSLATIONS:**'
+      labels:
+        - 'translation'
+  exclude:
+    labels:
+      - 'ignore changelog'

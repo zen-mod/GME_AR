@@ -1,0 +1,82 @@
+:root {
+    --theme-color: #E3A74F;
+
+    --mono-hue: 0;
+    --mono-saturation: 0%;
+    --modular-scale: 1.333;
+    --base-font-family: "Roboto", sans-serif;
+    --code-font-family: "Source Code Pro", monospace;
+    --content-max-width: 65em;
+    --sidebar-width: 20rem;
+}
+
+* {
+    text-decoration: none !important;
+}
+
+a {
+    transition: all 0.3s linear;
+}
+
+/*** Markdown General ***/
+
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3,
+.markdown-section h4,
+.markdown-section h5,
+.markdown-section h6 {
+    color: var(--theme-color);
+}
+
+.markdown-section pre:after {
+    display: none;
+}
+
+.markdown-section a {
+    color: var(--theme-color);
+    font-weight: bold;
+    border-bottom: 0.125rem solid transparent;
+    transition: all 0.5s ease;
+}
+
+.markdown-section a:hover {
+    color: var(--theme-color);
+    border-bottom: 0.125rem solid var(--theme-color);
+}
+
+.markdown-section a.anchor {
+    border: none;
+}
+
+/*** Markdown Table ***/
+
+.markdown-section table {
+    display: table;
+}
+
+.markdown-section table thead tr {
+    text-transform: uppercase;
+    font-size: 85%;
+    border-bottom: 0.15rem solid;
+    border-color: #999;
+}
+
+.markdown-section table tbody tr:last-of-type {
+    border-bottom: none;
+}
+
+.markdown-section table tr:nth-child(2n) {
+    background-color: transparent;
+}
+
+.markdown-section table td,
+.markdown-section table th {
+    border: none;
+    padding: 1.1rem 0.5rem;
+    text-align: left;
+}
+
+.markdown-section table td p {
+    margin: 0;
+}
