@@ -1,0 +1,27 @@
+GenericEntity : "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  GME_IntelComponent "{628C84EC4669F95B}" {
+  }
+  SCR_EditableEntityComponent "{628C84EC71D1AC09}" {
+   m_EntityType SYSTEM
+   m_UIInfo SCR_EditableEntityUIInfo "{628C84EF898119BA}" {
+    Name "#AR-Intel_Name"
+    Description "#AR-Intel_Description"
+    Icon "{DD5F23CBB1731598}UI/Textures/Editor/EditableEntities/Systems/EditableEntity_System_Base.edds"
+    m_Image "{9D99BFC439B24F53}UI/Textures/EditorPreviews/Auto/Systems/Intel/IntelligenceFolder_E_01.edds"
+    m_aAuthoredLabels {
+     7 120
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{628C84FA832E40DC}" {
+      m_BudgetType SYSTEMS
+      m_Value 1
+     }
+    }
+   }
+   m_bAutoRegister ALWAYS
+   m_Flags 769
+  }
+ }
+}

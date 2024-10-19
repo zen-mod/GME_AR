@@ -1,6 +1,8 @@
+//------------------------------------------------------------------------------------------------
 [BaseContainerProps(), SCR_BaseEditorAttributeCustomTitle()]
-class ODIN_IntelTitleAttribute : SCR_BasePresetsEditorAttribute
+class GME_IntelTitleAttribute : SCR_BasePresetsEditorAttribute
 {
+	//------------------------------------------------------------------------------------------------
 	override SCR_BaseEditorAttributeVar ReadVariable(Managed item, SCR_AttributesManagerEditorComponent manager)
 	{
 		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.Cast(item);
@@ -11,26 +13,29 @@ class ODIN_IntelTitleAttribute : SCR_BasePresetsEditorAttribute
 		if (!owner)
 			return null;
 		
-		ODIN_IntelManagerComponent intelManager = ODIN_IntelManagerComponent.Cast(owner.FindComponent(ODIN_IntelManagerComponent));
-		if (!intelManager)
+		GME_IntelComponent intelComponent = GME_IntelComponent.Cast(owner.FindComponent(GME_IntelComponent));
+		if (!intelComponent)
 			return null;
 			
-		return ODIN_StringEditorAttributeVar.CreateString(intelManager.GetIntelTitle());
+		return SCR_BaseEditorAttributeVar.GME_CreateString(intelComponent.GetTitle());
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	override void WriteVariable(Managed item, SCR_BaseEditorAttributeVar var, SCR_AttributesManagerEditorComponent manager, int playerID)
 	{
-		if (!var) return;
-		ODIN_StringEditorAttributeVar stringVar = ODIN_StringEditorAttributeVar.Cast(var);
-		
+		if (!var)
+			return;
+				
 		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.Cast(item);
 		
 		IEntity owner =  editableEntity.GetOwner();
-		if (!owner) return;
+		if (!owner)
+			return;
 		
-		ODIN_IntelManagerComponent intelManager = ODIN_IntelManagerComponent.Cast(owner.FindComponent(ODIN_IntelManagerComponent));
-		if (!intelManager) return;
+		GME_IntelComponent intelComponent = GME_IntelComponent.Cast(owner.FindComponent(GME_IntelComponent));
+		if (!intelComponent)
+			return;
 
-		intelManager.SetIntelTitle(stringVar.GetString());
+		intelComponent.SetTitle(var.GME_GetString());
 	}
-};
+}
