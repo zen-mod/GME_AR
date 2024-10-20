@@ -11,26 +11,18 @@ class GME_Modules_InitAction_Base : ScriptAndConfig
 	
 	//------------------------------------------------------------------------------------------------
 	//! Called when action is started
-	//! Continue here to run an action on owner or server by calling m_pModule.RunInitActionOwner()
-	//! or m_pModule.RunInitActionServer()
-	//! To mark the action as complated, call m_pModule.OnInitActionCompleted()
+	//! Execute methods remotely by calling m_pModule.RpcInitActionMethod
+	//! Execute methods of the module dynamically by calling m_pModule.CallModuleMethod
+	//! To mark the action as completed, call m_pModule.OnInitActionCompleted()
 	//! To mark the action as canceled, call m_pModule.OnInitActionCanceled()
-	void OnInitServer();
-	
-	//------------------------------------------------------------------------------------------------
-	//! Executed when m_pModule.RunInitActionOwner() is called
-	void RunOwner(array<IEntity> params = null);
-	
-	//------------------------------------------------------------------------------------------------
-	//! Executed when m_pModule.RunInitActionServer() is called
-	void RunServer(array<IEntity> params = null);
+	void OnStartServer();
 	
 	//------------------------------------------------------------------------------------------------
 	//! Called when all init actions are completed
-	void OnConfirmServer();
+	void OnInitDoneServer();
 	
 	//------------------------------------------------------------------------------------------------
-	//! Called when any init action has been cancelled
+	//! Called when any init action has been canceled
 	//! Do clean-up here when module has been canceled
-	void OnCancelServer();
+	void OnInitCanceledServer();
 }

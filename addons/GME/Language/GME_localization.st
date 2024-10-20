@@ -354,6 +354,22 @@ StringTable {
    ImageLink ""
    Hidden 0
   }
+  CustomStringTableItem "{62A6ECE007097ABC}" {
+   Id "GME-Editor_Attribute_IntelContent_Name"
+   Target_en_us "Intel content"
+   Target_de_de "Hinweisinhalt"
+   Modified 1655109673
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62A6ECE003544E7E}" {
+   Id "GME-Editor_Attribute_IntelTitel_Name"
+   Target_en_us "Intel titel"
+   Target_de_de "Hinweistitel"
+   Modified 1655109662
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
   CustomStringTableItem "{5D19597480C3F0C8}" {
    Id "GME-Editor_Attribute_Skill_Name"
    Target_en_us "Skill"
@@ -651,6 +667,14 @@ StringTable {
    Author "Kexanone"
    LastChanged "Kexanone"
   }
+  CustomStringTableItem "{62A6ECE1437D6A68}" {
+   Id "GME-Notification_PICKED_UP_ITEM"
+   Target_en_us "%1 picked up %2"
+   Target_de_de "%1 hat %2 aufgelesen"
+   Modified 1655109533
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
   CustomStringTableItem "{620508C43021603F}" {
    Id "GME-Notification_PLACE_PREFAB_FIRST"
    Target_en_us "Place %1 first!"
@@ -673,9 +697,9 @@ StringTable {
    Target_ko_kr "취소"
    Target_pt_br "Cancelar"
    Target_zh_cn "取消"
-   Modified 1575018579
+   Modified 1655266293
    Author "crow"
-   LastChanged "kexanone"
+   LastChanged "Kexanone"
   }
   CustomStringTableItem "{5DC552DA2D2CBC68}" {
    Id "GME-UI_Listbox_OnConfirm"
