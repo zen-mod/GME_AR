@@ -3,9 +3,16 @@ GenericEntity : "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/In
  components {
   GME_IntelComponent "{628C84EC4669F95B}" {
   }
+  InventoryItemComponent "{5222EB4D0C73006B}" {
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemDisplayName GME_IntelUIInfo "{5222EB4D07D865FA}" {
+    }
+    m_bStackable 0
+   }
+  }
   SCR_EditableEntityComponent "{628C84EC71D1AC09}" {
    m_EntityType SYSTEM
-   m_UIInfo SCR_EditableEntityUIInfo "{628C84EF898119BA}" {
+   m_UIInfo GME_EditableIntelUIInfo "{628C84EF898119BA}" {
     Name "#AR-Intel_Name"
     Description "#AR-Intel_Description"
     Icon "{DD5F23CBB1731598}UI/Textures/Editor/EditableEntities/Systems/EditableEntity_System_Base.edds"
