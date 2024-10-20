@@ -15,7 +15,8 @@ class GME_AmbientFlybyComponent : ScriptComponent
 	protected Physics m_Physics;
 	protected vector m_vVelocity;
 	protected vector m_vStartPos;
-	protected ref set<AIAgent> m_aAgents = new set<AIAgent>();
+	protected SCR_ChimeraCharacter m_pPilot;
+	protected ref array<AIAgent> m_aAgents = {};
 	
 	protected ref ScriptInvoker m_OnDespawn = new ScriptInvoker();
 	
@@ -40,45 +41,35 @@ class GME_AmbientFlybyComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void DelayedInit(IEntity owner)
 	{
-		SCR_BaseCompartmentManagerComponent compartmentManager = SCR_BaseCompartmentManagerComponent.Cast(owner.FindComponent(SCR_BaseCompartmentManagerComponent));
-		compartmentManager.GetOnDoneSpawningDefaultOccupants().Insert(OnCrewSpawned);
-		compartmentManager.SpawnDefaultOccupants({ECompartmentType.PILOT,  ECompartmentType.TURRET});		
+		SCR_AIGroup crewGroup = GME_VehicleHelper.SpawnCrew(Vehicle.Cast(owner));
+		crewGroup.GME_GetOnDoneSpawningMembers().Insert(OnCrewSpawned);
+		
 		HelicopterControllerComponent ctrl = HelicopterControllerComponent.Cast(owner.FindComponent(HelicopterControllerComponent));
-		ctrl.StartEngine();
+		if (ctrl)
+			ctrl.StartEngine();
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected void OnCrewSpawned(SCR_BaseCompartmentManagerComponent compartmentManager = null, array<IEntity> spawnedCharacters = null, bool wasCanceled = false)
+	protected void OnCrewSpawned(SCR_AIGroup group)
 	{
-		foreach (IEntity member : spawnedCharacters)
-		{
-			AIComponent aiComponent = AIComponent.Cast(member.FindComponent(AIComponent));
-			AIAgent agent = aiComponent.GetAIAgent();
-			m_aAgents.Insert(agent);
-			m_aAgents.Insert(agent.GetParentGroup());
-		}
+		group.GME_GetOnDoneSpawningMembers().Remove(OnCrewSpawned);
+		group.GetAgents(m_aAgents);
+		m_aAgents.Insert(group);
 		
 		foreach (AIAgent agent : m_aAgents)
 		{
 			agent.SetPermanentLOD(0);
 		}
 		
-		GetGame().GetCallqueue().CallLater(OnCrewSpawnedDelayed, 100, false, compartmentManager, spawnedCharacters, wasCanceled);
-		compartmentManager.GetOnDoneSpawningDefaultOccupants().Remove(OnCrewSpawned);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	protected void OnCrewSpawnedDelayed(SCR_BaseCompartmentManagerComponent compartmentManager = null, array<IEntity> spawnedCharacters = null, bool wasCanceled = false)
-	{
-		foreach (IEntity character : spawnedCharacters)
-		{
-			SCR_CompartmentAccessComponent compartmentAccess = 	SCR_CompartmentAccessComponent.Cast(character.FindComponent(SCR_CompartmentAccessComponent));
-			if (compartmentAccess.GetCompartment().GetType() == ECompartmentType.PILOT)
-			{
-				SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(character.FindComponent(SCR_CharacterControllerComponent));
-				characterController.m_OnLifeStateChanged.Insert(OnPilotLifeStateChanged);
-			}
-		}
+		m_pPilot = SCR_ChimeraCharacter.Cast(m_aAgents[0].GetControlledEntity());
+		if (!m_pPilot)
+			return;
+		
+		SCR_CharacterControllerComponent pilotController = SCR_CharacterControllerComponent.Cast(m_pPilot.FindComponent(SCR_CharacterControllerComponent));
+		if (!pilotController)
+			return;
+		
+		pilotController.m_OnLifeStateChanged.Insert(OnPilotLifeStateChanged);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -119,6 +110,10 @@ class GME_AmbientFlybyComponent : ScriptComponent
 		ClearEventMask(GetOwner(), EntityEvent.SIMULATE);
 		HelicopterControllerComponent ctrl = HelicopterControllerComponent.Cast(GetOwner().FindComponent(HelicopterControllerComponent));
 		ctrl.StopEngine();
+		
+		SCR_CharacterControllerComponent pilotController = SCR_CharacterControllerComponent.Cast(m_pPilot.FindComponent(SCR_CharacterControllerComponent));
+		if (pilotController)
+			pilotController.m_OnLifeStateChanged.Remove(OnPilotLifeStateChanged);
 	}
 	
 	//------------------------------------------------------------------------------------------------
