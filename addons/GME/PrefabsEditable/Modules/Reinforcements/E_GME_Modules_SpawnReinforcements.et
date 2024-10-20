@@ -7,7 +7,7 @@ GME_Modules_SpawnReinforcements : "{57C4079FD5B14D31}PrefabsEditable/Modules/E_G
     Icon "{A489F552FB7489C3}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Custom.edds"
     m_Image "{8083D425A749EE46}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_Custom.edds"
     m_aAuthoredLabels + {
-     9350
+     7003
     }
    }
    m_aInitActions {

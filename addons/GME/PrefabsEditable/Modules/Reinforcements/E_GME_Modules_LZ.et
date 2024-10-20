@@ -7,7 +7,7 @@ GME_Modules_LZ : "{DFF6ACA2BBB52FF2}PrefabsEditable/Modules/E_GME_Modules_PointB
     Icon "{73BF1C0CEFC8B7B9}UI/Textures/Editor/EditableEntities/Objectives/EditableEntity_Objective_GetOut.edds"
     m_Image "{F26F67F2F0A4E838}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_GetOut.edds"
     m_aAuthoredLabels + {
-     9350
+     7003
     }
    }
   }
