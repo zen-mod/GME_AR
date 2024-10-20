@@ -1,0 +1,55 @@
+GME_Modules_SpawnReinforcements : "{57C4079FD5B14D31}PrefabsEditable/Modules/E_GME_Modules_Base.et" {
+ ID "61FEF0AC6FC068E1"
+ components {
+  GME_Modules_EditableModuleComponent "{61FEF0AC6FC047BE}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{61FEF0AC6FC047A8}" {
+    Name "#GME-Modules_SpawnReinforcements_name"
+    Icon "{A489F552FB7489C3}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Custom.edds"
+    m_Image "{8083D425A749EE46}UI/Textures/Editor/Toolbar/Commanding/Toolbar_Commanding_Objective_Custom.edds"
+    m_aAuthoredLabels + {
+     7003
+    }
+   }
+   m_aInitActions {
+    GME_Modules_InitAction_RequireEntityInWorld "{62046D5104B3C822}" {
+     m_sRequiredPrefab "{06E1603BE4D59D63}PrefabsEditable/Modules/Reinforcements/E_GME_Modules_LZ.et"
+    }
+    GME_Modules_InitAction_RequireEntityInWorld "{62046D56AE44F6D2}" {
+     m_sRequiredPrefab "{B11FA818A134D5AE}PrefabsEditable/Modules/Reinforcements/E_GME_Modules_RallyPoint.et"
+    }
+    GME_Modules_InitAction_EditAttributes "{62036B9EF9C75CAC}" {
+    }
+    GME_Modules_InitAction_PlaceEntity "{62036B9EFC8E0E36}" {
+     m_sSpawnedEntitySetter "SetVehicle"
+     m_ContentBrowserConfig SCR_EditorContentBrowserDisplayConfig "{62036B9E1128F343}" : "{A4A11B32BCB46BCC}Configs/Editor/ContentBrowser/GME_ContentBrowserVehicleConfig.conf" {
+     }
+    }
+    GME_Modules_InitAction_SpawnDefaultOccupants "{62040ADDE24B8DF6}" {
+     m_sVehicleToOccupyGetter "GetVehicle"
+     m_sOccupantsGroupSetter "SetCrewGroup"
+     m_aCompartmentTypes {
+      0 1
+     }
+    }
+    GME_Modules_InitAction_Sleep "{62036B9EF2586D83}" {
+     m_fDelay 0.1
+    }
+    GME_Modules_InitAction_ChoosePassengers "{62036B9FCAE3C197}" {
+     m_sSpawnedEntitySetter "AddPassengerGroup"
+     m_ContentBrowserConfig SCR_EditorContentBrowserDisplayConfig "{62036B9FC729F411}" : "{9259B3DA5843CDB9}Configs/Editor/ContentBrowser/PassengerLargeGroupsOrLessLabelConfig.conf" {
+     }
+     m_sEntityToExtendGetter "GetVehicle"
+    }
+   }
+  }
+  SCR_PreviewEntityComponent "{62070866842D0C76}" {
+   m_aEntries {
+    SCR_BasePreviewEntry "{62070866BA39D66E}" {
+     m_Mesh "{A215E87110025E26}Assets/Modules/ModulePreviewArrow/ModulePreviewArrow.xob"
+     m_Shape MESH
+    }
+   }
+  }
+ }
+ m_bDeleteImmediately 0
+}
