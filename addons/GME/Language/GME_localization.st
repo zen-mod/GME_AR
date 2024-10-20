@@ -546,7 +546,7 @@ StringTable {
    Hidden 0
   }
   CustomStringTableItem "{62071BC2FE856882}" {
-   Id "GME-Editor_Attribute_ValueFormating_Speed"
+   Id "GME-Editor_Attribute_ValueFormatting_Speed"
    Target_en_us "%1 km/h"
    Target_fr_fr "%1 km/h"
    Target_it_it "%1 km/h"

@@ -45,9 +45,9 @@ class GME_Modules_AmbientFlyby : GME_Modules_Base
 		
 		if (m_pFlybyComponent)
 		{
-			vector trasnform[4];
-			GetWorldTransform(trasnform);
-			OnMoved(trasnform, trasnform);
+			vector transform[4];
+			GetWorldTransform(transform);
+			OnMoved(transform, transform);
 		}
 	}
 	
@@ -64,9 +64,9 @@ class GME_Modules_AmbientFlyby : GME_Modules_Base
 		
 		if (m_pFlybyComponent)
 		{
-			vector trasnform[4];
-			GetWorldTransform(trasnform);
-			OnMoved(trasnform, trasnform);
+			vector transform[4];
+			GetWorldTransform(transform);
+			OnMoved(transform, transform);
 		}
 	}
 	
