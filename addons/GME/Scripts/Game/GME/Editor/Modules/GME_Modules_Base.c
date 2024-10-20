@@ -4,9 +4,18 @@ class GME_Modules_BaseClass : GenericEntityClass
 }
 
 //------------------------------------------------------------------------------------------------
+//! Modules can be used in three ways:
+//! 1) Placed in world editor for immediate execution when the scenario starts (non-interactive)
+//! 2) Placed by GM (interactive)
+//! 3) Spawned with scripts (non-interactive)
+//!
+//! Basic procedure when spawned via scripts:
+//! > GME_Modules_MyModule module = GME_Modules_MyModule.Cast(GetGame().SpawnEntityPrefab(modulePrefabName, null, spawnParams));
+//! > module.SetSomeParam(someModuleParam); // You only need this if you haven't specified the params already in the prefab.
+//! > module.OnInitDoneServer();
 class GME_Modules_Base : GenericEntity
 {
-	[Attribute(defvalue: "true", desc: "Module will get deleted immediatly when true")]
+	[Attribute(defvalue: "true", desc: "Module will get deleted immediatly after executing Run() when true")]
 	protected bool m_bDeleteImmediately;
 	
 	protected bool m_bInitDone = false;
@@ -22,15 +31,32 @@ class GME_Modules_Base : GenericEntity
 	{
 		super.EOnInit(owner);
 		
-		if (!GetGame().InPlayMode() && !Replication.IsServer())
+		if (!GetGame().InPlayMode() || !Replication.IsServer())
 			return;
 		
-		// Interactive mode: OnInitDoneServer gets called by GME_Modules_EditableModuleComponent instead
-		if (FindComponent(GME_Modules_EditableModuleComponent))
+		// Complete init when module was placed in the world editor 
+		if (Replication.Loadtime())
+			OnInitDoneServer();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Called when init is done
+	//! Executes Run()
+	//! There are three possible ways this function gets called:
+	//! 1) By GME_Modules_EditableModuleComponent when spawned by GM
+	//! 2) Immediately after EOnInit when it is part of the world editor
+	//! 3) Manually when spawned via SpawnEntityPrefab
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void OnInitDoneServer()
+	{
+		if (m_bInitDone)
 			return;
 		
-		// Complete init for non-interative mode
-		OnInitDoneServer();
+		m_bInitDone = true;
+		Run();
+		
+		if (m_bDeleteImmediately)
+			SCR_EntityHelper.DeleteEntityAndChildren(this);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -51,16 +77,5 @@ class GME_Modules_Base : GenericEntity
 	bool IsInitDone()
 	{
 		return m_bInitDone;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void OnInitDoneServer()
-	{
-		m_bInitDone = true;
-		Run();
-		
-		if (m_bDeleteImmediately)
-			SCR_EntityHelper.DeleteEntityAndChildren(this);
 	}
 }
