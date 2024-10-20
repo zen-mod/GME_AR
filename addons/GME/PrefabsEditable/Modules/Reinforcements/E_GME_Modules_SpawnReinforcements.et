@@ -30,13 +30,12 @@ GME_Modules_SpawnReinforcements : "{57C4079FD5B14D31}PrefabsEditable/Modules/E_G
      m_aCompartmentTypes {
       0 1
      }
-     m_iPermanentAILOD 0
     }
     GME_Modules_InitAction_Sleep "{62036B9EF2586D83}" {
      m_fDelay 0.1
     }
-    GME_Modules_InitAction_ExtendEntity "{62036B9FCAE3C197}" {
-     m_sSpawnedEntitySetter "SetPassengerGroup"
+    GME_Modules_InitAction_ChoosePassengers "{62036B9FCAE3C197}" {
+     m_sSpawnedEntitySetter "AddPassengerGroup"
      m_ContentBrowserConfig SCR_EditorContentBrowserDisplayConfig "{62036B9FC729F411}" : "{9259B3DA5843CDB9}Configs/Editor/ContentBrowser/PassengerLargeGroupsOrLessLabelConfig.conf" {
      }
      m_sEntityToExtendGetter "GetVehicle"

@@ -6,49 +6,46 @@ class GME_Modules_SpawnReinforcementsClass : GME_Modules_BaseClass
 //------------------------------------------------------------------------------------------------
 class GME_Modules_SpawnReinforcements : GME_Modules_Base
 {
-	[Attribute(defvalue: "RTB_AND_DESPAWN", uiwidget: UIWidgets.SearchComboBox, desc: "Vehicle will return to spawn position and despawn if true. Stays at LZ if false.", enums: ParamEnumArray.FromEnum(GME_Reinforcements_EVehicleBehavior))]
+	[Attribute(uiwidget: UIWidgets.ResourcePickerThumbnail, desc: "Prefab name of the vehicle", params: "et", category: "Params")]
+	protected ResourceName m_sVehiclePrefabName;
+	protected Vehicle m_pVehicle;
+	protected SCR_AIGroup m_pCrewGroup;
+	
+	[Attribute(uiwidget: UIWidgets.ResourcePickerThumbnail, desc: "Prefab names of the passenger groups", params: "et", category: "Params")]
+	protected ref array<ResourceName> m_aPassengerGroupPrefabNames;
+	protected ref array<SCR_AIGroup> m_pPassengerGroups = {};
+	
+	[Attribute(defvalue: "RTB_AND_DESPAWN", uiwidget: UIWidgets.SearchComboBox, desc: "Vehicle will return to spawn position and despawn if true. Stays at LZ if false.", enums: ParamEnumArray.FromEnum(GME_Reinforcements_EVehicleBehavior), category: "Params")]
 	protected GME_Reinforcements_EVehicleBehavior m_eVehicleBehavior;
 	
 	protected ref EntitySpawnParams m_SpawnPointParams = new EntitySpawnParams();
 	protected ref EntitySpawnParams m_RPParams = new EntitySpawnParams();
 	protected ref EntitySpawnParams m_LZParams = new EntitySpawnParams();
 	
-	// Placing parameters
-	protected Vehicle m_pVehicle;
-	protected SCR_AIGroup m_pCrewGroup;
-	protected SCR_AIGroup m_pPassengerGroup;
-	
-	protected const int RTB_DELAY_MS = 15000;
-	
-	//------------------------------------------------------------------------------------------------
-	override protected void EOnInit(IEntity owner)
-	{
-		if (!GetGame().InPlayMode() || !Replication.IsServer())
-			return super.EOnInit(owner);
-		
-		m_SpawnPointParams.TransformMode = ETransformMode.WORLD;
-		GetWorldTransform(m_SpawnPointParams.Transform);
-		m_LZParams.TransformMode = ETransformMode.WORLD;
-		m_RPParams.TransformMode = ETransformMode.WORLD;
-		
-		super.EOnInit(owner);
-	}
+	protected const int RTB_DELAY_MS = 5000;
 	
 	//------------------------------------------------------------------------------------------------
 	override void Run()
 	{
+		m_SpawnPointParams.TransformMode = ETransformMode.WORLD;
+		GetWorldTransform(m_SpawnPointParams.Transform);
+		
 		if (!m_pVehicle)
-			return; // To Do: Handle non-interactive case
+			m_pVehicle = Vehicle.Cast(GetGame().SpawnEntityPrefab(Resource.Load(m_sVehiclePrefabName), GetWorld(), m_SpawnPointParams));
 		
 		if (!m_pCrewGroup)
-			return; // To Do: Handle non-interactive case
+			m_pCrewGroup = GME_VehicleHelper.SpawnCrew(m_pVehicle);
 		
-		if (!m_pPassengerGroup)
-			return; // To Do: Handle non-interactive case
+		if (!m_pPassengerGroups)
+			m_pPassengerGroups = GME_VehicleHelper.SpawnPassengers(m_pVehicle, m_aPassengerGroupPrefabNames);
 				
 		m_pCrewGroup.GetOnWaypointCompleted().Insert(OnLZReached);
 		m_pCrewGroup.AddWaypoint(AIWaypoint.Cast(GetGame().SpawnEntityPrefab(Resource.Load("{3C790BB71C5CD960}PrefabsEditable/Auto/AI/Waypoints/E_AIWaypoint_ForcedMove.et"), GetWorld(), m_LZParams)));
-		m_pPassengerGroup.AddWaypoint(AIWaypoint.Cast(GetGame().SpawnEntityPrefab(Resource.Load("{FFF9518F73279473}PrefabsEditable/Auto/AI/Waypoints/E_AIWaypoint_Move.et"), GetWorld(), m_RPParams)));
+		
+		foreach (SCR_AIGroup group : m_pPassengerGroups)
+		{
+			group.AddWaypoint(AIWaypoint.Cast(GetGame().SpawnEntityPrefab(Resource.Load("{FFF9518F73279473}PrefabsEditable/Auto/AI/Waypoints/E_AIWaypoint_Move.et"), GetWorld(), m_RPParams)));
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -67,7 +64,7 @@ class GME_Modules_SpawnReinforcements : GME_Modules_Base
 			
 			case GME_Reinforcements_EVehicleBehavior.RTB_AND_DESPAWN:
 			{
-				GetGame().GetCallqueue().CallLater(DoRTB, RTB_DELAY_MS);
+				GetGame().GetCallqueue().CallLater(DoRTB, GME_VehicleHelper.GetPassengerCount(m_pVehicle) * GME_VehicleHelper.PASSENGER_EJECT_DELAY_MS + RTB_DELAY_MS);
 				break;
 			}
 		}
@@ -89,6 +86,11 @@ class GME_Modules_SpawnReinforcements : GME_Modules_Base
 		SCR_EntityHelper.DeleteEntityAndChildren(m_pCrewGroup);
 		SCR_EntityHelper.DeleteEntityAndChildren(m_pVehicle);
 		SCR_EntityHelper.DeleteEntityAndChildren(this);
+	}
+	
+	void SetVehiclePrefabName(ResourceName resName)
+	{
+		m_sVehiclePrefabName = resName;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -115,27 +117,34 @@ class GME_Modules_SpawnReinforcements : GME_Modules_Base
 		return m_pCrewGroup;
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	void SetPassengerGroup(SCR_AIGroup group)
+	void SetPassengerGroupPrefabNames(array<ResourceName> resNames)
 	{
-		m_pPassengerGroup = group;
+		m_aPassengerGroupPrefabNames = resNames;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	SCR_AIGroup GetPassengerGroup()
+	void AddPassengerGroup(SCR_AIGroup group)
 	{
-		return m_pPassengerGroup;
+		m_pPassengerGroups.Insert(group);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	array<SCR_AIGroup> GetPassengerGroups()
+	{
+		return m_pPassengerGroups;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetLZPosition(vector pos)
 	{
+		m_LZParams.TransformMode = ETransformMode.WORLD;
 		m_LZParams.Transform[3] = pos;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetRPPosition(vector pos)
 	{
+		m_RPParams.TransformMode = ETransformMode.WORLD;		
 		m_RPParams.Transform[3] = pos;
 	}
 	
