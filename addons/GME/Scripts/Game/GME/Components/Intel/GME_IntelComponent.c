@@ -64,6 +64,7 @@ class GME_IntelComponent : ScriptComponent
 		
 		if (!m_EditableIntelUIInfo)
 		{
+			// We have to set a custom instance, since otherwise the global info is edited
 			m_EditableIntelUIInfo = new GME_EditableIntelUIInfo();
 			m_EditableIntelUIInfo.CopyFrom(m_pEditableEntityComponent.GetInfo());
 			m_pEditableEntityComponent.SetInfoInstance(m_EditableIntelUIInfo);
