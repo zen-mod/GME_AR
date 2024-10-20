@@ -16,13 +16,27 @@ class GME_VehicleHelper
 		SCR_Faction faction = GME_EditableEntityHelper.GetFactionFromLabels(editableEntity);
 		if (!faction)
 			return null;
+		
+		SCR_EditableEntityComponent editableVehicle = SCR_EditableEntityComponent.GetEditableEntity(vehicle);
+		if (!editableVehicle)
+			return null;
+		
+		SCR_EditableEntityUIInfo uiInfo = SCR_EditableEntityUIInfo.Cast(editableVehicle.GetInfo());
+		if (!uiInfo)
+			return null;
+		
+		array<SCR_EntityCatalogEntry> entries = {};
 	
 		SCR_EntityCatalog catalogue = faction.GetFactionEntityCatalogOfType(EEntityCatalogType.CHARACTER);
 		if (!catalogue)
 			return null;
-	
-		array<SCR_EntityCatalogEntry> entries = {};
-		catalogue.GetEntityListWithLabel(EEditableEntityLabel.ROLE_RIFLEMAN, entries);
+		
+		if (uiInfo.HasEntityLabel(EEditableEntityLabel.VEHICLE_HELICOPTER))
+			catalogue.GetEntityListWithLabel(EEditableEntityLabel.TRAIT_HELI_CREW, entries);
+		
+		if (entries.IsEmpty())
+			catalogue.GetEntityListWithLabel(EEditableEntityLabel.ROLE_RIFLEMAN, entries);
+		
 		if (entries.IsEmpty())
 			return null;
 	
