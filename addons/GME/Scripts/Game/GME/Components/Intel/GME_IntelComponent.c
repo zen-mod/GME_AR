@@ -13,8 +13,9 @@ class GME_IntelComponent : ScriptComponent
 	protected string m_sContent;
 	
 	protected InventoryItemComponent m_pItemComponent;
-	protected UIInfo m_ItemUIInfo;
-	protected SCR_EditableEntityUIInfo m_EditableEntityUIInfo;
+	protected string m_sInventoryItemDescription;
+	protected SCR_EditableEntityComponent m_pEditableEntityComponent;
+	protected ref GME_EditableIntelUIInfo m_EditableIntelUIInfo;
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -28,14 +29,10 @@ class GME_IntelComponent : ScriptComponent
 		if (!m_pItemComponent)
 			return;
 		
-		m_ItemUIInfo = m_pItemComponent.GetUIInfo();
-		
-		SCR_EditableEntityComponent editableEntityComponent = SCR_EditableEntityComponent.Cast(owner.FindComponent(SCR_EditableEntityComponent));
-		if (!editableEntityComponent)
+		m_pEditableEntityComponent = SCR_EditableEntityComponent.GetEditableEntity(owner);
+		if (!m_pEditableEntityComponent)
 			return;
-		
-		m_EditableEntityUIInfo = SCR_EditableEntityUIInfo.Cast(editableEntityComponent.GetInfo());
-		
+				
 		if (Replication.IsServer())
 			m_pItemComponent.m_OnParentSlotChangedInvoker.Insert(OnPickedUpByPlayer);
 	}
@@ -43,23 +40,36 @@ class GME_IntelComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void OnContentChanged()
 	{
-		string description = m_sTitle;
+		m_sInventoryItemDescription = m_sTitle;
 		
 		if (!m_sTitle.IsEmpty() && !m_sContent.IsEmpty())
 		{
-			description += ":\n";
+			m_sInventoryItemDescription += ":\n";
 			
 			for (int i = 0; i < m_sTitle.Length() + 1; i++)
 			{
-				description += "=";
+				m_sInventoryItemDescription += "=";
 			}
 			
-			description += "\n";
+			m_sInventoryItemDescription += "\n";
 		}
 		
-		description += m_sContent;
-		m_ItemUIInfo.SetDescription(description);
-		m_EditableEntityUIInfo.SetDescription(description);
+		m_sInventoryItemDescription += m_sContent;
+		
+		if (m_sInventoryItemDescription.IsEmpty())
+		{
+			m_pEditableEntityComponent.SetInfoInstance(null);
+			return;
+		}
+		
+		if (!m_EditableIntelUIInfo)
+		{
+			m_EditableIntelUIInfo = new GME_EditableIntelUIInfo();
+			m_EditableIntelUIInfo.CopyFrom(m_pEditableEntityComponent.GetInfo());
+			m_pEditableEntityComponent.SetInfoInstance(m_EditableIntelUIInfo);
+		}
+		
+		m_EditableIntelUIInfo.SetDescription(m_sInventoryItemDescription);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -116,6 +126,12 @@ class GME_IntelComponent : ScriptComponent
 	string GetContent()
 	{
 		return m_sContent;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	string GetInventoryItemDescription()
+	{
+		return m_sInventoryItemDescription;
 	}
 	
 	//------------------------------------------------------------------------------------------------
