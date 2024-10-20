@@ -23,7 +23,18 @@ class GME_Modules_InitAction_ExtendEntity : GME_Modules_InitAction_EditorBrowser
 	override void OpenContentBrowser()
 	{
 		super.OpenContentBrowser();
+		
+		if (!m_pEntityToExtend)
+			return m_pModule.OnInitActionCanceled();
+		
+		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.Cast(m_pEntityToExtend.FindComponent(SCR_EditableEntityComponent));
+		if (!editableEntity)
+			return m_pModule.OnInitActionCanceled();
+		
 		SCR_ContentBrowserEditorComponent contentBrowserManager = SCR_ContentBrowserEditorComponent.Cast(SCR_ContentBrowserEditorComponent.GetInstance(SCR_ContentBrowserEditorComponent, true));
-		contentBrowserManager.OpenBrowserExtended(SCR_EditableEntityComponent.Cast(m_pEntityToExtend.FindComponent(SCR_EditableEntityComponent)), m_ContentBrowserConfig);
+		if (!contentBrowserManager)
+			return m_pModule.OnInitActionCanceled();
+		
+		contentBrowserManager.OpenBrowserExtended(editableEntity, m_ContentBrowserConfig);
 	}
 }

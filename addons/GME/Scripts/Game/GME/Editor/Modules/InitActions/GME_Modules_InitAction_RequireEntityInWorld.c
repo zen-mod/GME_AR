@@ -23,14 +23,14 @@ class GME_Modules_InitAction_RequireEntityInWorld : GME_Modules_InitAction_Base
 			}
 		}
 		
-		m_pModule.RpcInitActionMethod(RplRcver.Owner, "SendFailureNotification");
-		m_pModule.OnInitActionCanceled();
+		m_pModule.RpcInitActionMethod(RplRcver.Owner, "SendFailureNotificationAndCancel");
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SendFailureNotification()
+	void SendFailureNotificationAndCancel()
 	{
 		SCR_PlacingEditorComponent placingManager = SCR_PlacingEditorComponent.Cast(SCR_PlacingEditorComponent.GetInstance(SCR_PlacingEditorComponent, true, true));
 		SCR_NotificationsComponent.SendLocal(m_eNotificationOnFailure, placingManager.GetPrefabID(m_sRequiredPrefab));
+		m_pModule.OnInitActionCanceled();
 	}
 }

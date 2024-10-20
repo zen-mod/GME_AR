@@ -28,6 +28,9 @@ class GME_Modules_InitAction_EditorBrowserBase : GME_Modules_InitAction_Base
 	void OpenContentBrowser()
 	{
 		SCR_EditorModeEntity editorEntity = SCR_EditorModeEntity.GetInstance();
+		if (!editorEntity)
+			return m_pModule.OnInitActionCanceled();
+		
 		SetEditorModeEntity(editorEntity);
 		m_pModule.RpcInitActionMethod(RplRcver.Server, "SetEditorModeEntity", editorEntity);		
 		m_pModule.RpcInitActionMethod(RplRcver.Server, "AttachServerPlacingHandlers");
