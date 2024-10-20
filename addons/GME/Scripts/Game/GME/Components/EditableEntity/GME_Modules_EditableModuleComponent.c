@@ -17,20 +17,6 @@ class GME_Modules_EditableModuleComponent : SCR_EditableSystemComponent
 	protected GME_Modules_Base m_pModule;
 	
 	//------------------------------------------------------------------------------------------------
-	void SetPlacingParamServer(string setter, IEntity value)
-	{
-		GetGame().GetScriptModule().Call(m_pModule, setter, false, null, value);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	IEntity GetPlacingParamServer(string getter)
-	{
-		IEntity value;
-		GetGame().GetScriptModule().Call(m_pModule, getter, false, value);
-		return value;
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
@@ -52,7 +38,7 @@ class GME_Modules_EditableModuleComponent : SCR_EditableSystemComponent
 		m_iInitActionCount = m_aInitActions.Count();
 		
 		if (m_iCurrentInitActionIdx < m_iInitActionCount)
-			m_aInitActions[m_iCurrentInitActionIdx].OnInitServer();
+			m_aInitActions[m_iCurrentInitActionIdx].OnStartServer();
 		else
 			m_pModule.OnInitDoneServer();
 	}
@@ -75,68 +61,100 @@ class GME_Modules_EditableModuleComponent : SCR_EditableSystemComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected array<RplId> ActionParamsToRpl(array<IEntity> params)
+	Managed CallModuleMethod(string method, Managed param1 = null, Managed param2 = null, Managed param3 = null)
 	{
-		if (!params)
-			return null;
+		Managed output;
 		
-		array<RplId> rplParams = {};
-		foreach (IEntity param : params)
+		if (!GetGame().GetScriptModule().Call(m_pModule, method, false, output, param1, param2, param3))
+		{
+			GME_LogHelper.Log(string.Format("%1.%2 does not exist", GetOwner().Type().ToString(), method), "GME_Modules_EditableModuleComponent", LogLevel.ERROR);
+			return null;
+		}
+		
+		return output;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void CallInitActionMethodLocal(string method, Managed param = null)
+	{
+		if (!GetGame().GetScriptModule().Call(m_aInitActions[m_iCurrentInitActionIdx], method, false, null, param))
+		{
+			GME_LogHelper.Log(string.Format("%1.%2 does not exist", m_aInitActions[m_iCurrentInitActionIdx].Type().ToString(), method), "GME_Modules_EditableModuleComponent", LogLevel.ERROR);
+			return;
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void RpcInitActionMethod(RplRcver receiver, string method, IEntity param = null)
+	{
+		RplId paramId = RplId.Invalid();
+		
+		if (param)
 		{
 			RplComponent rpl = RplComponent.Cast(param.FindComponent(RplComponent));
-			if (!rpl)
-				continue;
-			
-			rplParams.Insert(rpl.Id());
+			if (rpl)
+				paramId = rpl.Id();
 		}
 		
-		return rplParams;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	protected array<IEntity> ActionParamsFromRpl(array<RplId> rplParams)
-	{
-		if (!rplParams)
-			return null;
-		
-		array<IEntity> params = {};
-		foreach (RplId rplParam : rplParams)
+		switch (receiver)
 		{
-			RplComponent rpl = RplComponent.Cast(Replication.FindItem(rplParam));
-			if (!rpl)
-				continue;
+			case RplRcver.Server:
+			{
+				Rpc(RpcDo_CallInitActionMethodServer, method, paramId);
+				return;
+			}
 			
-			params.Insert(rpl.GetEntity());
+			case RplRcver.Owner:
+			{
+				Rpc(RpcDo_CallInitActionMethodOwner, method, paramId);
+				return;
+			}
+			
+			case RplRcver.Broadcast:
+			{
+				Rpc(RpcDo_CallInitActionMethodBroadcast, method, paramId);
+				return;
+			}
 		}
-		
-		return params;
-	}
-	
-	
-	//------------------------------------------------------------------------------------------------
-	void RunInitActionOwner(array<IEntity> params = null)
-	{
-		Rpc(RpcDo_RunInitActionOwner, ActionParamsToRpl(params));
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	protected void RpcDo_RunInitActionOwner(array<RplId> params)
-	{
-		m_aInitActions[m_iCurrentInitActionIdx].RunOwner(ActionParamsFromRpl(params));
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void RunInitActionServer(array<IEntity> params = null)
-	{
-		Rpc(RpcDo_RunInitActionServer, ActionParamsToRpl(params));
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcDo_RunInitActionServer(array<RplId> params)
+	protected void RpcDo_CallInitActionMethodServer(string method, RplId paramId)
 	{
-		m_aInitActions[m_iCurrentInitActionIdx].RunServer(ActionParamsFromRpl(params));
+		IEntity param = null;
+		
+		RplComponent rpl = RplComponent.Cast(Replication.FindItem(paramId));
+		if (rpl)
+			param = rpl.GetEntity();
+		
+		CallInitActionMethodLocal(method, param);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcDo_CallInitActionMethodOwner(string method, RplId paramId)
+	{
+		IEntity param = null;
+		
+		RplComponent rpl = RplComponent.Cast(Replication.FindItem(paramId));
+		if (rpl)
+			param = rpl.GetEntity();
+		
+		CallInitActionMethodLocal(method, param);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_CallInitActionMethodBroadcast(string method, RplId paramId)
+	{
+		IEntity param = null;
+		
+		RplComponent rpl = RplComponent.Cast(Replication.FindItem(paramId));
+		if (rpl)
+			param = rpl.GetEntity();
+		
+		CallInitActionMethodLocal(method, param);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -154,13 +172,13 @@ class GME_Modules_EditableModuleComponent : SCR_EditableSystemComponent
 		
 		if (m_iCurrentInitActionIdx < m_iInitActionCount)
 		{
-			m_aInitActions[m_iCurrentInitActionIdx].OnInitServer();
+			m_aInitActions[m_iCurrentInitActionIdx].OnStartServer();
 		}
 		else
 		{
 			foreach (GME_Modules_InitAction_Base action : m_aInitActions)
 			{
-				action.OnConfirmServer();
+				action.OnInitDoneServer();
 			}
 			
 			m_pModule.OnInitDoneServer();
@@ -179,7 +197,7 @@ class GME_Modules_EditableModuleComponent : SCR_EditableSystemComponent
 	{
 		foreach (GME_Modules_InitAction_Base action : m_aInitActions)
 		{
-			action.OnCancelServer();
+			action.OnInitCanceledServer();
 		}
 		
 		Delete();

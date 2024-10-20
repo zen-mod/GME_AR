@@ -3,20 +3,27 @@ class GME_Modules_InitAction_ExtendEntity : GME_Modules_InitAction_EditorBrowser
 {
 	[Attribute(desc: "Getter on the module for the entity to extend")]
 	protected string m_sEntityToExtendGetter;
+	protected IEntity m_pEntityToExtend;
 	
 	//------------------------------------------------------------------------------------------------
-	override void OnInitServer()
+	void SetEntityToExtend(IEntity entity)
 	{
-		IEntity entityToExtend = m_pModule.GetPlacingParamServer(m_sEntityToExtendGetter);
-		m_pModule.RunInitActionOwner({entityToExtend});
+		m_pEntityToExtend = entity;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override void RunOwner(array<IEntity> params = null)
+	override void OnStartServer()
 	{
-		SCR_EditableEntityComponent entityToExtend = SCR_EditableEntityComponent.Cast(params[0].FindComponent(SCR_EditableEntityComponent));
-		super.RunOwner(params);
+		IEntity entity = IEntity.Cast(m_pModule.CallModuleMethod(m_sEntityToExtendGetter));
+		m_pModule.RpcInitActionMethod(RplRcver.Owner, "SetEntityToExtend", entity);
+		super.OnStartServer();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	override void OpenContentBrowser()
+	{
+		super.OpenContentBrowser();
 		SCR_ContentBrowserEditorComponent contentBrowserManager = SCR_ContentBrowserEditorComponent.Cast(SCR_ContentBrowserEditorComponent.GetInstance(SCR_ContentBrowserEditorComponent, true));
-		contentBrowserManager.OpenBrowserExtended(entityToExtend, m_ContentBrowserConfig);
+		contentBrowserManager.OpenBrowserExtended(SCR_EditableEntityComponent.Cast(m_pEntityToExtend.FindComponent(SCR_EditableEntityComponent)), m_ContentBrowserConfig);
 	}
 }

@@ -2,13 +2,13 @@
 class GME_Modules_InitAction_EditAttributes : GME_Modules_InitAction_Base
 {
 	//------------------------------------------------------------------------------------------------
-	override void OnInitServer()
+	override void OnStartServer()
 	{
-		m_pModule.RunInitActionOwner();
+		m_pModule.RpcInitActionMethod(RplRcver.Owner, "StartEditingOwner");
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override void RunOwner(array<IEntity> params = null)
+	void StartEditingOwner()
 	{
 		SCR_AttributesManagerEditorComponent attributesManager = SCR_AttributesManagerEditorComponent.Cast(SCR_AttributesManagerEditorComponent.GetInstance(SCR_AttributesManagerEditorComponent));
 		attributesManager.StartEditing(m_pModule);
