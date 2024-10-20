@@ -595,12 +595,12 @@ StringTable {
    Id "GME-Modules_Attribute_RTBAndDespawn_Name"
    Target_en_us "RTB and Despawn"
    Target_it_it "Indietro ed elimina"
-   Target_de_de "Zurück und Löschen<"
+   Target_de_de "Zurück und Löschen"
    Target_pl_pl "róc do bazy i despawnuj"
    Target_ja_jp "RTB と削除"
    Target_ko_kr "귀환 후 삭제"
    Target_zh_cn "返回並刪除"
-   Modified 1644516008
+   Modified 1655255408
    Author "Kexanone"
    LastChanged "Kexanone"
   }
