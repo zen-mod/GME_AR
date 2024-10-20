@@ -8,13 +8,7 @@ class GME_Modules_InitAction_RequireEntityInWorld : GME_Modules_InitAction_Base
 	protected ENotification m_eNotificationOnFailure;
 	
 	//------------------------------------------------------------------------------------------------
-	override void OnInitServer()
-	{
-		m_pModule.RunInitActionOwner();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	override void RunOwner(array<IEntity> params = null)
+	override void OnStartServer()
 	{
 		SCR_EditableEntityCore core = SCR_EditableEntityCore.Cast(SCR_EditableEntityCore.GetInstance(SCR_EditableEntityCore));
 		set<SCR_EditableEntityComponent> entities = new set<SCR_EditableEntityComponent>();
@@ -29,8 +23,14 @@ class GME_Modules_InitAction_RequireEntityInWorld : GME_Modules_InitAction_Base
 			}
 		}
 		
+		m_pModule.RpcInitActionMethod(RplRcver.Owner, "SendFailureNotification");
+		m_pModule.OnInitActionCanceled();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SendFailureNotification()
+	{
 		SCR_PlacingEditorComponent placingManager = SCR_PlacingEditorComponent.Cast(SCR_PlacingEditorComponent.GetInstance(SCR_PlacingEditorComponent, true, true));
 		SCR_NotificationsComponent.SendLocal(m_eNotificationOnFailure, placingManager.GetPrefabID(m_sRequiredPrefab));
-		m_pModule.OnInitActionCanceled();
 	}
 }

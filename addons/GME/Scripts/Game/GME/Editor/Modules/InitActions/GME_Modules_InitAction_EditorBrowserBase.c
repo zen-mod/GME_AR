@@ -12,23 +12,30 @@ class GME_Modules_InitAction_EditorBrowserBase : GME_Modules_InitAction_Base
 	protected SCR_PlacingEditorComponent m_pPlacingManager;
 	
 	//------------------------------------------------------------------------------------------------
-	override void OnInitServer()
+	void SetEditorModeEntity(SCR_EditorModeEntity entity)
 	{
-		m_pModule.RunInitActionOwner();
+		m_pPlacingManager = SCR_PlacingEditorComponent.Cast(entity.FindComponent(SCR_PlacingEditorComponent));
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override void RunOwner(array<IEntity> params = null)
+	override void OnStartServer()
 	{
-		m_pPlacingManager = SCR_PlacingEditorComponent.Cast(SCR_PlacingEditorComponent.GetInstance(SCR_PlacingEditorComponent, true, true));
-		m_pModule.RunInitActionServer({m_pPlacingManager.GetOwner()});
+		// Delay opening of content browser, since it will fail otherwise when the previous action was also a content browser
+		GetGame().GetCallqueue().CallLater(m_pModule.RpcInitActionMethod, 100, false, RplRcver.Owner, "OpenContentBrowser", null);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override void RunServer(array<IEntity> params = null)
+	void OpenContentBrowser()
 	{
-		IEntity editorModeEntity = params[0];
-		m_pPlacingManager = SCR_PlacingEditorComponent.Cast(editorModeEntity.FindComponent(SCR_PlacingEditorComponent));
+		SCR_EditorModeEntity editorEntity = SCR_EditorModeEntity.GetInstance();
+		SetEditorModeEntity(editorEntity);
+		m_pModule.RpcInitActionMethod(RplRcver.Server, "SetEditorModeEntity", editorEntity);		
+		m_pModule.RpcInitActionMethod(RplRcver.Server, "AttachServerPlacingHandlers");
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void AttachServerPlacingHandlers()
+	{
 		m_pPlacingManager.GetOnPlaceEntityServer().Insert(OnPlacingConfirmedServer);
 		m_pPlacingManager.GME_GetOnPlacingCanceledServer().Insert(OnPlacingCanceledServer);
 	}
@@ -47,7 +54,7 @@ class GME_Modules_InitAction_EditorBrowserBase : GME_Modules_InitAction_Base
 		
 		m_pPlacingManager.GetOnPlaceEntityServer().Remove(OnPlacingConfirmedServer);
 		m_pPlacingManager.GME_GetOnPlacingCanceledServer().Remove(OnPlacingCanceledServer);
-		m_pModule.SetPlacingParamServer(m_sSpawnedEntitySetter, entity.GetOwner());
+		m_pModule.CallModuleMethod(m_sSpawnedEntitySetter, entity.GetOwner());
 		m_pModule.OnInitActionCompleted();
 	}
 	
@@ -60,14 +67,21 @@ class GME_Modules_InitAction_EditorBrowserBase : GME_Modules_InitAction_Base
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override void OnConfirmServer()
+	override void OnInitDoneServer()
 	{
-		if (m_pEntity)
-			SCR_PhysicsHelper.ChangeSimulationState(m_pEntity.GetOwner(), m_eEntitySimulationState);
+		if (!m_pEntity)
+			return;
+		
+		Physics physics = m_pEntity.GetOwner().GetPhysics();
+		if (!physics)
+			return;
+
+		physics.ChangeSimulationState(m_eEntitySimulationState);
+		physics.SetActive(ActiveState.ACTIVE);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override void OnCancelServer()
+	override void OnInitCanceledServer()
 	{
 		if (m_pEntity)
 			m_pEntity.Delete();

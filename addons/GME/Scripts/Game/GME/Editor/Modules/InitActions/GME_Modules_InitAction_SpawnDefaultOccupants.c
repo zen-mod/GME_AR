@@ -11,49 +11,23 @@ class GME_Modules_InitAction_SpawnDefaultOccupants : GME_Modules_InitAction_Base
 	[Attribute(desc: "Compartment types to occupy")]
 	protected ref array<ECompartmentType> m_aCompartmentTypes;
 	
-	[Attribute(defvalue: "-1", desc: "AI LOD of the crew")]
-	protected int m_iPermanentAILOD;
+	[Attribute(defvalue: "false", desc: "Enable AI LOD of the crew. Set false if you want the vehicle to move independent of whether players are nearby")]
+	protected bool m_bEnableAILODs;
 		
 	protected SCR_BaseCompartmentManagerComponent m_pCompartmentManager;
 	
 	//------------------------------------------------------------------------------------------------
-	override void OnInitServer()
+	override void OnStartServer()
 	{
-		m_pModule.RunInitActionServer();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	override void RunServer(array<IEntity> params = null)
-	{
-		IEntity vehicleToOccupy = m_pModule.GetPlacingParamServer(m_sVehicleToOccupyGetter);	
-		m_pCompartmentManager = SCR_BaseCompartmentManagerComponent.Cast(vehicleToOccupy.FindComponent(SCR_BaseCompartmentManagerComponent));
-		m_pCompartmentManager.GetOnDoneSpawningDefaultOccupants().Insert(OnOccupantsSpawned);
-		m_pCompartmentManager.SpawnDefaultOccupants(m_aCompartmentTypes);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	protected void OnOccupantsSpawned(SCR_BaseCompartmentManagerComponent compartmentManager = null, array<IEntity> spawnedCharacters = null, bool wasCanceled = false)
-	{
-		foreach (IEntity member : spawnedCharacters)
-		{
-			AIComponent aiComponent = AIComponent.Cast(member.FindComponent(AIComponent));
-			AIAgent agent = aiComponent.GetAIAgent();
-			agent.SetPermanentLOD(m_iPermanentAILOD);
-			
-			if (!m_pOccupantsGroup)
-			{
-				m_pOccupantsGroup = SCR_AIGroup.Cast(agent.GetParentGroup());
-				m_pOccupantsGroup.SetPermanentLOD(0);
-				m_pModule.SetPlacingParamServer(m_sOccupantsGroupSetter, m_pOccupantsGroup);
-			}
-		}
-		
-		m_pCompartmentManager.GetOnDoneSpawningDefaultOccupants().Remove(OnOccupantsSpawned);
+		IEntity vehicleToOccupy = IEntity.Cast(m_pModule.CallModuleMethod(m_sVehicleToOccupyGetter));
+		m_pOccupantsGroup = GME_VehicleHelper.SpawnCrew(Vehicle.Cast(vehicleToOccupy));
+		m_pModule.CallModuleMethod(m_sOccupantsGroupSetter, m_pOccupantsGroup);
+		GME_GroupHelper.EnableAILODs(m_pOccupantsGroup, m_bEnableAILODs);
 		m_pModule.OnInitActionCompleted();
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override void OnCancelServer()
+	override void OnInitCanceledServer()
 	{
 		if (m_pOccupantsGroup)
 			SCR_EntityHelper.DeleteEntityAndChildren(m_pOccupantsGroup);
