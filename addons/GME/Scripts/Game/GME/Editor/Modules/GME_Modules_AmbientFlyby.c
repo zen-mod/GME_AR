@@ -83,13 +83,26 @@ class GME_Modules_AmbientFlyby : GME_Modules_Base
 		params.TransformMode = ETransformMode.WORLD;
 		GetWorldTransform(params.Transform);
 		ComputeInitialAircraftTransform(params.Transform, params.Transform);
-		m_pAircraft = Vehicle.Cast(GetGame().SpawnEntityPrefab(Resource.Load(m_sAmbientHeloPrefabName), null, params));
+		
+		Resource res = Resource.Load(m_sAmbientHeloPrefabName);
+		if (!res.IsValid())
+			return;
+		
+		m_pAircraft = Vehicle.Cast(GetGame().SpawnEntityPrefab(res, null, params));
+		if (!m_pAircraft)
+			return;
+		
 		m_pFlybyComponent = GME_AmbientFlybyComponent.Cast(m_pAircraft.FindComponent(GME_AmbientFlybyComponent));
+		if (!m_pFlybyComponent)
+			return;
+		
 		m_pFlybyComponent.SetSpeed(m_fSpeed);
 		m_pFlybyComponent.SetDespawnDistance(2 * m_fStartDistance);
 		m_pFlybyComponent.GetOnDespawn().Insert(OnAircraftDespawned);
+		
 		SCR_EditableEntityComponent editComponent = SCR_EditableEntityComponent.Cast(m_pAircraft.FindComponent(SCR_EditableEntityComponent));
-		editComponent.GetOnDeleted().Insert(OnAircraftDespawned);
+		if (editComponent)
+			editComponent.GetOnDeleted().Insert(OnAircraftDespawned);
 	}
 	
 	//------------------------------------------------------------------------------------------------
