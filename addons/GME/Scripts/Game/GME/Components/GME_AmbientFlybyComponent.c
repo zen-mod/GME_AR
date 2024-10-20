@@ -15,8 +15,9 @@ class GME_AmbientFlybyComponent : ScriptComponent
 	protected Physics m_Physics;
 	protected vector m_vVelocity;
 	protected vector m_vStartPos;
-	protected SCR_ChimeraCharacter m_pPilot;
 	protected ref array<AIAgent> m_aAgents = {};
+	protected SCR_CharacterControllerComponent m_pPilotController;
+	protected ref array<SCR_RotorDamageManagerComponent> m_aRotorDamageManagers = {};
 	
 	protected ref ScriptInvoker m_OnDespawn = new ScriptInvoker();
 	
@@ -47,6 +48,19 @@ class GME_AmbientFlybyComponent : ScriptComponent
 		HelicopterControllerComponent ctrl = HelicopterControllerComponent.Cast(owner.FindComponent(HelicopterControllerComponent));
 		if (ctrl)
 			ctrl.StartEngine();
+		
+		IEntity child = owner.GetChildren();
+		while (child)
+		{
+			SCR_RotorDamageManagerComponent damageManager = SCR_RotorDamageManagerComponent.Cast(child.FindComponent(SCR_RotorDamageManagerComponent));
+			if (damageManager)
+			{
+				damageManager.GetOnDamageStateChanged().Insert(OnRotorDamageStateChanged);
+				m_aRotorDamageManagers.Insert(damageManager);
+			}
+			
+			child = child.GetSibling();
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -61,15 +75,15 @@ class GME_AmbientFlybyComponent : ScriptComponent
 			agent.SetPermanentLOD(0);
 		}
 		
-		m_pPilot = SCR_ChimeraCharacter.Cast(m_aAgents[0].GetControlledEntity());
-		if (!m_pPilot)
+		SCR_ChimeraCharacter pilot = SCR_ChimeraCharacter.Cast(m_aAgents[0].GetControlledEntity());
+		if (!pilot)
 			return;
 		
-		SCR_CharacterControllerComponent pilotController = SCR_CharacterControllerComponent.Cast(m_pPilot.FindComponent(SCR_CharacterControllerComponent));
-		if (!pilotController)
+		m_pPilotController = SCR_CharacterControllerComponent.Cast(pilot.FindComponent(SCR_CharacterControllerComponent));
+		if (!m_pPilotController)
 			return;
 		
-		pilotController.m_OnLifeStateChanged.Insert(OnPilotLifeStateChanged);
+		m_pPilotController.m_OnLifeStateChanged.Insert(OnPilotLifeStateChanged);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -102,18 +116,38 @@ class GME_AmbientFlybyComponent : ScriptComponent
 	//! Terminate simulation when the life state of the pilot changes
 	protected void OnPilotLifeStateChanged(ECharacterLifeState previousLifeState, ECharacterLifeState newLifeState)
 	{
+		TerminateSimulation();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void OnRotorDamageStateChanged(EDamageState state)
+	{
+		if (state != EDamageState.DESTROYED)
+			return;
+		
+		TerminateSimulation();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void TerminateSimulation()
+	{
 		foreach (AIAgent agent : m_aAgents)
 		{
-			agent.SetPermanentLOD(-1);
+			if (agent)
+				agent.SetPermanentLOD(-1);
 		}
 		
 		ClearEventMask(GetOwner(), EntityEvent.SIMULATE);
 		HelicopterControllerComponent ctrl = HelicopterControllerComponent.Cast(GetOwner().FindComponent(HelicopterControllerComponent));
 		ctrl.StopEngine();
 		
-		SCR_CharacterControllerComponent pilotController = SCR_CharacterControllerComponent.Cast(m_pPilot.FindComponent(SCR_CharacterControllerComponent));
-		if (pilotController)
-			pilotController.m_OnLifeStateChanged.Remove(OnPilotLifeStateChanged);
+		if (m_pPilotController)
+			m_pPilotController.m_OnLifeStateChanged.Remove(OnPilotLifeStateChanged);
+		
+		foreach (SCR_RotorDamageManagerComponent damageManager : m_aRotorDamageManagers)
+		{
+			damageManager.GetOnDamageStateChanged().Remove(OnRotorDamageStateChanged);
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
