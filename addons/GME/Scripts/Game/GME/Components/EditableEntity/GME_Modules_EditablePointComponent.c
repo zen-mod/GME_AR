@@ -36,20 +36,52 @@ class GME_Modules_EditablePointComponentClass : GME_Modules_EditableModuleCompon
 //------------------------------------------------------------------------------------------------
 class GME_Modules_EditablePointComponent  : GME_Modules_EditableModuleComponent
 {
-	protected ref GME_Modules_EditablePointUIInfo m_CustomUIInfo = new GME_Modules_EditablePointUIInfo();
+	[RplProp(onRplName: "OnCallsignChanged")]
+	protected LocalizedString m_sCallsign;
+	
+	protected ref GME_Modules_EditablePointUIInfo m_CustomUIInfo;
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
 		
-		if (!GetGame().InPlayMode())
+		if (!GetGame().InPlayMode() || !Replication.IsServer())
 			return;
-				
-		m_CustomUIInfo.CopyFrom(GetInfo());
-		SetInfoInstance(m_CustomUIInfo);
+		
 		GME_Modules_EditablePointComponentClass prefabData = GME_Modules_EditablePointComponentClass.Cast(GetEditableEntityData());
-		m_CustomUIInfo.SetCallsign(prefabData.GetNextCallsign());
+		if (!prefabData)
+			return;
+		
+		m_sCallsign = prefabData.GetNextCallsign();
+		OnCallsignChanged();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetCallsign(LocalizedString callsign)
+	{
+		m_sCallsign = callsign;
+		OnCallsignChanged();
+		Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	LocalizedString GetCallsign()
+	{
+		return m_sCallsign;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void OnCallsignChanged()
+	{
+		if (!m_CustomUIInfo)
+		{
+			m_CustomUIInfo = new GME_Modules_EditablePointUIInfo();
+			m_CustomUIInfo.CopyFrom(GetInfo());
+			SetInfoInstance(m_CustomUIInfo);
+		}
+		
+		m_CustomUIInfo.SetCallsign(m_sCallsign);
 		Event_OnUIRefresh.Invoke();
 	}
 }
