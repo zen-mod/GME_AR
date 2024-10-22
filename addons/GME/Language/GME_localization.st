@@ -383,6 +383,22 @@ StringTable {
    ImageLink ""
    Hidden 0
   }
+  CustomStringTableItem "{62AC0332176045C1}" {
+   Id "GME-Editor_Attribute_GlobalSkill_Description"
+   Target_en_us "Global skill applied to all current and future AI units."
+   Target_de_de "Globale Fähikgeit für alle momentanen und zukünftigen KI Einheiten."
+   Modified 1655442170
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62AC0332B5EAA317}" {
+   Id "GME-Editor_Attribute_GlobalSkill_Name"
+   Target_en_us "Global skill"
+   Target_de_de "Globale Fähigkeit"
+   Modified 1655442624
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
   CustomStringTableItem "{62A6ECE007097ABC}" {
    Id "GME-Editor_Attribute_IntelContent_Name"
    Target_en_us "Intel content"
@@ -396,6 +412,30 @@ StringTable {
    Target_en_us "Intel titel"
    Target_de_de "Hinweistitel"
    Modified 1655109662
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62AB6754F6815523}" {
+   Id "GME-Editor_Attribute_Skill_CYLON_Name"
+   Target_en_us "Cylon"
+   Target_de_de "Zylon"
+   Modified 1655402702
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62AC0335B164BC43}" {
+   Id "GME-Editor_Attribute_Skill_Description"
+   Target_en_us "Skill of the AI"
+   Target_de_de "Fähigkeit der KI"
+   Modified 1655442193
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62AB6754F218EBFA}" {
+   Id "GME-Editor_Attribute_Skill_EXPERT_Name"
+   Target_en_us "Expert"
+   Target_de_de "Experte"
+   Modified 1655402571
    Author "Kexanone"
    LastChanged "Kexanone"
   }
@@ -427,6 +467,38 @@ StringTable {
    LastChanged "crow"
    ImageLink ""
    Hidden 0
+  }
+  CustomStringTableItem "{62AC0333E8DB461C}" {
+   Id "GME-Editor_Attribute_Skill_NONE_Name"
+   Target_en_us "Not set"
+   Target_de_de "Nicht gesetzt"
+   Modified 1655441434
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62AB6754CDEE5CBB}" {
+   Id "GME-Editor_Attribute_Skill_REGULAR_Name"
+   Target_en_us "Regular"
+   Target_de_de "Regulär"
+   Modified 1655402715
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62AB6754D57986EC}" {
+   Id "GME-Editor_Attribute_Skill_ROOKIE_Name"
+   Target_en_us "Rookie"
+   Target_de_de "Anfänger"
+   Modified 1655402780
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62AB6754FE4A9F26}" {
+   Id "GME-Editor_Attribute_Skill_VETERAN_Name"
+   Target_en_us "Veteran"
+   Target_de_de "Veteran"
+   Modified 1655402789
+   Author "Kexanone"
+   LastChanged "Kexanone"
   }
   CustomStringTableItem "{5D19597480C3F188}" {
    Id "GME-Editor_Attribute_Stance_Crouch_Name"
