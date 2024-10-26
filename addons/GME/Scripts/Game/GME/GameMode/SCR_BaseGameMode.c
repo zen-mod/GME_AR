@@ -12,7 +12,7 @@ modded class SCR_BaseGameMode : BaseGameMode
 		
 		SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
 		if (header)
-			m_eGME_GlobalAISkill = header.m_eGME_GlobalAISkill;
+			GME_SetGlobalAISkill(header.m_eGME_GlobalAISkill);
 	}
 	
 	//------------------------------------------------------------------------------------------------
