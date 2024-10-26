@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{BC15848F09F99FF2}Configs/Editor/AttributeCategories/Intel.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

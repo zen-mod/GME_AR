@@ -383,6 +383,22 @@ StringTable {
    ImageLink ""
    Hidden 0
   }
+  CustomStringTableItem "{62A6ECE007097ABC}" {
+   Id "GME-Editor_Attribute_IntelContent_Name"
+   Target_en_us "Intel content"
+   Target_de_de "Hinweisinhalt"
+   Modified 1655109673
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62A6ECE003544E7E}" {
+   Id "GME-Editor_Attribute_IntelTitel_Name"
+   Target_en_us "Intel titel"
+   Target_de_de "Hinweistitel"
+   Modified 1655109662
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
   CustomStringTableItem "{5D19597480C3F0C8}" {
    Id "GME-Editor_Attribute_Skill_Name"
    Target_en_us "Skill"
@@ -574,6 +590,30 @@ StringTable {
    LastChanged "crow"
    ImageLink ""
    Hidden 0
+  }
+  CustomStringTableItem "{62072CE8E3670EA2}" {
+   Id "GME-Editor_ContentBrowser_FilterCategory_MODULETYPE_Name"
+   Target_en_us "Module Type"
+   Target_de_de "Modultyp"
+   Modified 1644639744
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62A6ECE1437D6A68}" {
+   Id "GME-Notification_PICKED_UP_ITEM"
+   Target_en_us "%1 picked up %2"
+   Target_de_de "%1 hat %2 aufgelesen"
+   Modified 1655109533
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{620508C43021603F}" {
+   Id "GME-Notification_PLACE_PREFAB_FIRST"
+   Target_en_us "Place %1 first!"
+   Target_de_de "Plaziere %1 zuerst!"
+   Modified 1644511846
+   Author "Kexanone"
+   LastChanged "Kexanone"
   }
   CustomStringTableItem "{5DC552DA2913D62A}" {
    Id "GME-UI_Listbox_OnCancel"
