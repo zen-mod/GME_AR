@@ -70,7 +70,6 @@ class GME_BuildingPosQuery : Managed
 		}
 		
 		m_iAttempt++;
-		PrintFormat("|%1|%2/%3|", m_iAttempt, m_aPositions.Count(), m_iMaxPos);
 		
 		if (m_iAttempt >= m_iMaxAttempts || m_aPositions.Count() >= m_iMaxPos)
 		{
