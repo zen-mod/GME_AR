@@ -112,17 +112,10 @@ class GME_BuildingPosQuery : Managed
 		if (!m_pNavmesh.GetReachablePoint(queryPos, QUERY_RADIUS, outPos))
 			return GME_EBuildingPosQueryState.FAIL;
 		
+		// Tracer check that the floor belongs to the building
 		TraceParam params = new TraceParam();
 		params.Flags = TraceFlags.ENTS;
-		params.Start = outPos + 0.5 * vector.Up;
-		params.End = outPos + 15 * vector.Up;
-		
-		if (GetGame().GetWorld().TraceMove(params, null) >= 0.999)
-			return GME_EBuildingPosQueryState.FAIL;
-		
-		if (params.TraceEnt.GetRootParent() != m_pBuilding.GetRootParent())
-			return GME_EBuildingPosQueryState.FAIL;
-		
+		params.Start = outPos + EYE_HEIGHT * vector.Up;
 		params.End = outPos - 5 * vector.Up;
 		
 		if (GetGame().GetWorld().TraceMove(params, null) >= 0.999)
@@ -130,6 +123,20 @@ class GME_BuildingPosQuery : Managed
 		
 		if (params.TraceEnt.GetRootParent() != m_pBuilding.GetRootParent())
 			return GME_EBuildingPosQueryState.FAIL;
+		
+		// If the surface is not flat, we only accept positions inside the building,
+		// so that we don't end up on top of a gable roof
+		if (params.TraceNorm[1] < 0.999)
+		{
+			// Tracer check that we have a roof over us
+			params.End = outPos + 15 * vector.Up;
+			
+			if (GetGame().GetWorld().TraceMove(params, null) >= 0.999)
+				return GME_EBuildingPosQueryState.FAIL;
+			
+			if (params.TraceEnt.GetRootParent() != m_pBuilding.GetRootParent())
+				return GME_EBuildingPosQueryState.FAIL;
+		}
 		
 		outDir = vector.FromYaw(ComputeBestLoSYaw(outPos));
 		return GME_EBuildingPosQueryState.SUCCESS;
