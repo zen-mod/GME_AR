@@ -146,12 +146,6 @@ class GME_Modules_AddGarrison : GME_Modules_Base
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	protected void OnCharacterSpawned(AIAgent agent)
-	{
-
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	void SetBuilding(notnull SCR_DestructibleBuildingEntity building)
 	{
 		m_pBuilding = building;
