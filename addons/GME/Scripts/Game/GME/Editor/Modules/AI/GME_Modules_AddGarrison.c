@@ -6,7 +6,7 @@ class GME_Modules_AddGarrisonClass : GME_Modules_BaseClass
 //------------------------------------------------------------------------------------------------
 class GME_Modules_AddGarrison : GME_Modules_Base
 {
-	[Attribute(uiwidget: UIWidgets.ResourcePickerThumbnail, desc: "Prefab names of the group", params: "et", category: "Params")]
+	[Attribute(uiwidget: UIWidgets.ResourcePickerThumbnail, desc: "Prefab name of the group", params: "et", category: "Params")]
 	protected ResourceName m_sGroupPrefabName;
 	protected SCR_AIGroup m_pGroup;
 	
@@ -19,6 +19,15 @@ class GME_Modules_AddGarrison : GME_Modules_Base
 	//! Spawn group if needed and wait for members to spawn
 	override void Run()
 	{
+		if (!m_pBuilding)
+		{
+			GME_QueryNearestEntity query = new GME_QueryNearestEntity(0.01);
+			m_pBuilding = SCR_DestructibleBuildingEntity.Cast(query.GetEntity(GetOrigin()));
+		}
+		
+		if (!m_pBuilding)
+			return;
+		
 		if (!m_pGroup)
 		{
 			EntitySpawnParams params = new EntitySpawnParams();
@@ -26,6 +35,9 @@ class GME_Modules_AddGarrison : GME_Modules_Base
 			m_pBuilding.GetTransform(params.Transform);
 			m_pGroup = SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(Resource.Load(m_sGroupPrefabName), GetWorld(), params));
 		}
+		
+		if (!m_pGroup)
+			return;
 		
 		if (m_pGroup.GME_IsMemberSpawningDone())
 			OnGroupMembersSpawned(m_pGroup);
