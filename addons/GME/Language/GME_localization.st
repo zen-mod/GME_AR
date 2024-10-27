@@ -1,6 +1,22 @@
 StringTable {
  ItemClassName "CustomStringTableItem"
  Items {
+  CustomStringTableItem "{62B6A6C2A9CEE7F3}" {
+   Id "GME-ActionList_AddGarrison_Description"
+   Target_en_us "Spawn units to garrison the building"
+   Target_de_de "Erstelle Einheiten, die das Gebäude besetzen"
+   Modified 1656171603
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62B6A6C15778E1BB}" {
+   Id "GME-ActionList_AddGarrison_Name"
+   Target_en_us "Add Garrison"
+   Target_de_de "Besaztung hinzufügen"
+   Modified 1656171438
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
   CustomStringTableItem "{5DC552DCD58C02A3}" {
    Id "GME-ActionList_TeleportToSquadmate_Description"
    Target_en_us "Teleport unit to one of its squadmates"
@@ -607,11 +623,11 @@ StringTable {
    Author "Kexanone"
    LastChanged "Kexanone"
   }
-  CustomStringTableItem "{62A6ECE1437D6A68}" {
-   Id "GME-Notification_PICKED_UP_ITEM"
-   Target_en_us "%1 picked up %2"
-   Target_de_de "%1 hat %2 aufgelesen"
-   Modified 1655109533
+  CustomStringTableItem "{62B6A6C23197C040}" {
+   Id "GME-Editor_ContentBrowser_Title_ChooseGarrison"
+   Target_en_us "Choose garrison"
+   Target_de_de "Besatzung auswählen"
+   Modified 1656171782
    Author "Kexanone"
    LastChanged "Kexanone"
   }
@@ -682,6 +698,14 @@ StringTable {
    Target_ko_kr "증원군 소환"
    Target_zh_cn "生成增援"
    Modified 1644360233
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62A6ECE1437D6A68}" {
+   Id "GME-Notification_PICKED_UP_ITEM"
+   Target_en_us "%1 picked up %2"
+   Target_de_de "%1 hat %2 aufgelesen"
+   Modified 1655109533
    Author "Kexanone"
    LastChanged "Kexanone"
   }
