@@ -50,7 +50,7 @@ class GME_Modules_InitAction_ChoosePassengers : GME_Modules_InitAction_ExtendEnt
 		if (SCR_EditableGroupComponent.Cast(entity))
 			group = SCR_AIGroup.Cast(entity.GetOwner());
 		else
-			group = GME_GroupHelper.GetGroup(entity.GetOwner());
+			group = GME_GroupHelper.GetGroup(SCR_ChimeraCharacter.Cast(entity.GetOwner()));
 		
 		m_pModule.CallModuleMethod(m_sSpawnedEntitySetter, group);
 		m_bSpawnedGroups = true;
