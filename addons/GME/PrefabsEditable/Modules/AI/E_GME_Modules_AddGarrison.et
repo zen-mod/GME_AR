@@ -1,0 +1,18 @@
+GME_Modules_AddGarrison : "{57C4079FD5B14D31}PrefabsEditable/Modules/E_GME_Modules_Base.et" {
+ ID "61FEF0AC6FC068E1"
+ components {
+  GME_Modules_EditableModuleComponent "{61FEF0AC6FC047BE}" {
+   m_aInitActions {
+    GME_Modules_InitAction_PlaceEntity "{62B60866D4FDA445}" {
+     m_sSpawnedEntitySetter "SetGroup"
+     m_ContentBrowserConfig SCR_EditorContentBrowserDisplayConfig "{62B6A6B0B1005463}" : "{9259B3DA5843CDB9}Configs/Editor/ContentBrowser/PassengerLargeGroupsOrLessLabelConfig.conf" {
+     }
+    }
+    GME_Modules_InitAction_Sleep "{62B6A6B24784AD52}" {
+     m_fDelay 0.1
+    }
+   }
+  }
+ }
+ m_bDeleteImmediately 0
+}
