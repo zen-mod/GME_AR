@@ -2,6 +2,7 @@ GME_Modules_AddGarrison : "{57C4079FD5B14D31}PrefabsEditable/Modules/E_GME_Modul
  ID "61FEF0AC6FC068E1"
  components {
   GME_Modules_EditableModuleComponent "{61FEF0AC6FC047BE}" {
+   m_bAutoRegister NEVER
    m_aInitActions {
     GME_Modules_InitAction_PlaceEntity "{62B60866D4FDA445}" {
      m_sSpawnedEntitySetter "SetGroup"
