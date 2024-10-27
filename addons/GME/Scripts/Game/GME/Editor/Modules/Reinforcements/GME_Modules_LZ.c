@@ -1,11 +1,9 @@
 //------------------------------------------------------------------------------------------------
-modded enum EEditableEntityLabel
+class GME_Modules_LZClass : GME_Modules_BaseClass
 {
-	GME_MODULETYPE_REINFORCEMENTS = 7003
 }
 
 //------------------------------------------------------------------------------------------------
-modded enum EEditableEntityLabelGroup
+class GME_Modules_LZ : GME_Modules_Base
 {
-	GME_MODULETYPE
 }
