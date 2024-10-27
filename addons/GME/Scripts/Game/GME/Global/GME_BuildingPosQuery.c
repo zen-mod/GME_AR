@@ -1,12 +1,4 @@
 //------------------------------------------------------------------------------------------------
-enum GME_EBuildingPosQueryState
-{
-	SUCCESS,
-	FAIL,
-	RUNNING
-}
-
-//------------------------------------------------------------------------------------------------
 class GME_BuildingPosQuery : Managed
 {
 	protected NavmeshWorldComponent m_pNavmesh;
@@ -29,6 +21,7 @@ class GME_BuildingPosQuery : Managed
 		"{2B188379767C8461}Prefabs/Structures/Core/DestructibleWindow_Base.et",
 		"{86834A0D5920F32F}Prefabs/Structures/Core/DestructibleGlass_Base.et",
 	};
+	protected ref ScriptInvoker m_OnQueryDone;
 	
 	//------------------------------------------------------------------------------------------------
 	void GME_BuildingPosQuery(IEntity building)
@@ -83,6 +76,9 @@ class GME_BuildingPosQuery : Managed
 		{
 			GetGame().GetCallqueue().Remove(RandomQueryStep);
 			m_bIsRunning = false;
+			
+			if (m_OnQueryDone)
+				m_OnQueryDone.Invoke(m_aPositions, m_aDirections);
 		}
 	}
 	
@@ -219,4 +215,21 @@ class GME_BuildingPosQuery : Managed
 	{
 		return m_aDirections;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	ScriptInvoker GetOnQueryDone()
+	{
+		if (!m_OnQueryDone)
+			m_OnQueryDone = new ScriptInvoker();
+		
+		return m_OnQueryDone;
+	}
+}
+
+//------------------------------------------------------------------------------------------------
+enum GME_EBuildingPosQueryState
+{
+	SUCCESS,
+	FAIL,
+	RUNNING
 }
