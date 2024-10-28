@@ -1,12 +1,9 @@
 //------------------------------------------------------------------------------------------------
-modded enum EEditableEntityLabel
+class GME_Modules_RallyPointClass : GME_Modules_BaseClass
 {
-	GME_MODULETYPE_REINFORCEMENTS = 7003
-	GME_MODULETYPE_AI = 7004
 }
 
 //------------------------------------------------------------------------------------------------
-modded enum EEditableEntityLabelGroup
+class GME_Modules_RallyPoint : GME_Modules_Base
 {
-	GME_MODULETYPE
 }
