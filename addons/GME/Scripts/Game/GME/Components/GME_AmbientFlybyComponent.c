@@ -77,11 +77,11 @@ class GME_AmbientFlybyComponent : ScriptComponent
 		
 		SCR_ChimeraCharacter pilot = SCR_ChimeraCharacter.Cast(m_aAgents[0].GetControlledEntity());
 		if (!pilot)
-			return;
+			return SCR_EntityHelper.DeleteEntityAndChildren(GetOwner());
 		
 		m_pPilotController = SCR_CharacterControllerComponent.Cast(pilot.FindComponent(SCR_CharacterControllerComponent));
 		if (!m_pPilotController)
-			return;
+			return SCR_EntityHelper.DeleteEntityAndChildren(GetOwner());
 		
 		m_pPilotController.m_OnLifeStateChanged.Insert(OnPilotLifeStateChanged);
 	}
