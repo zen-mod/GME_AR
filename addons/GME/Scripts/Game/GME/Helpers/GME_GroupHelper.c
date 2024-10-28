@@ -4,8 +4,18 @@ class GME_GroupHelper
 	static const ResourceName GROUP_BASE_PREFAB = "{000CD338713F2B5A}Prefabs/AI/Groups/Group_Base.et";
 	
 	//------------------------------------------------------------------------------------------------
-	static SCR_AIGroup GetGroup(GenericEntity entity)
+	static SCR_AIGroup GetGroup(SCR_ChimeraCharacter character)
 	{
+		if (EntityUtils.IsPlayer(character))
+			return GetPlayerGroup(character);
+		else
+			return GetAIGroup(character);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static SCR_AIGroup GetPlayerGroup(SCR_ChimeraCharacter character)
+	{
+		
 		PlayerManager playerManager = GetGame().GetPlayerManager();
 
 		if (!playerManager)
@@ -16,9 +26,23 @@ class GME_GroupHelper
 		if (!groupManager)
 			return null;
 
-		int playerId = playerManager.GetPlayerIdFromControlledEntity(entity);
+		int playerId = playerManager.GetPlayerIdFromControlledEntity(character);
 
 		return groupManager.GetPlayerGroup(playerId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected static SCR_AIGroup GetAIGroup(SCR_ChimeraCharacter character)
+	{
+		AIControlComponent aiCtrl = AIControlComponent.Cast(character.FindComponent(AIControlComponent));
+		if (!aiCtrl)
+			return null;
+		
+		AIAgent agent = aiCtrl.GetAIAgent();
+		if (!agent)
+			return null;
+		
+		return SCR_AIGroup.Cast(agent.GetParentGroup());
 	}
 
 	//------------------------------------------------------------------------------------------------

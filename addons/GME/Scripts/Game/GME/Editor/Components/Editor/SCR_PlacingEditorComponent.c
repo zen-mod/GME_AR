@@ -7,22 +7,60 @@ modded class SCR_PlacingEditorComponent : SCR_BaseEditorComponent
 	override protected void EOnEditorInitServer()
 	{
 		super.EOnEditorInitServer();
-		GetOnPlaceEntityServer().Insert(GME_GetOnPlaceEntityServer);
+		GetOnPlaceEntityServer().Insert(GME_OnPlaceEntityServer);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Transfer ownership of GME modules to player that placed it and run init
-	protected void GME_GetOnPlaceEntityServer(RplId prefabID, SCR_EditableEntityComponent entity, int playerID)
+	//! Method for requesting the spawning of an interactive module
+	//! To be called by the local GM client
+	void GME_RequestPlaceModule(ResourceName resName, vector transform[4])
 	{
-		GME_Modules_Base module = GME_Modules_Base.Cast(entity.GetOwner());
-		if (!module)
+		Rpc(RpcAsk_GME_RequestPlaceModuleServer, resName, transform, GetManager().GetPlayerID());
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_GME_RequestPlaceModuleServer(ResourceName resName, vector transform[4], int playerID)
+	{
+		Resource res = Resource.Load(resName);
+		if (!res.IsValid())
 			return;
 		
+		EntitySpawnParams params = new EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		params.Transform = transform;
+		
+		GME_Modules_AddGarrison module = GME_Modules_AddGarrison.Cast(GetGame().SpawnEntityPrefab(res, null, params));
+		if (module)
+			GME_OnModulePlacedServer(module, playerID);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Called when GM placed an entity
+	protected void GME_OnPlaceEntityServer(RplId prefabID, SCR_EditableEntityComponent entity, int playerID)
+	{
+		GME_Modules_Base module = GME_Modules_Base.Cast(entity.GetOwner());
+		if (module)
+			GME_OnModulePlacedServer(module, playerID);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Transfers ownership of the module to the GM that placed it and runs module init
+	protected void GME_OnModulePlacedServer(notnull GME_Modules_Base module, int playerID)
+	{
 		RplComponent moduleRpl = RplComponent.Cast(module.FindComponent(RplComponent));
+		if (!moduleRpl)
+			return;
+		
 		PlayerController playerCtrl = GetGame().GetPlayerManager().GetPlayerController(playerID);
+		if (!playerCtrl)
+			return;
+		
 		moduleRpl.Give(playerCtrl.GetRplIdentity());
-		GME_Modules_EditableModuleComponent editableModuleComponent = GME_Modules_EditableModuleComponent.Cast(entity);
-		editableModuleComponent.OnInitServer();
+		
+		GME_Modules_EditableModuleComponent editableModuleComponent = GME_Modules_EditableModuleComponent.Cast(SCR_EditableEntityComponent.GetEditableEntity(module));
+		if (editableModuleComponent)
+			editableModuleComponent.OnInitServer();	
 	}
 		
 	//------------------------------------------------------------------------------------------------
