@@ -1,0 +1,27 @@
+GME_Modules_AmbientFlyby : "{57C4079FD5B14D31}PrefabsEditable/Modules/E_GME_Modules_Base.et" {
+ ID "61FEF0AC6FC068E1"
+ components {
+  GME_Modules_EditableModuleComponent "{61FEF0AC6FC047BE}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{61FEF0AC6FC047A8}" {
+    Icon "{BFBA42C85CB25019}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Helicopter.edds"
+    m_Image "{6C492D2DC9F2EF04}UI/Textures/Editor/ContentBrowser/ContentBrowser_Vehicle_Helicopter.edds"
+    m_aAuthoredLabels + {
+     7004
+    }
+   }
+   m_aInitActions {
+    GME_Modules_InitAction_EditAttributes "{62071BC22085279E}" {
+    }
+   }
+  }
+  SCR_PreviewEntityComponent "{61FEF54A09A195CE}" {
+   m_aEntries {
+    SCR_BasePreviewEntry "{61FEF54A01E97382}" {
+     m_Mesh "{A215E87110025E26}Assets/Modules/ModulePreviewArrow/ModulePreviewArrow.xob"
+     m_Shape MESH
+    }
+   }
+  }
+ }
+ m_bDeleteImmediately 0
+}

@@ -80,35 +80,6 @@ StringTable {
    ImageLink ""
    Hidden 0
   }
-  CustomStringTableItem "{5D19597480C38375}" {
-   Id "GME-Editor_Attribute_CompletionRadius_ValueFormating"
-   Target_en_us "%1 m"
-   Target_en_us_edited ""
-   Target_fr_fr "%1 m"
-   Target_it_it "%1 m"
-   Target_de_de "%1 m"
-   Target_es_es "%1 m"
-   Target_cs_cz "%1 m"
-   Target_pl_pl "%1 m"
-   Target_ru_ru "%1 m"
-   Target_ja_jp "%1 m"
-   Target_ko_kr "%1 m"
-   Target_pt_br "%1 m"
-   Target_zh_cn "%1 米"
-   Comment ""
-   DevNote ""
-   Repro ""
-   ActorGender NONE
-   Terminology NONE
-   Status DEVELOPMENT_PENDING
-   NonTranslatable 0
-   MaxLength 0
-   Modified 1561942876
-   Author "Kex"
-   LastChanged "crow"
-   ImageLink ""
-   Hidden 0
-  }
   CustomStringTableItem "{5D19597480C3844A}" {
    Id "GME-Editor_Attribute_CompletionType_All_Name"
    Target_en_us "All"
@@ -632,6 +603,55 @@ StringTable {
    ImageLink ""
    Hidden 0
   }
+  CustomStringTableItem "{5D19597480C38375}" {
+   Id "GME-Editor_Attribute_ValueFormatting_Length"
+   Target_en_us "%1 m"
+   Target_en_us_edited ""
+   Target_fr_fr "%1 m"
+   Target_it_it "%1 m"
+   Target_de_de "%1 m"
+   Target_es_es "%1 m"
+   Target_cs_cz "%1 m"
+   Target_pl_pl "%1 m"
+   Target_ru_ru "%1 m"
+   Target_ja_jp "%1 m"
+   Target_ko_kr "%1 m"
+   Target_pt_br "%1 m"
+   Target_zh_cn "%1 米"
+   Target_uk_ua "%1 m"
+   Comment ""
+   DevNote ""
+   Repro ""
+   ActorGender NONE
+   Terminology NONE
+   Status DEVELOPMENT_PENDING
+   NonTranslatable 0
+   MaxLength 0
+   Modified 1656230612
+   Author "Kexanone"
+   LastChanged "Kexanone"
+   ImageLink ""
+   Hidden 0
+  }
+  CustomStringTableItem "{62071BC2FE856882}" {
+   Id "GME-Editor_Attribute_ValueFormatting_Speed"
+   Target_en_us "%1 km/h"
+   Target_fr_fr "%1 km/h"
+   Target_it_it "%1 km/h"
+   Target_de_de "%1 km/h"
+   Target_es_es "%1 km/h"
+   Target_cs_cz "%1 km/h"
+   Target_pl_pl "%1 km/h"
+   Target_ru_ru "%1 km/h"
+   Target_ja_jp "%1 km/h"
+   Target_ko_kr "%1 km/h"
+   Target_pt_br "%1 km/h"
+   Target_zh_cn "%1 km/h"
+   Target_uk_ua "%1 km/h"
+   Modified 1644635353
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
   CustomStringTableItem "{5D955C2079184639}" {
    Id "GME-Editor_Attribute_VisibilityToggle_Name"
    Target_en_us "Visibility"
@@ -679,6 +699,14 @@ StringTable {
    ImageLink ""
    Hidden 0
   }
+  CustomStringTableItem "{6207444BFA04A823}" {
+   Id "GME-Editor_ContentBrowser_Filter_AI_Name"
+   Target_en_us "AI"
+   Target_de_de "KI"
+   Modified 1644643579
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
   CustomStringTableItem "{62072CE78F00B469}" {
    Id "GME-Editor_ContentBrowser_Filter_REINFORCEMENTS_Name"
    Target_en_us "Reinforcements"
@@ -703,6 +731,30 @@ StringTable {
    Author "Kexanone"
    LastChanged "Kexanone"
   }
+  CustomStringTableItem "{61FF20CD7A430C94}" {
+   Id "GME-Modules_AmbientFlyby_Mi8MT_name"
+   Target_en_us "Ambient Mi-8MT Flyby"
+   Target_de_de "Atmosphärischer Vorbeiflug eines Mi-9MT"
+   Modified 1644113190
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{61FF20CD461AC2BD}" {
+   Id "GME-Modules_AmbientFlyby_UH1H_name"
+   Target_en_us "Ambient UH-1H Flyby"
+   Target_de_de "Atmosphärischer Vorbeiflug eines UH-1H"
+   Modified 1644113187
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62071BC43A365B6C}" {
+   Id "GME-Modules_Attribute_Height_Name"
+   Target_en_us "Height"
+   Target_de_de "Höhe"
+   Modified 1644634787
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
   CustomStringTableItem "{62055062957C227C}" {
    Id "GME-Modules_Attribute_RTBAndDespawn_Name"
    Target_en_us "RTB and Despawn"
@@ -713,6 +765,22 @@ StringTable {
    Target_ko_kr "귀환 후 삭제"
    Target_zh_cn "返回並刪除"
    Modified 1655255408
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62071BC4205E761B}" {
+   Id "GME-Modules_Attribute_Speed_Name"
+   Target_en_us "Speed"
+   Target_de_de "Tempo"
+   Modified 1644635003
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
+  CustomStringTableItem "{62071BC42E178789}" {
+   Id "GME-Modules_Attribute_StartDistance_Name"
+   Target_en_us "Start distance"
+   Target_de_de "Startdistanz"
+   Modified 1644634991
    Author "Kexanone"
    LastChanged "Kexanone"
   }
@@ -803,9 +871,9 @@ StringTable {
    Target_ko_kr "취소"
    Target_pt_br "Cancelar"
    Target_zh_cn "取消"
-   Modified 1575018579
+   Modified 1655266293
    Author "crow"
-   LastChanged "kexanone"
+   LastChanged "Kexanone"
   }
   CustomStringTableItem "{5DC552DA2D2CBC68}" {
    Id "GME-UI_Listbox_OnConfirm"
