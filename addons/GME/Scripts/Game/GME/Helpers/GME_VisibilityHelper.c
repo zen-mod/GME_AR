@@ -24,7 +24,6 @@ class GME_VisibilityHelper
 	
 	static bool GetVisibility(IEntity entity)
 	{
-		int visible = entity.GetFlags() & EntityFlags.VISIBLE;
-		return visible;
+		return entity.GetFlags() & EntityFlags.VISIBLE;
 	}
 }

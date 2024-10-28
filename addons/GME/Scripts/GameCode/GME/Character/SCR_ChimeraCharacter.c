@@ -42,6 +42,6 @@ modded class SCR_ChimeraCharacter : ChimeraCharacter
 	{		
 		m_bGME_isVisible = visible;
 		Replication.BumpMe();
-		this.GME_OnVisibilityValueUpdated();
+		GME_OnVisibilityValueUpdated();
 	}
 }

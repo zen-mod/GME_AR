@@ -10,7 +10,7 @@ modded class Vehicle : BaseVehicle
 	{		
 		m_bGME_isVisible = visible;
 		Replication.BumpMe();
-		this.GME_OnVisibilityValueUpdated();
+		GME_OnVisibilityValueUpdated();
 	}
 	
 	
