@@ -32,9 +32,9 @@ modded class SCR_ChimeraCharacter : ChimeraCharacter
 	void GME_OnVisibilityValueUpdated()
 	{
 		if (m_bGME_isVisible)
-			this.SetFlags(EntityFlags.VISIBLE|EntityFlags.TRACEABLE, m_bGME_isVisible);
+			SetFlags(EntityFlags.VISIBLE | EntityFlags.TRACEABLE);
 		else
-			this.ClearFlags(EntityFlags.VISIBLE|EntityFlags.TRACEABLE);
+			ClearFlags(EntityFlags.VISIBLE | EntityFlags.TRACEABLE);
 	}
 	
 	//------------------------------------------------------------------------------------------------
