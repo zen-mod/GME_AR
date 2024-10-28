@@ -20,9 +20,7 @@ modded class SCR_BaseGameMode : BaseGameMode
 	void GME_SetGlobalAISkill(EAISkill skill)
 	{
 		m_eGME_GlobalAISkill = skill;
-		
-		if (skill == EAISkill.NONE)
-			return;
+		bool applyDefault = (skill == EAISkill.NONE);
 		
 		SCR_EditableEntityCore core = SCR_EditableEntityCore.Cast(SCR_EditableEntityCore.GetInstance(SCR_EditableEntityCore));
 		if (!core)
@@ -44,11 +42,26 @@ modded class SCR_BaseGameMode : BaseGameMode
 			SCR_AICombatComponent combatComponent = SCR_AICombatComponent.Cast(char.FindComponent(SCR_AICombatComponent));
 			if (!combatComponent)
 				continue;
-		
-			combatComponent.SetAISkill(skill);
+			
+			if (applyDefault)
+			{
+				IEntityComponentSource combatComponentSource = combatComponent.GetComponentSource(char);
+				if (combatComponentSource)
+					continue;
+				
+				EAISkill defaultSkill;
+				if (!combatComponentSource.Get("m_eAISkillDefault", defaultSkill))
+					continue;
+				
+				combatComponent.SetAISkill(defaultSkill);
+			}
+			else
+			{
+				combatComponent.SetAISkill(skill);
+			}
 		}
 	}
-	
+		
 	//------------------------------------------------------------------------------------------------
 	EAISkill GME_GetGlobalAISkill()
 	{
