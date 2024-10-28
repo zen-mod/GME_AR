@@ -47,7 +47,7 @@ class GME_TeleportToSquadmateContextAction: SCR_BaseContextAction
 		myMenuUI.SetTitle("#GME-ActionList_TeleportToSquadmate_Name");
 			
 		// Get squadmates 
-		SCR_AIGroup group = GME_GroupHelper.GetGroup(owner);
+		SCR_AIGroup group = GME_GroupHelper.GetGroup(SCR_ChimeraCharacter.Cast(owner));
 		if (!group || group.GetPlayerCount() <= 0) 
 		{
 			// give error message back to zeus that unit is not in a group 
