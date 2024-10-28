@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------------------------
 modded enum EEditableEntityLabel
 {
-	GME_MODULETYPE_REINFORCEMENTS = 7003
+	GME_MODULETYPE_REINFORCEMENTS = 7003,
 	GME_MODULETYPE_AI = 7004
 }
 
