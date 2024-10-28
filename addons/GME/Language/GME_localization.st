@@ -516,7 +516,7 @@ StringTable {
    Hidden 0
   }
   CustomStringTableItem "{5D19597480C38375}" {
-   Id "GME-Editor_Attribute_ValueFormating_Length"
+   Id "GME-Editor_Attribute_ValueFormatting_Length"
    Target_en_us "%1 m"
    Target_en_us_edited ""
    Target_fr_fr "%1 m"
@@ -539,7 +539,7 @@ StringTable {
    Status DEVELOPMENT_PENDING
    NonTranslatable 0
    MaxLength 0
-   Modified 1644635360
+   Modified 1656230612
    Author "Kexanone"
    LastChanged "Kexanone"
    ImageLink ""
