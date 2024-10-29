@@ -1,8 +1,5 @@
-/**
-Entity Skill Attribute for getting and setting varriables in Editor Attribute window
-*/
 [BaseContainerProps(), SCR_BaseEditorAttributeCustomTitle()]
-class GME_SkillEditorAttribute : SCR_BaseValueListEditorAttribute
+class GME_IntelContentEditorAttribute : SCR_BasePresetsEditorAttribute
 {
 	override SCR_BaseEditorAttributeVar ReadVariable(Managed item, SCR_AttributesManagerEditorComponent manager)
 	{
@@ -14,11 +11,11 @@ class GME_SkillEditorAttribute : SCR_BaseValueListEditorAttribute
 		if (!owner)
 			return null;
 		
-		SCR_AIConfigComponent AIConfigComp = SCR_AIConfigComponent.Cast(owner.FindComponent(SCR_AIConfigComponent));
-		if (!AIConfigComp)
+		GME_IntelComponent intelComponent = GME_IntelComponent.Cast(owner.FindComponent(GME_IntelComponent));
+		if (!intelComponent)
 			return null;
 			
-		return SCR_BaseEditorAttributeVar.CreateFloat(Math.Round(AIConfigComp.m_Skill * 100));
+		return SCR_BaseEditorAttributeVar.GME_CreateString(intelComponent.GetContent());
 	}
 	
 	override void WriteVariable(Managed item, SCR_BaseEditorAttributeVar var, SCR_AttributesManagerEditorComponent manager, int playerID)
@@ -32,10 +29,10 @@ class GME_SkillEditorAttribute : SCR_BaseValueListEditorAttribute
 		if (!owner)
 			return;
 		
-		SCR_AIConfigComponent AIConfigComp = SCR_AIConfigComponent.Cast(owner.FindComponent(SCR_AIConfigComponent));
-		if (!AIConfigComp)
+		GME_IntelComponent intelComponent = GME_IntelComponent.Cast(owner.FindComponent(GME_IntelComponent));
+		if (!intelComponent)
 			return;
 
-		AIConfigComp.m_Skill = var.GetFloat() / 100;
+		intelComponent.SetContent(var.GME_GetString());
 	}
 };

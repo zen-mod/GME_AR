@@ -1,9 +1,8 @@
-/**
-Helper class with staic functions to enable and disable visiblity of units
-*/
-
+//------------------------------------------------------------------------------------------------
+//! Helper class with staic functions to enable and disable visiblity of units
 class GME_VisibilityHelper
 {
+	//------------------------------------------------------------------------------------------------
 	static void SetVisibility(GenericEntity entity, bool visible)
 	{
 		// casting to possible supported types, if not null we found our match and change visibility and return
@@ -22,9 +21,9 @@ class GME_VisibilityHelper
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static bool GetVisibility(IEntity entity)
 	{
-		int visible = entity.GetFlags() & EntityFlags.VISIBLE;
-		return visible;
+		return entity.GetFlags() & EntityFlags.VISIBLE;
 	}
 }
