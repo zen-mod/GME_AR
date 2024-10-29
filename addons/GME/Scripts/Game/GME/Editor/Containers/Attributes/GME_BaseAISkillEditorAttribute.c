@@ -27,6 +27,9 @@ class GME_BaseAISkillEditorAttribute : SCR_BaseFloatValueHolderEditorAttribute
 		if (!var)
 			return;
 		
+		if (m_aValues.IsEmpty())
+			FillValues();
+		
 		SCR_EditorAttributeFloatStringValueHolder valueHolder = m_aValues[var.GetInt()];
 		SetSkill(item, valueHolder.GetFloatValue());
 	}
