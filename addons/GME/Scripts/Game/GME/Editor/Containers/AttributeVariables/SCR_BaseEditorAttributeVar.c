@@ -1,4 +1,5 @@
 //------------------------------------------------------------------------------------------------
+//! Add support for string-based attributes
 modded class SCR_BaseEditorAttributeVar
 {
 	protected string m_sGME_Value;
