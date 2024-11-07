@@ -45,7 +45,7 @@ modded class SCR_PlacingEditorComponent : SCR_BaseEditorComponent
 		{
 			GME_OnModulePlacedServer(module, playerID);
 		}
-		// Put wheeled car in first gear to prevent them sliding down slopes
+		// Put wheeled vehicles in first gear to prevent them sliding down slopes
 		else if (SCR_EditableVehicleComponent.Cast(entity))
 		{
 			Vehicle vehicle = Vehicle.Cast(entity.GetOwner());
