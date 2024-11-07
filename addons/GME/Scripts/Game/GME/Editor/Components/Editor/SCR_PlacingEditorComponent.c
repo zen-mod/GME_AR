@@ -40,8 +40,29 @@ modded class SCR_PlacingEditorComponent : SCR_BaseEditorComponent
 	protected void GME_OnPlaceEntityServer(RplId prefabID, SCR_EditableEntityComponent entity, int playerID)
 	{
 		GME_Modules_Base module = GME_Modules_Base.Cast(entity.GetOwner());
+		// Handle placement of modules
 		if (module)
+		{
 			GME_OnModulePlacedServer(module, playerID);
+		}
+		// Put wheeled car in first gear to prevent them sliding down slopes
+		else if (SCR_EditableVehicleComponent.Cast(entity))
+		{
+			Vehicle vehicle = Vehicle.Cast(entity.GetOwner());
+			if (!vehicle)
+				return;
+			
+			CarControllerComponent controller = CarControllerComponent.Cast(vehicle.GetVehicleController());
+			if (!controller)
+				return;
+			
+			VehicleWheeledSimulation simulation = controller.GetSimulation();
+			if (!simulation)
+				return;
+			
+			// Gear mapping: 0 => R, 1 => N, 2 => D/1, ...
+			simulation.SetGear(2);
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
