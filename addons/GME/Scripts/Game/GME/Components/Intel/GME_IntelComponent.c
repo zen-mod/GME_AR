@@ -34,7 +34,14 @@ class GME_IntelComponent : ScriptComponent
 			return;
 				
 		if (Replication.IsServer())
+		{
 			m_pItemComponent.m_OnParentSlotChangedInvoker.Insert(OnPickedUpByPlayer);
+			
+			ChimeraWorld world = GetGame().GetWorld();
+			SCR_GarbageSystem garbageSystem = SCR_GarbageSystem.GetByEntityWorld(owner);
+			if (garbageSystem)
+				garbageSystem.UpdateBlacklist(owner, true);
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
