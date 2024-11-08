@@ -30,7 +30,7 @@ modded class SCR_PlacingEditorComponent : SCR_BaseEditorComponent
 		params.TransformMode = ETransformMode.WORLD;
 		params.Transform = transform;
 		
-		GME_Modules_AddGarrison module = GME_Modules_AddGarrison.Cast(GetGame().SpawnEntityPrefab(res, null, params));
+		GME_Modules_Base module = GME_Modules_Base.Cast(GetGame().SpawnEntityPrefab(res, null, params));
 		if (module)
 			GME_OnModulePlacedServer(module, playerID);
 	}
