@@ -99,7 +99,10 @@ class GME_ListboxSingleSelectDialog: ChimeraMenuBase
 	void AddItemAndIconToListbox(string name, ResourceName imageOrImageset, string iconName, Managed data = null)
 	{
         if (m_ListBoxComponent)
-			m_ListBoxComponent.AddItemAndIcon(name, imageOrImageset, iconName, data);	
+		{
+			SCR_ListBoxElementComponent comp;
+			m_ListBoxComponent.AddItemAndIcon(name, imageOrImageset, iconName, comp, data);
+		}
 	}
 	
 	void SetTitle(string title)
