@@ -1,6 +1,8 @@
 SCR_EditorModeEntity : "{E56F54E533ACE527}Prefabs/Editor/Modes/EditorModeBase.et" {
  ID "54F0A77282A3AA3B"
  components {
+  GME_DeepCopyComponent "{647547FAFF461D74}" {
+  }
   SCR_AttributesManagerEditorComponent "{54C8DACDCD4AE14E}" {
    m_AttributeLists {
     SCR_EditorAttributeList "{620718B2D015769B}" : "{DE3FBF537C709D48}Configs/Editor/AttributeLists/GME_Modules.conf" {
