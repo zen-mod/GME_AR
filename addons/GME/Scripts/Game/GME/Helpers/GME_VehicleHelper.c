@@ -2,9 +2,9 @@
 class GME_VehicleHelper
 {
 	static const int PASSENGER_EJECT_DELAY_MS = 2500;
-	const ref array<ECompartmentType> DEFAULT_CREW_COMPARTMENT_TYPES = {ECompartmentType.PILOT, ECompartmentType.TURRET};
-	const ref array<ECompartmentType> DEFAULT_PASSENGER_COMPARTMENT_TYPES = {ECompartmentType.CARGO};
-	const ref array<ECompartmentType> ALL_COMPARTMENT_TYPES = {ECompartmentType.PILOT, ECompartmentType.TURRET, ECompartmentType.CARGO};
+	static const ref array<ECompartmentType> DEFAULT_CREW_COMPARTMENT_TYPES = {ECompartmentType.PILOT, ECompartmentType.TURRET};
+	static const ref array<ECompartmentType> DEFAULT_PASSENGER_COMPARTMENT_TYPES = {ECompartmentType.CARGO};
+	static const ref array<ECompartmentType> ALL_COMPARTMENT_TYPES = {ECompartmentType.PILOT, ECompartmentType.TURRET, ECompartmentType.CARGO};
 	
 	//------------------------------------------------------------------------------------------------
 	static SCR_AIGroup SpawnCrew(Vehicle vehicle, array<ECompartmentType> compartmentTypes = GME_VehicleHelper.DEFAULT_CREW_COMPARTMENT_TYPES)
