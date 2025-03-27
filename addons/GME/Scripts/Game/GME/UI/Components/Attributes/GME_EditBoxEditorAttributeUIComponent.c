@@ -45,11 +45,11 @@ class GME_EditboxEditorAttributeUIComponent: SCR_BaseEditorAttributeUIComponent
 	//------------------------------------------------------------------------------------------------
 	protected void OnChangeEditbox(SCR_EditBoxComponent selectionBox, string value)
 	{
-		OnChange(null, 0, 0, false);
+		OnChange(null, false);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override bool OnChange(Widget w, int x, int y, bool finished)
+	override bool OnChange(Widget w, bool finished)
 	{	
 		if (!m_EditBoxComponent) 
 			return false;
@@ -65,7 +65,7 @@ class GME_EditboxEditorAttributeUIComponent: SCR_BaseEditorAttributeUIComponent
 			return false;
 		
 		var.GME_SetString(newValue);
-		super.OnChange(w, x, y, finished);
+		super.OnChange(w, finished);
 		return false;
 	}	
 	
