@@ -22,8 +22,8 @@ modded class SCR_EditableEntityComponent : ScriptComponent
 	protected void GME_OnVisibilityChanged()
 	{
 		if (m_bGME_IsVisible)
-			GetOwner().SetFlags(EntityFlags.VISIBLE | EntityFlags.TRACEABLE);
+			m_Owner.SetFlags(EntityFlags.VISIBLE | EntityFlags.TRACEABLE);
 		else
-			GetOwner().ClearFlags(EntityFlags.VISIBLE | EntityFlags.TRACEABLE);
+			m_Owner.ClearFlags(EntityFlags.VISIBLE | EntityFlags.TRACEABLE);
 	}
 }
