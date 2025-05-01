@@ -463,6 +463,13 @@ StringTable {
    Author "Kexanone"
    LastChanged "Kexanone"
   }
+  CustomStringTableItem "{654201CA46CFC026}" {
+   Id "GME-Editor_Attribute_Skill_NOOB_Name"
+   Target_en_us "Noob"
+   Modified 1698832425
+   Author "Kexanone"
+   LastChanged "Kexanone"
+  }
   CustomStringTableItem "{62AB6754CDEE5CBB}" {
    Id "GME-Editor_Attribute_Skill_REGULAR_Name"
    Target_en_us "Regular"
