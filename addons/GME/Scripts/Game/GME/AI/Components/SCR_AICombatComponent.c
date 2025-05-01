@@ -13,8 +13,12 @@ modded class SCR_AICombatComponent : ScriptComponent
 		if (!outCurrentTarget)
 			return;
 		
-		bool visible = GME_VisibilityHelper.GetVisibility(outCurrentTarget.GetTargetEntity());
-		if (visible)
+		IEntity currentEntity = outCurrentTarget.GetTargetEntity();
+		if (!currentEntity)
+			return;
+		
+		SCR_EditableEntityComponent editableEntity = SCR_EditableEntityComponent.GetEditableEntity(currentEntity);
+		if (!editableEntity || editableEntity.GME_IsVisible())
 			return;
 			
 		m_SelectedTarget = prevTarget;
