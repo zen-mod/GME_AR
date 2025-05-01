@@ -1,9 +1,6 @@
 //------------------------------------------------------------------------------------------------
 modded class SCR_ChimeraCharacter : ChimeraCharacter
 {
-	[RplProp(onRplName: "GME_OnVisibilityValueUpdated")]
-	protected bool m_bGME_isVisible = true;
-	
 	//------------------------------------------------------------------------------------------------
 	//! Apply global AI skill
 	override void EOnInit(IEntity owner)
@@ -26,22 +23,5 @@ modded class SCR_ChimeraCharacter : ChimeraCharacter
 			return;
 	
 		combatComponent.SetAISkill(skill);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void GME_SetVisibility(bool visible)
-	{
-		m_bGME_isVisible = visible;
-		Replication.BumpMe();
-		GME_OnVisibilityValueUpdated();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	protected void GME_OnVisibilityValueUpdated()
-	{
-		if (m_bGME_isVisible)
-			SetFlags(EntityFlags.VISIBLE | EntityFlags.TRACEABLE);
-		else
-			ClearFlags(EntityFlags.VISIBLE | EntityFlags.TRACEABLE);
 	}
 }
