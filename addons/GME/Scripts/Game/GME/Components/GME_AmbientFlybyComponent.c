@@ -12,7 +12,6 @@ class GME_AmbientFlybyComponent : ScriptComponent
 	[Attribute(defvalue: "6000", desc: "Distance from starting position for triggering despawn in meters")]
 	protected float m_fDespawnDistance;
 	
-	protected Physics m_Physics;
 	protected vector m_vVelocity;
 	protected vector m_vStartPos;
 	protected ref array<AIAgent> m_aAgents = {};
@@ -28,8 +27,7 @@ class GME_AmbientFlybyComponent : ScriptComponent
 			return;
 
 		SetEventMask(owner, EntityEvent.SIMULATE);
-		m_Physics = owner.GetPhysics();
-		m_Physics.SetActive(ActiveState.ACTIVE);
+		owner.GetPhysics().SetActive(ActiveState.ACTIVE);
 		
 		vector transform[4];
 		owner.GetWorldTransform(transform);
@@ -89,7 +87,7 @@ class GME_AmbientFlybyComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	override protected void EOnSimulate(IEntity owner, float timeSlice)
 	{
-		m_Physics.SetVelocity(m_vVelocity);
+		owner.GetPhysics().SetVelocity(m_vVelocity);
 		HandleDespawning(owner, timeSlice);
 	}
 	
