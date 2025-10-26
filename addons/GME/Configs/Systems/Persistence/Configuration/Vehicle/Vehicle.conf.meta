@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{C676762C801B4B31}Configs/Systems/Persistence/Configuration/Vehicle/Vehicle.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}
