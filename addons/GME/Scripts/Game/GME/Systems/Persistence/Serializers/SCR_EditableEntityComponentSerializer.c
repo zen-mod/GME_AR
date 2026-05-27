@@ -2,7 +2,7 @@
 modded class SCR_EditableEntityComponentSerializer : ScriptedComponentSerializer
 {
 	//------------------------------------------------------------------------------------------------
-	override protected ESerializeResult Serialize(notnull IEntity owner, notnull GenericComponent component, notnull BaseSerializationSaveContext context)
+	override protected ESerializeResult Serialize(notnull IEntity owner, notnull GenericComponent component, notnull SaveContext context)
 	{
 		ESerializeResult result = super.Serialize(owner, component, context);
 		if (result == ESerializeResult.ERROR)
@@ -19,7 +19,7 @@ modded class SCR_EditableEntityComponentSerializer : ScriptedComponentSerializer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override protected bool Deserialize(notnull IEntity owner, notnull GenericComponent component, notnull BaseSerializationLoadContext context)
+	override protected bool Deserialize(notnull IEntity owner, notnull GenericComponent component, notnull LoadContext context)
 	{
 		super.Deserialize(owner, component, context);
 		SCR_EditableEntityComponent editable = SCR_EditableEntityComponent.Cast(component);

@@ -2,7 +2,7 @@
 class GME_HitZoneContainerComponentSerializer : HitZoneContainerComponentSerializer
 {
 	//------------------------------------------------------------------------------------------------
-	override protected ESerializeResult Serialize(notnull IEntity owner, notnull GenericComponent component, notnull BaseSerializationSaveContext context)
+	override protected ESerializeResult Serialize(notnull IEntity owner, notnull GenericComponent component, notnull SaveContext context)
 	{
 		ESerializeResult result = super.Serialize(owner, component, context);
 		if (result == ESerializeResult.ERROR)
@@ -19,7 +19,7 @@ class GME_HitZoneContainerComponentSerializer : HitZoneContainerComponentSeriali
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override protected bool Deserialize(notnull IEntity owner, notnull GenericComponent component, notnull BaseSerializationLoadContext context)
+	override protected bool Deserialize(notnull IEntity owner, notnull GenericComponent component, notnull LoadContext context)
 	{
 		super.Deserialize(owner, component, context);
 		SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.Cast(component);

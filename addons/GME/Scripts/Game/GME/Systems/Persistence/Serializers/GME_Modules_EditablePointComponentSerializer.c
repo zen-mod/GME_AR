@@ -8,7 +8,7 @@ class GME_Modules_EditablePointComponentSerializer : ScriptedComponentSerializer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override protected ESerializeResult Serialize(notnull IEntity owner, notnull GenericComponent component, notnull BaseSerializationSaveContext context)
+	override protected ESerializeResult Serialize(notnull IEntity owner, notnull GenericComponent component, notnull SaveContext context)
 	{
 
 		GME_Modules_EditablePointComponent point = GME_Modules_EditablePointComponent.Cast(component);
@@ -18,7 +18,7 @@ class GME_Modules_EditablePointComponentSerializer : ScriptedComponentSerializer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override protected bool Deserialize(notnull IEntity owner, notnull GenericComponent component, notnull BaseSerializationLoadContext context)
+	override protected bool Deserialize(notnull IEntity owner, notnull GenericComponent component, notnull LoadContext context)
 	{
 		GME_Modules_EditablePointComponent point = GME_Modules_EditablePointComponent.Cast(component);
 		int version;
