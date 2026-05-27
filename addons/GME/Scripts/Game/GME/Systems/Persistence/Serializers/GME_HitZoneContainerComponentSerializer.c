@@ -26,7 +26,7 @@ class GME_HitZoneContainerComponentSerializer : HitZoneContainerComponentSeriali
 		
 		bool damageHandlingEnabled;
 		if (context.Read(damageHandlingEnabled))
-			damageManager.EnableDamageHandling(false);
+			damageManager.EnableDamageHandling(damageHandlingEnabled);
 
 		return true;
 	}
