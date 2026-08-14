@@ -44,12 +44,12 @@ class GME_Modules_EditableModuleComponent : SCR_EditableSystemComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override void SetTransform(vector transform[4], bool changedByUser = false)
+	override bool SetTransform(vector transform[4], bool changedByUser = false)
 	{
 		vector oldTransform[4];
 		GetTransform(oldTransform);
 		m_pModule.OnMoved(oldTransform, transform);
-		super.SetTransform(transform, changedByUser);
+		return super.SetTransform(transform, changedByUser);
 	}
 	
 	//------------------------------------------------------------------------------------------------

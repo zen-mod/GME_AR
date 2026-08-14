@@ -8,7 +8,7 @@ class GME_WaypointEntitySerializer : GenericEntitySerializer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override protected ESerializeResult Serialize(notnull IEntity entity, notnull BaseSerializationSaveContext context)
+	override protected ESerializeResult Serialize(notnull IEntity entity, notnull SaveContext context)
 	{
 		ESerializeResult result = super.Serialize(entity, context);
 		if (result == ESerializeResult.ERROR)
@@ -41,7 +41,7 @@ class GME_WaypointEntitySerializer : GenericEntitySerializer
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override protected bool Deserialize(notnull IEntity entity, notnull BaseSerializationLoadContext context)
+	override protected bool Deserialize(notnull IEntity entity, notnull LoadContext context)
 	{
 		super.Deserialize(entity, context);
 		AIWaypoint waypoint = AIWaypoint.Cast(entity);

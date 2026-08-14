@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{0B9374FB0BA34B16}PrefabsEditable/Modules/E_GME_Modules_AddGarrison.et"
+ Name "{0B9374FB0BA34B16}PrefabsEditable/Modules/AI/E_GME_Modules_AddGarrison.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
