@@ -10,3 +10,4 @@ Crowdedlight <crowdedhd@gmail.com>
 Kexanone <kexanone@gmail.com>
 
 # CONTRIBUTORS
+Domagoj K. Hackenberger <domagojhack@gmail.com>
