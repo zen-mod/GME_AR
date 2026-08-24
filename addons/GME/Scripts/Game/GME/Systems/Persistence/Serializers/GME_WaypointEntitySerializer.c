@@ -10,41 +10,57 @@ class GME_WaypointEntitySerializer : GenericEntitySerializer
 	//------------------------------------------------------------------------------------------------
 	override protected ESerializeResult Serialize(notnull IEntity entity, notnull SaveContext context)
 	{
-		ESerializeResult result = super.Serialize(entity, context);
-		if (result == ESerializeResult.ERROR)
-			return result;
+		const AIWaypoint waypoint = AIWaypoint.Cast(entity);
 		
-		AIWaypoint waypoint = AIWaypoint.Cast(entity);
+        context.StartObject("base");
+        const ESerializeResult baseResult = super.Serialize(entity, context);
+        context.EndObject();
 		
+		if (baseResult == ESerializeResult.ERROR)
+			return ESerializeResult.ERROR;
+				
 		BaseContainer container = waypoint.GetPrefabData().GetPrefab();
 		if (!container)
 			return ESerializeResult.ERROR;
 		
-		float defaultRadius;
-		container.Get("CompletionRadius", defaultRadius);
-		EAIWaypointCompletionType defaultType;
-		container.Get("CompletionType", defaultType);
+		const float completionRadius = waypoint.GetCompletionRadius();
+		const EAIWaypointCompletionType completionType = waypoint.GetCompletionType();
 		
-		if (defaultRadius != waypoint.GetCompletionRadius())
+		float defaultCompletionRadius;
+		container.Get("CompletionRadius", defaultCompletionRadius);
+		EAIWaypointCompletionType defaultCompletionType;
+		container.Get("CompletionType", defaultCompletionType);
+		
+		if (baseResult == ESerializeResult.DEFAULT &&
+			defaultCompletionRadius == completionRadius &&
+			defaultCompletionType == completionType)
 		{
-			context.WriteValue("completionRadius", waypoint.GetCompletionRadius());
-			result = ESerializeResult.OK;
+			return ESerializeResult.DEFAULT;
 		}
 		
-		if (defaultType != waypoint.GetCompletionType())
-		{
-			context.WriteValue("completionType", waypoint.GetCompletionType());
-			result = ESerializeResult.OK;
-		}
-		
-		return result;
+		context.WriteValue("version", 1);
+		context.WriteDefault(completionRadius, defaultCompletionRadius);
+		context.WriteDefault(completionType, defaultCompletionType);
+		return ESerializeResult.OK;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	override protected bool Deserialize(notnull IEntity entity, notnull LoadContext context)
 	{
-		super.Deserialize(entity, context);
 		AIWaypoint waypoint = AIWaypoint.Cast(entity);
+		
+		if (context.DoesObjectExist("base"))
+		{
+			if (!context.StartObject("base") ||
+				!super.Deserialize(entity, context) ||
+				!context.EndObject())
+			{
+				return false;
+			}
+		}
+		
+		int version;
+		context.Read(version);
 		
 		float completionRadius;
 		if (context.Read(completionRadius))

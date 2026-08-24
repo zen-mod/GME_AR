@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-class GME_Modules_EditablePointComponentSerializer : ScriptedComponentSerializer
+class GME_Modules_EditablePointComponentSerializer : SCR_EditableEntityComponentSerializer
 {
 	//------------------------------------------------------------------------------------------------
 	override static typename GetTargetType()
@@ -10,10 +10,19 @@ class GME_Modules_EditablePointComponentSerializer : ScriptedComponentSerializer
 	//------------------------------------------------------------------------------------------------
 	override protected ESerializeResult Serialize(notnull IEntity owner, notnull GenericComponent component, notnull SaveContext context)
 	{
-
-		GME_Modules_EditablePointComponent point = GME_Modules_EditablePointComponent.Cast(component);
+		const GME_Modules_EditablePointComponent point = GME_Modules_EditablePointComponent.Cast(component);
+		
+        context.StartObject("base");
+		const ESerializeResult baseResult = super.Serialize(owner, component, context);
+        context.EndObject();
+		
+		if (baseResult == ESerializeResult.ERROR)
+			return ESerializeResult.ERROR;
+		
+		const LocalizedString callsign = point.GetCallsign();
+		
 		context.WriteValue("version", 1);
-		context.WriteValue("callsign", point.GetCallsign());
+		context.Write(callsign);
 		return ESerializeResult.OK;
 	}
 	
@@ -21,11 +30,24 @@ class GME_Modules_EditablePointComponentSerializer : ScriptedComponentSerializer
 	override protected bool Deserialize(notnull IEntity owner, notnull GenericComponent component, notnull LoadContext context)
 	{
 		GME_Modules_EditablePointComponent point = GME_Modules_EditablePointComponent.Cast(component);
+		
+		if (context.DoesObjectExist("base"))
+		{
+			if (!context.StartObject("base") ||
+				!super.Deserialize(owner, component, context) ||
+				!context.EndObject())
+			{
+				return false;
+			}
+		}
+		
 		int version;
 		context.Read(version);
+		
 		string callsign;
-		context.Read(callsign);
-		point.SetCallsign(callsign);
+		if (context.Read(callsign))
+			point.SetCallsign(callsign);
+		
 		return true;
 	}
 }

@@ -4,25 +4,45 @@ class GME_HitZoneContainerComponentSerializer : HitZoneContainerComponentSeriali
 	//------------------------------------------------------------------------------------------------
 	override protected ESerializeResult Serialize(notnull IEntity owner, notnull GenericComponent component, notnull SaveContext context)
 	{
-		ESerializeResult result = super.Serialize(owner, component, context);
-		if (result == ESerializeResult.ERROR)
-			return result;
+		const SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.Cast(component);
 		
-		SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.Cast(component);
-		if (!damageManager.IsDamageHandlingEnabled())
+        context.StartObject("base");
+		const ESerializeResult baseResult = super.Serialize(owner, component, context);
+        context.EndObject();
+		
+		if (baseResult == ESerializeResult.ERROR)
+			return ESerializeResult.ERROR;
+		
+		const bool damageHandlingEnabled = damageManager.IsDamageHandlingEnabled();
+		
+		if (baseResult == ESerializeResult.DEFAULT &&
+			damageHandlingEnabled)
 		{
-			context.WriteValue("damageHandlingEnabled", false);
-			result = ESerializeResult.OK;
+			return ESerializeResult.DEFAULT;
 		}
 		
-		return result;
+		context.WriteValue("version", 1);
+		context.WriteDefault(damageHandlingEnabled, true);
+		return ESerializeResult.OK;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	override protected bool Deserialize(notnull IEntity owner, notnull GenericComponent component, notnull LoadContext context)
 	{
-		super.Deserialize(owner, component, context);
 		SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.Cast(component);
+
+		if (context.DoesObjectExist("base"))
+		{
+			if (!context.StartObject("base") ||
+				!super.Deserialize(owner, component, context) ||
+				!context.EndObject())
+			{
+				return false;
+			}
+		}
+		
+		int version;
+		context.Read(version);
 		
 		bool damageHandlingEnabled;
 		if (context.Read(damageHandlingEnabled))
