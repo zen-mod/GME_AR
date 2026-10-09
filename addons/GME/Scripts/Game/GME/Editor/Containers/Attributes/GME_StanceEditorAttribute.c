@@ -12,7 +12,7 @@ class GME_StanceEditorAttribute : SCR_BasePresetsEditorAttribute
 			return null;
 		
 		IEntity owner = editableEntity.GetOwner();
-		if (!owner)
+		if (!owner || EntityUtils.IsPlayer(owner))
 			return null;
 		
 		CharacterControllerComponent charCtrlComponent = CharacterControllerComponent.Cast(owner.FindComponent(CharacterControllerComponent));
