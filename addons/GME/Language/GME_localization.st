@@ -610,6 +610,14 @@ StringTable {
    ImageLink ""
    Hidden 0
   }
+  CustomStringTableItem "{6A93038E1C561773}" {
+   Id "GME-Editor_Attribute_ToggleRole_Description"
+   Target_en_us "Toggle specialized skill of the character"
+   Target_de_de "Bearbeite Spezialisierung der Einheit"
+   Modified 1788024350
+   Author "Kex"
+   LastChanged "Kex"
+  }
   CustomStringTableItem "{5D19597480C38375}" {
    Id "GME-Editor_Attribute_ValueFormatting_Length"
    Target_en_us "%1 m"
