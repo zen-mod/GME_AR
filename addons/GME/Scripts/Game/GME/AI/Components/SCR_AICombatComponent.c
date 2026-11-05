@@ -2,6 +2,29 @@
 modded class SCR_AICombatComponent : ScriptComponent
 {
 	//------------------------------------------------------------------------------------------------
+	override void EOnInit(IEntity owner)
+	{
+		super.EOnInit(owner);
+		ResetAISkill();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	override void ResetAISkill()
+	{
+		super.ResetAISkill();
+		
+		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+		if (!gameMode)
+			return;
+		
+		EAISkill skill = gameMode.GME_GetGlobalAISkill();
+		if (skill == EAISkill.NONE)
+			return;
+	
+		SetAISkill(skill);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	//! Resets selected target if it is not visible
 	override void EvaluateWeaponAndTarget(out bool outWeaponEvent, out bool outSelectedTargetChanged,
 		out BaseTarget outPrevTarget, out BaseTarget outCurrentTarget,
